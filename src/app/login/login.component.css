@@ -15,11 +15,11 @@ input{
   text-align: center;
 }
 
-button{
+.btn-success{
   background-color: #35a037;
   border-color: #276f29;
 }
 
-button:hover{
+.btn-success:hover{
   background-color: #2a652d;
 }
