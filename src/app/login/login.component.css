@@ -1,3 +1,25 @@
+.container{
+  padding-top: 50px;
+}
 
 
 
+.panel-heading{
+  text-align: center;
+  background-color: #264b4d;
+  font-family: neatchalk, Tahoma, sans-serif;
+  font-size: 0.6em;
+}
+
+input{
+  text-align: center;
+}
+
+button{
+  background-color: #35a037;
+  border-color: #276f29;
+}
+
+button:hover{
+  background-color: #2a652d;
+}

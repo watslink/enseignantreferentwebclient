@@ -1,3 +1,32 @@
+@font-face
+{
+  font-family: 'learningcurve';
+  src: url('assets/fonts/learning_curve_bold_ot_tt.ttf')format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face
+{
+  font-family: 'scholarfont';
+  src: url('assets/fonts/PWScolarpaper.ttf')format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+@font-face
+{
+  font-family: 'neatchalk';
+  src: url('assets/fonts/NeatChalk-P4Wm.ttf')format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.container-fluid{
+  padding:0px;
+}
+
 .rounded {
   border-radius: 40px;
 }
@@ -5,16 +34,21 @@
 header
 {
   margin:0px;
-  display: flex;
-  justify-content: center;
-  flex-direction:column;
+  text-align: center;
+  font-family: scholarfont, Tahoma, sans-serif;
+  font-weight: bold;
   background-color: cadetblue;
-  background-size: cover;
-  position: relative;
-  min-height: 100px;
-  min-width: 500px;
-  line-height: 0.2em;
-  box-sizing: border-box;
-  border: 3px black groove ;
-  border-radius: 15px;
+  border: 1px #4879c1 groove ;
+
 }
+
+h2
+{
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+
+
+
+
+
