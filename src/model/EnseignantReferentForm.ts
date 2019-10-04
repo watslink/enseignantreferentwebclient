@@ -5,8 +5,8 @@ export class EnseignantReferentForm {
     public nom: string,
     public prenom: string,
     public mail: string,
-    public motDePasse: string,
-    public reMotDePasse: string) {}
+    public motDePasse: { mpd: string , rempd: string}
+   ) {}
 
 
 }

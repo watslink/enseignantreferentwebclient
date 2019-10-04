@@ -4,18 +4,89 @@
 
       <div class="panel-heading ">Inscription</div>
       <div class="panel-body">
-        <form >
+        <form #insForm = "ngForm">
           <div class="form-group">
-            <input  class="form-control rounded" ngModel="" type="text" name="mail" placeholder="Mail" required>
+            <input  class="form-control rounded"
+                    [(ngModel)] = "ensRefForm.nom"
+                    #nom=ngModel
+                    type="text" name="nom"
+                    placeholder="Nom" required>
+          </div>
+          <div *ngIf="nom.invalid && (nom.dirty || nom.touched)"
+               class="alert alert-danger">
+            <div *ngIf = "nom.errors?.required">
+              Veuillez entrer un nom.
+            </div>
           </div>
           <div class="form-group">
-            <input class="form-control rounded" ngModel="" type="password" name="motDePasse" placeholder="Mot de passe" required>
+            <input  class="form-control rounded"
+                    [(ngModel)] = "ensRefForm.prenom"
+                    #prenom=ngModel
+                    type="text" name="prenom"
+                    placeholder="Prenom" required>
+          </div>
+          <div *ngIf="prenom.invalid && (prenom.dirty || prenom.touched)"
+               class="alert alert-danger">
+            <div *ngIf = "prenom.errors?.required">
+              Veuillez entrer un prenom.
+            </div>
           </div>
           <div class="form-group">
-            <input class="form-control rounded" ngModel="" type="password" name="reMotDePasse" placeholder="Confirmation mot de passe" required>
+            <input  class="form-control rounded"
+                    [(ngModel)] = "ensRefForm.mail"
+                    #mail=ngModel
+                    type="text" name="mail"
+                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+                    placeholder="Mail" required>
           </div>
-          <button type="submit" class="btn btn-success rounded col-md-offset-2 col-md-3 col-xs-4 col-xs-offset-1 ">Valider</button>
-          <a href="/inscription"  class="btn btn-info rounded col-md-offset-2 col-md-3 col-xs-offset-1 col-xs-5">Retour</a>
+          <div *ngIf="mail.invalid && (mail.dirty || mail.touched)"
+               class="alert alert-danger">
+            <div *ngIf = "mail.errors?.required">
+              Veuillez entrer un mail.
+            </div>
+            <div *ngIf = "mail.errors?.pattern && mail.touched">
+              Format incorrect.
+            </div>
+          </div>
+
+          <div ngModelGroup="motDePasse" #verifmpd="ngModelGroup"  >
+            <div class="form-group">
+
+              <input
+                class="form-control rounded"
+                type="password"
+                ngModel name="mpd"
+                #mpd=ngModel
+                placeholder="Mot de Passe"
+                minlength ="8" required>
+            </div>
+
+            <div class="form-group">
+              <input
+                class="form-control rounded"
+                type="password"
+                ngModel name="rempd"
+                #rempd=ngModel
+                placeholder="Confirmer Mot de passe">
+            </div>
+
+
+            <div *ngIf="((verifmpd.invalid && mpd.touched) || ((verifmpd.value?.mpd != verifmpd.value?.rempd) && rempd.touched) )"
+                 class="alert alert-danger">
+
+              <div *ngIf = "verifmpd.invalid; else nomatch">
+                8 caratères minimum.
+              </div>
+              <ng-template #nomatch >
+                les mots de passe ne sont pas identiques.
+              </ng-template>
+            </div>
+          </div>
+
+
+          <button type="submit" class="btn btn-success rounded col-md-offset-2 col-md-3 col-xs-4 col-xs-offset-1 "
+                  [disabled]="!insForm.form.valid">Valider</button>
+          <a href="/login"  class="btn btn-info rounded col-md-offset-2 col-md-3 col-xs-offset-1 col-xs-5">Retour</a>
         </form>
       </div>
     </div>
