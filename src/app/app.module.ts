@@ -10,6 +10,8 @@ import { AccueilComponent } from './accueil/accueil.component';
 import {FormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 
+
+
 const appRoutes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'inscription', component: InscriptionComponent},

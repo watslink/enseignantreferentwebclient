@@ -1,10 +1,20 @@
 <div class="container ">
   <div class="col-xs-6 col-xs-offset-3  ">
-    <div class="panel panel-primary ">
+    <div class="alert alert-success" *ngIf="inscrit">
+    <strong>Inscription validée!</strong>
+    </div>
+    <div class="panel panel-primary" *ngIf="!inscrit">
 
       <div class="panel-heading ">Inscription</div>
+      <div class="alert alert-danger" *ngIf="erreur==1">
+        <strong>Mail déja utilisé!</strong>
+      </div>
+      <div class="alert alert-danger" *ngIf="erreur==2">
+      <strong>Erreur d'enregistrement en base de donnée</strong>
+    </div>
+
       <div class="panel-body">
-        <form #insForm = "ngForm">
+        <form #insForm = "ngForm" (ngSubmit)="onInscription(insForm.value)">
           <div class="form-group">
             <input  class="form-control rounded"
                     [(ngModel)] = "ensRefForm.nom"
@@ -36,10 +46,10 @@
                     [(ngModel)] = "ensRefForm.mail"
                     #mail=ngModel
                     type="text" name="mail"
-                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+                    pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-z]{2,3}$"
                     placeholder="Mail" required>
           </div>
-          <div *ngIf="mail.invalid && (mail.dirty || mail.touched)"
+          <div *ngIf="mail.invalid && (mail.touched)"
                class="alert alert-danger">
             <div *ngIf = "mail.errors?.required">
               Veuillez entrer un mail.
@@ -51,7 +61,6 @@
 
           <div ngModelGroup="motDePasse" #verifmpd="ngModelGroup"  >
             <div class="form-group">
-
               <input
                 class="form-control rounded"
                 type="password"
@@ -67,14 +76,15 @@
                 type="password"
                 ngModel name="rempd"
                 #rempd=ngModel
-                placeholder="Confirmer Mot de passe">
+                placeholder="Confirmer Mot de passe"
+                required>
             </div>
 
 
-            <div *ngIf="((verifmpd.invalid && mpd.touched) || ((verifmpd.value?.mpd != verifmpd.value?.rempd) && rempd.touched) )"
+            <div *ngIf="((mpd.invalid && mpd.touched) || ((verifmpd.value?.mpd != verifmpd.value?.rempd) && rempd.touched) )"
                  class="alert alert-danger">
 
-              <div *ngIf = "verifmpd.invalid; else nomatch">
+              <div *ngIf = "mpd.invalid; else nomatch">
                 8 caratères minimum.
               </div>
               <ng-template #nomatch >
@@ -85,7 +95,7 @@
 
 
           <button type="submit" class="btn btn-success rounded col-md-offset-2 col-md-3 col-xs-4 col-xs-offset-1 "
-                  [disabled]="!insForm.form.valid">Valider</button>
+                  [disabled]="!insForm.form.valid || verifmpd.value?.mpd != verifmpd.value?.rempd" >Valider</button>
           <a href="/login"  class="btn btn-info rounded col-md-offset-2 col-md-3 col-xs-offset-1 col-xs-5">Retour</a>
         </form>
       </div>
