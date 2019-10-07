@@ -26,8 +26,12 @@ export class InscriptionComponent implements OnInit {
 
   onInscription(ensRefForm) {
 
-    this.ensRef = new EnseignantReferent(ensRefForm.nom,
-      ensRefForm.prenom, ensRefForm.mail, ensRefForm.motDePasse.mpd, true);
+    this.ensRef = new EnseignantReferent();
+    this.ensRef.enabled = true;
+    this.ensRef.nom = ensRefForm.nom;
+    this.ensRef.prenom = ensRefForm.prenom;
+    this.ensRef.mail = ensRefForm.mail;
+    this.ensRef.motDePasse = ensRefForm.motDePasse;
 
     this.authService.inscrire(this.ensRef).subscribe(
       resp => { if (resp.status === 201) {

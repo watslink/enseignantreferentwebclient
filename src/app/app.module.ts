@@ -8,7 +8,9 @@ import {RouterModule, Routes} from '@angular/router';
 import {AuthenticationService} from '../service/authentication.service';
 import { AccueilComponent } from './accueil/accueil.component';
 import {FormsModule} from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import {AuthInterceptor} from '../interceptor/AuthInterceptor';
+import {StructureService} from '../service/structure.service';
 
 
 
@@ -29,7 +31,16 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule, RouterModule.forRoot(appRoutes), FormsModule, HttpClientModule
   ],
-  providers: [AuthenticationService],
+  providers: [
+    AuthenticationService,
+    AuthInterceptor,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
+    StructureService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
