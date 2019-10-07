@@ -9,9 +9,7 @@ import {Observable} from 'rxjs';
 export class AuthenticationService {
 
   private host = 'http://localhost:8080';
-  private jwtToken = null;
-
-    constructor(private http: HttpClient, private router: Router) {
+  constructor(private http: HttpClient, private router: Router) {
 
     }
 
@@ -34,10 +32,4 @@ export class AuthenticationService {
     saveToken(jwt: string) {
       localStorage.setItem('token', jwt);
     }
-
-  loadToken() {
-    if (this.jwtToken == null) {
-      this.jwtToken = localStorage.getItem('token');
-    }
-  }
 }
