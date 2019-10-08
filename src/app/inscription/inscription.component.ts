@@ -1,11 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {EnseignantReferentForm} from '../../model/EnseignantReferentForm';
-import {EnseignantReferentModel} from '../../model/EnseignantReferent';
+
 import {AuthenticationService} from '../../service/authentication.service';
-import {HttpErrorResponse} from '@angular/common/http';
-import {Observable} from 'rxjs';
-import {ModalComponent} from 'ngb-modal';
-import {BootstrapModalModule} from 'ng2-bootstrap-modal';
+import {EnseignantReferentForm} from '../../model/EnseignantReferentForm.model';
+import {EnseignantReferent} from '../../model/EnseignantReferent.model';
 
 @Component({
   selector: 'app-inscription',
@@ -16,7 +13,7 @@ export class InscriptionComponent implements OnInit {
 
   private ensRefForm: EnseignantReferentForm = new EnseignantReferentForm('', '', '',  { mpd: '' , rempd: ''});
 
-  private ensRef: EnseignantReferentModel;
+  private ensRef: EnseignantReferent;
   private erreur = 0;
   private inscrit = false;
   constructor(private authService: AuthenticationService) { }
@@ -26,7 +23,7 @@ export class InscriptionComponent implements OnInit {
 
   onInscription(ensRefForm) {
 
-    this.ensRef = new EnseignantReferentModel();
+    this.ensRef = new EnseignantReferent();
     this.ensRef.enabled = true;
     this.ensRef.nom = ensRefForm.nom;
     this.ensRef.prenom = ensRefForm.prenom;
