@@ -1,4 +1,4 @@
-import {Adresse} from './Adresse.model';
+import {Adresse} from './Adresse';
 import {PIAL} from './PIAL.model';
 
 

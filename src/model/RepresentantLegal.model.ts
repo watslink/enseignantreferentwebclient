@@ -1,4 +1,4 @@
-import {Adresse} from './Adresse.model';
+import {Adresse} from './Adresse';
 
 
 export class RepresentantLegal {
