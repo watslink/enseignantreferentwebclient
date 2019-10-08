@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {EnseignantReferentForm} from '../../model/EnseignantReferentForm';
-import {EnseignantReferent} from '../../model/EnseignantReferent';
+import {EnseignantReferentModel} from '../../model/EnseignantReferent';
 import {AuthenticationService} from '../../service/authentication.service';
 import {HttpErrorResponse} from '@angular/common/http';
 import {Observable} from 'rxjs';
@@ -16,7 +16,7 @@ export class InscriptionComponent implements OnInit {
 
   private ensRefForm: EnseignantReferentForm = new EnseignantReferentForm('', '', '',  { mpd: '' , rempd: ''});
 
-  private ensRef: EnseignantReferent;
+  private ensRef: EnseignantReferentModel;
   private erreur = 0;
   private inscrit = false;
   constructor(private authService: AuthenticationService) { }
@@ -26,7 +26,7 @@ export class InscriptionComponent implements OnInit {
 
   onInscription(ensRefForm) {
 
-    this.ensRef = new EnseignantReferent();
+    this.ensRef = new EnseignantReferentModel();
     this.ensRef.enabled = true;
     this.ensRef.nom = ensRefForm.nom;
     this.ensRef.prenom = ensRefForm.prenom;

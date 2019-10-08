@@ -1,5 +1,6 @@
-import {Adresse} from './Adresse';
-import {PIAL} from './PIAL';
+import {Adresse} from './Adresse.model';
+import {PIAL} from './PIAL.model';
+
 
 export class Etablissement {
 

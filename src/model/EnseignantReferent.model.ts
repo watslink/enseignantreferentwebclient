@@ -1,4 +1,4 @@
-export class EnseignantReferent {
+export class EnseignantReferentModel {
 
   public enseignantReferentId: number;
   public nom: string;
