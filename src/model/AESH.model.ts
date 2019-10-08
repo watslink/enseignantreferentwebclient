@@ -1,4 +1,4 @@
-import {PIAL} from './PIAL';
+import {PIAL} from './PIAL.model';
 
 export class AESH {
 
