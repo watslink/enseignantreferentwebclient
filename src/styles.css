@@ -37,9 +37,12 @@ header
   text-align: center;
   font-family: scholarfont, Tahoma, sans-serif;
   font-weight: bold;
-  background-color: cadetblue;
-  border: 1px #4879c1 groove ;
+  border: 1px #000000 groove ;
+  color: white;
+}
 
+.navbar-brand{
+  font-family: scholarfont, Tahoma, sans-serif;
 }
 
 h2
@@ -48,17 +51,16 @@ h2
   margin-top: 5px;
 }
 
-html
+.font-tableau
 {
   margin:0;
-  padding:0;
   background: url('./assets/images/tableau1.jpg') no-repeat center fixed;
   background-size: cover;
 }
 
-.container-fluid{
-  background-color: blue;
-}
+
+
+
 
 
 

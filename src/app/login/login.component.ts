@@ -21,6 +21,7 @@ export class LoginComponent implements OnInit {
       resp => {
         const jwt = resp.headers.get('Authorization');
         this.authService.saveToken( jwt );
+        this.authService.loadToken();
         this.router.navigateByUrl('/accueil');
       }, err => {
         this.erreur = 1;

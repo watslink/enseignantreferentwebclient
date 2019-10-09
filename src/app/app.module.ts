@@ -11,6 +11,7 @@ import {FormsModule} from '@angular/forms';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {AuthInterceptor} from '../interceptor/AuthInterceptor';
 import {StructureService} from '../service/structure.service';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 
 
@@ -18,7 +19,7 @@ const appRoutes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'inscription', component: InscriptionComponent},
   {path: 'accueil', component: AccueilComponent},
-  {path: '', redirectTo: 'login', pathMatch: 'full'}
+  {path: '', redirectTo: 'accueil', pathMatch: 'full'}
 ];
 
 @NgModule({
@@ -29,7 +30,7 @@ const appRoutes: Routes = [
     AccueilComponent
   ],
   imports: [
-    BrowserModule, RouterModule.forRoot(appRoutes), FormsModule, HttpClientModule
+    BrowserModule, RouterModule.forRoot(appRoutes), FormsModule, HttpClientModule, NgbModule
   ],
   providers: [
     AuthenticationService,

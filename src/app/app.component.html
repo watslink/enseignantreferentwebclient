@@ -1,12 +1,41 @@
 <div class="container-fluid">
-  <header>
-
+  <header class="font-tableau" *ngIf="!(isLoggedIn$ | async)">
     <h2>
       <small><span class="glyphicon glyphicon-pencil"></span> </small>
       Enseignant Référent
       <small><span class="glyphicon glyphicon-pencil"></span></small>
     </h2>
   </header>
-  <p></p>
+  <nav class="navbar navbar-inverse font-tableau" role="navigation" *ngIf="isLoggedIn$ | async">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href='/accueil'>
+        <small><span class="glyphicon glyphicon-pencil"></span> </small>
+        Enseignant Référent
+        <small><span class="glyphicon glyphicon-pencil"></span></small>
+      </a>
+    </div>
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li> <a class="nav-link" href="#">Accueil</a> </li>
+        <li class="nav-item" ngbDropdown>
+          <a class="nav-link" style="cursor: pointer" ngbDropdownToggle>Témoignages <b class="caret"></b></a>
+          <ul class="dropdown-menu" ngbDropdownMenu>
+            <li><a href="#" ngbDropdownItem>Dompteurs</a></li>
+            <li><a href="#" ngbDropdownItem>Zoos</a></li>
+            <li><a href="#" ngbDropdownItem>Chasseurs</a></li>
+            <li class="divider"></li>
+            <li><a href="#" ngbDropdownItem>Autres témoignages</a></li>
+          </ul>
+        </li>
+        <li> <a class="nav-link" href="#">Liens</a> </li>
+        <li> <a class="nav-link" href="#">Références</a> </li>
+      </ul>
+    </div>
+  </nav>
   <router-outlet></router-outlet>
 </div>

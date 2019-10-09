@@ -6,10 +6,15 @@
 
 .panel-heading{
   text-align: center;
-  background-color: #264b4d;
   font-family: neatchalk, Tahoma, sans-serif;
+  border-color: grey;
   font-size: 0.6em;
 }
+
+.panel-primary{
+  border-color: grey;
+}
+
 
 input{
   text-align: center;

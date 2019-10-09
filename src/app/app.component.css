@@ -1,0 +1,16 @@
+.glyphicon-pencil{
+  color: white;
+}
+
+nav{
+  border-radius: 0;
+}
+.navbar-brand, .navbar-inverse .navbar-nav > li > a{
+  color : white;
+}
+
+.navbar-brand:hover, .navbar-inverse .navbar-nav > li > a:hover{
+  background-color: black;
+}
+
+
