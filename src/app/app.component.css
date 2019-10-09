@@ -13,4 +13,8 @@ nav{
   background-color: black;
 }
 
+.item-dropdown:hover{
+  background: url('../assets/images/tableau1.jpg') no-repeat center fixed;
+}
+
 

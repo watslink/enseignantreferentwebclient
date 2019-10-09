@@ -8,33 +8,49 @@
   </header>
   <nav class="navbar navbar-inverse font-tableau" role="navigation" *ngIf="isLoggedIn$ | async">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" (click)="isNavbarCollapsed = !isNavbarCollapsed">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href='/accueil'>
+<!--      <button class="navbar-toggler hidden-sm-up" type="button" (click)="isNavbarCollapsed = !isNavbarCollapsed" data-target="#navbarsDefault" aria-controls="navbarsDefault" aria-expanded="false" aria-label="Toggle navigation">-->
+<!--        <span class="navbar-toggler-icon"></span>-->
+<!--      </button>-->
+      <a class="navbar-brand" routerLink="accueil">
         <small><span class="glyphicon glyphicon-pencil"></span> </small>
         Enseignant Référent
         <small><span class="glyphicon glyphicon-pencil"></span></small>
       </a>
     </div>
-    <div class="collapse navbar-collapse">
-      <ul class="nav navbar-nav">
-        <li> <a class="nav-link" href="#">Accueil</a> </li>
-        <li class="nav-item" ngbDropdown>
-          <a class="nav-link" style="cursor: pointer" ngbDropdownToggle>Témoignages <b class="caret"></b></a>
-          <ul class="dropdown-menu" ngbDropdownMenu>
-            <li><a href="#" ngbDropdownItem>Dompteurs</a></li>
-            <li><a href="#" ngbDropdownItem>Zoos</a></li>
-            <li><a href="#" ngbDropdownItem>Chasseurs</a></li>
+    <div [ngbCollapse]="isNavbarCollapsed" class="collapse navbar-collapse" id="navbarsDefault">
+      <ul class="nav navbar-nav mr-auto">
+        <li> <a class="nav-link" href="#">Elèves</a> </li>
+        <li class="nav-item dropdown" ngbDropdown>
+          <a class="nav-link dropdown-toggle" style="cursor: pointer" ngbDropdownToggle>Inscription<b class="caret"></b></a>
+          <ul class="dropdown-menu " ngbDropdownMenu>
+            <li><a href="#" class="item-dropdown" ngbDropdownItem>Dossiers en cours</a></li>
+            <li><a href="#" class="item-dropdown" ngbDropdownItem>Nouveau dossier...</a></li>
             <li class="divider"></li>
-            <li><a href="#" ngbDropdownItem>Autres témoignages</a></li>
+            <li><a href="#" class="item-dropdown" ngbDropdownItem>Documents requis</a></li>
           </ul>
         </li>
-        <li> <a class="nav-link" href="#">Liens</a> </li>
-        <li> <a class="nav-link" href="#">Références</a> </li>
+        <li class="nav-item dropdown" ngbDropdown>
+          <a class="nav-link dropdown-toggle" style="cursor: pointer" ngbDropdownToggle>Gestion<b class="caret"></b></a>
+          <ul class="dropdown-menu " ngbDropdownMenu>
+            <li><a href="#" class="item-dropdown" ngbDropdownItem>PIAL</a></li>
+            <li><a href="#" class="item-dropdown" ngbDropdownItem>Etablissement</a></li>
+            <li><a href="#" class="item-dropdown" ngbDropdownItem>Niveau</a></li>
+            <li><a href="#" class="item-dropdown" ngbDropdownItem>AESH</a></li>
+            <li><a href="#" class="item-dropdown" ngbDropdownItem>Structure professionnelle</a></li>
+            <li><a href="#" class="item-dropdown" ngbDropdownItem>Materiel pédagogique adapté</a></li>
+            <li><a href="#" class="item-dropdown" ngbDropdownItem>Categorie document</a></li>
+          </ul>
+        </li>
+        <li> <a class="nav-link" href="#">Mon compte</a> </li>
       </ul>
+      <form class="navbar-form navbar-right"  (ngSubmit)="onLogout()">
+          <button type="submit" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-off"></span> Déconnection</button>
+      </form>
     </div>
   </nav>
   <router-outlet></router-outlet>

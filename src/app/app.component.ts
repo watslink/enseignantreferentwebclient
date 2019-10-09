@@ -12,10 +12,14 @@ import {Observable} from 'rxjs';
 export class AppComponent implements OnInit {
   title = 'enseignantreferentwebclient';
   isLoggedIn$: Observable<boolean> ;
+  isNavbarCollapsed = true;
 
   constructor(private authService: AuthenticationService) { }
 
   ngOnInit(): void {
     this.isLoggedIn$ = this.authService.isLoggedIn;
+  }
+  onLogout() {
+    this.authService.logout();
   }
 }

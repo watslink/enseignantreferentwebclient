@@ -3,6 +3,7 @@ import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {Router} from '@angular/router';
 import {LoginComponent} from '../app/login/login.component';
 import {BehaviorSubject, Observable} from 'rxjs';
+import {EnseignantReferent} from '../model/EnseignantReferent.model';
 
 
 @Injectable()
@@ -11,11 +12,15 @@ export class AuthenticationService {
   private host = 'http://localhost:8080';
   private jwtToken = null;
   private loggedIn = new BehaviorSubject<boolean>(false);
+  private ensRefLogged: EnseignantReferent;
   constructor(private http: HttpClient, private router: Router) {
   }
 
     get isLoggedIn() {
-      return this.loggedIn.asObservable();
+     if (localStorage.getItem('token') != null) {
+      this.loggedIn.next(true);
+     }
+     return this.loggedIn.asObservable();
     }
 
     login(user) {
@@ -45,5 +50,9 @@ export class AuthenticationService {
         this.jwtToken = localStorage.getItem('token');
       }
       return this.jwtToken;
-  }
+    }
+    getEnsRef(ensRef): Observable<EnseignantReferent> {
+      return this.http.get<EnseignantReferent>(this.host + '/enseignantReferentByMail/' + ensRef.mail );
+      // localStorage.setItem('idEnsRef', this.ensRefLogged.enseignantReferentId.toString());
+    }
 }
