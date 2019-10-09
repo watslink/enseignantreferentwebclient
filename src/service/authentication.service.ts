@@ -28,10 +28,11 @@ export class AuthenticationService {
     }
 
     logout() {
-      localStorage.removeItem('token');
+      localStorage.clear();
       this.loggedIn.next(false);
       this.redirectLoginPage();
     }
+
     inscrire(ensRef) {
       return this.http.post(this.host + '/inscription', ensRef, {observe: 'response'});
     }
@@ -51,8 +52,8 @@ export class AuthenticationService {
       }
       return this.jwtToken;
     }
+
     getEnsRef(ensRef): Observable<EnseignantReferent> {
       return this.http.get<EnseignantReferent>(this.host + '/enseignantReferentByMail/' + ensRef.mail );
-      // localStorage.setItem('idEnsRef', this.ensRefLogged.enseignantReferentId.toString());
     }
 }
