@@ -1,12 +1,11 @@
 <div class="container ">
-  <div class="col-xs-6 col-xs-offset-3  ">
-    <div class="panel panel-primary ">
-
-      <div class="panel-heading font-tableau">Authentification</div>
+  <div class="col-6 offset-3  ">
+    <div class="card ">
+      <div class="card-header font-tableau">Authentification</div>
       <div class="alert alert-danger" *ngIf="erreur==1">
         <strong>Informations de connection incorrectes!</strong>
       </div>
-      <div class="panel-body">
+      <div class="card-body">
         <form #f="ngForm" (ngSubmit)="onLogin(f.value)">
           <div class="form-group">
             <input  class="form-control rounded" ngModel="" type="text" name="mail" placeholder="Mail" required>
@@ -14,9 +13,9 @@
           <div class="form-group">
             <input class="form-control rounded" ngModel="" type="password" name="motDePasse" placeholder="Mot de passe" required>
           </div>
-        <div class="raw">
-          <button type="submit" class="btn btn-success rounded col-md-offset-2 col-md-3 col-xs-4 col-xs-offset-1 ">Login</button>
-          <a href="/inscription"  class="btn btn-info rounded col-md-offset-2 col-md-3 col-xs-offset-1 col-xs-5">S'inscrire</a>
+        <div class="row justify-content-around">
+          <button type="submit" class="btn btn-success rounded  col-md-3 col-4">Connection</button>
+          <a href="/inscription"  class="btn btn-info rounded  col-md-3  col-5">S'inscrire</a>
         </div>
         </form>
       </div>

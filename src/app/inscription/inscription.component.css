@@ -3,18 +3,17 @@
 }
 
 
-
-.panel-heading{
+.card-header{
   text-align: center;
   font-family: neatchalk, Tahoma, sans-serif;
   border-color: grey;
   font-size: 0.6em;
+  color: white;
 }
 
-.panel-primary{
+.card{
   border-color: grey;
 }
-
 
 input{
   text-align: center;

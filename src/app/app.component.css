@@ -5,16 +5,18 @@
 nav{
   border-radius: 0;
 }
-.navbar-brand, .navbar-inverse .navbar-nav > li > a{
+.navbar-brand, .navbar-dark .navbar-nav > li > a{
   color : white;
 }
 
-.navbar-brand:hover, .navbar-inverse .navbar-nav > li > a:hover{
+.navbar-brand:hover, .navbar-dark .navbar-nav > li > a:hover{
   background-color: black;
 }
 
 .item-dropdown:hover{
   background: url('../assets/images/tableau1.jpg') no-repeat center fixed;
 }
+
+
 
 

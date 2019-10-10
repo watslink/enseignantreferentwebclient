@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthenticationService} from '../service/authentication.service';
-import {Router} from '@angular/router';
-import {AuthInterceptor} from '../interceptor/AuthInterceptor';
 import {Observable} from 'rxjs';
+import {faPowerOff} from '@fortawesome/free-solid-svg-icons/faPowerOff';
+import {faPencilAlt} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-root',
@@ -13,6 +13,8 @@ export class AppComponent implements OnInit {
   title = 'enseignantreferentwebclient';
   isLoggedIn$: Observable<boolean> ;
   isNavbarCollapsed = true;
+  faoff = faPowerOff;
+  fapencil = faPencilAlt;
 
   constructor(private authService: AuthenticationService) { }
 

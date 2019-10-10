@@ -7,7 +7,7 @@ import { InscriptionComponent } from './inscription/inscription.component';
 import {RouterModule, Routes} from '@angular/router';
 import {AuthenticationService} from '../service/authentication.service';
 import { AccueilComponent } from './accueil/accueil.component';
-import {FormsModule} from '@angular/forms';
+import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {AuthInterceptor} from '../interceptor/AuthInterceptor';
 import {StructureService} from '../service/structure.service';
@@ -19,10 +19,13 @@ import {EtablissementService} from '../service/etablissement.service';
 import {MaterielPedagoAdapteService} from '../service/materielpedagoadapte.service';
 import {NiveauService} from '../service/niveau.service';
 import {PIALService} from '../service/PIAL.service';
+import { StructureComponent } from './structure/structure.component';
+import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 
 
 
 const appRoutes: Routes = [
+  {path: 'structure', component: StructureComponent},
   {path: 'login', component: LoginComponent},
   {path: 'inscription', component: InscriptionComponent},
   {path: 'accueil', component: AccueilComponent},
@@ -34,10 +37,17 @@ const appRoutes: Routes = [
     AppComponent,
     LoginComponent,
     InscriptionComponent,
-    AccueilComponent
+    AccueilComponent,
+    StructureComponent
   ],
   imports: [
-    BrowserModule, RouterModule.forRoot(appRoutes), FormsModule, HttpClientModule, NgbModule
+    BrowserModule,
+    RouterModule.forRoot(appRoutes),
+    HttpClientModule,
+    NgbModule,
+    FormsModule,
+    ReactiveFormsModule,
+    FontAwesomeModule
   ],
   providers: [
     AuthenticationService,

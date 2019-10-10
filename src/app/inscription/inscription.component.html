@@ -1,11 +1,11 @@
 <div class="container ">
-  <div class="col-xs-6 col-xs-offset-3  ">
+  <div class="col-6 offset-3  ">
     <div class="alert alert-success" *ngIf="inscrit">
     <strong>Inscription validée!</strong>
     </div>
-    <div class="panel panel-primary" *ngIf="!inscrit">
+    <div class="card" *ngIf="!inscrit">
 
-      <div class="panel-heading font-tableau">Inscription</div>
+      <div class="card-header font-tableau">Inscription</div>
       <div class="alert alert-danger" *ngIf="erreur==1">
         <strong>Mail déja utilisé!</strong>
       </div>
@@ -13,7 +13,7 @@
       <strong>Erreur d'enregistrement en base de donnée</strong>
     </div>
 
-      <div class="panel-body">
+      <div class="card-body">
         <form #insForm = "ngForm" (ngSubmit)="onInscription(insForm.value)">
           <div class="form-group">
             <input  class="form-control rounded"
@@ -92,11 +92,12 @@
               </ng-template>
             </div>
           </div>
+          <div class="row justify-content-around">
+            <button type="submit" class="btn btn-success rounded col-md-3 col-4 "
+                    [disabled]="!insForm.form.valid || verifmpd.value?.mpd != verifmpd.value?.rempd" >Valider</button>
+            <a href="/login"  class="btn btn-info rounded col-md-3 col-5">Retour</a>
+          </div>
 
-
-          <button type="submit" class="btn btn-success rounded col-md-offset-2 col-md-3 col-xs-4 col-xs-offset-1 "
-                  [disabled]="!insForm.form.valid || verifmpd.value?.mpd != verifmpd.value?.rempd" >Valider</button>
-          <a href="/login"  class="btn btn-info rounded col-md-offset-2 col-md-3 col-xs-offset-1 col-xs-5">Retour</a>
         </form>
       </div>
     </div>
