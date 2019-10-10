@@ -26,7 +26,7 @@ export class StructureService {
     return this.http.post(this.host + '/structurePro/', structure, {observe: 'response'});
   }
 
-  updateStrutcure(structure: Structure) {
+  updateStrutcture(structure: Structure) {
     return this.http.put(this.host + '/structurePro/', structure, {observe: 'response'});
   }
   deleteStructure(id: number) {
