@@ -5,7 +5,7 @@ import {AESH} from '../model/AESH.model';
 
 
 @Injectable()
-export class AESHServiceService {
+export class AESHService {
 
   private host = 'http://localhost:8080';
 

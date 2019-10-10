@@ -12,6 +12,13 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {AuthInterceptor} from '../interceptor/AuthInterceptor';
 import {StructureService} from '../service/structure.service';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {AESHService} from '../service/AESH.service';
+import {CategorieService} from '../service/categorie.service';
+import {EleveService} from '../service/eleve.service';
+import {EtablissementService} from '../service/etablissement.service';
+import {MaterielPedagoAdapteService} from '../service/materielpedagoadapte.service';
+import {NiveauService} from '../service/niveau.service';
+import {PIALService} from '../service/PIAL.service';
 
 
 
@@ -40,7 +47,14 @@ const appRoutes: Routes = [
       useClass: AuthInterceptor,
       multi: true,
     },
-    StructureService
+    StructureService,
+    AESHService,
+    CategorieService,
+    EleveService,
+    EtablissementService,
+    MaterielPedagoAdapteService,
+    NiveauService,
+    PIALService
   ],
   bootstrap: [AppComponent]
 })

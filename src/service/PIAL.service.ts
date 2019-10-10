@@ -5,7 +5,7 @@ import {PIAL} from '../model/PIAL.model';
 
 
 @Injectable()
-export class PIALServiceService {
+export class PIALService {
 
   private host = 'http://localhost:8080';
 
