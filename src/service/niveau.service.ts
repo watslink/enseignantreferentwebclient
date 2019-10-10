@@ -23,7 +23,7 @@ export class NiveauService {
   addNiveau(niveau: Niveau) {
     return this.http.post(this.host + '/niveau/', niveau, {observe: 'response'});
   }
-  updateStrutcure(niveau: Niveau) {
+  updateNiveau(niveau: Niveau) {
     return this.http.put(this.host + '/niveau/', niveau, {observe: 'response'});
   }
   deleteNiveau(id: number) {

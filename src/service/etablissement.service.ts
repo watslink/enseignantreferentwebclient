@@ -23,7 +23,7 @@ export class EtablissementService {
   addEtablissement(etablissement: Etablissement) {
     return this.http.post(this.host + '/etablissement/', etablissement, {observe: 'response'});
   }
-  updateStrutcure(etablissement: Etablissement) {
+  updateEtablissement(etablissement: Etablissement) {
     return this.http.put(this.host + '/etablissement/', etablissement, {observe: 'response'});
   }
   deleteEtablissement(id: number) {

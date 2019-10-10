@@ -23,7 +23,7 @@ export class MaterielPedagoAdapteService {
   addMaterielPedagoAdapte(materielPedagoAdapte: MaterielPedagoAdapte) {
     return this.http.post(this.host + '/materielPedagoAdapte/', materielPedagoAdapte, {observe: 'response'});
   }
-  updateStrutcure(materielPedagoAdapte: MaterielPedagoAdapte) {
+  updateMaterielPedagoAdapte(materielPedagoAdapte: MaterielPedagoAdapte) {
     return this.http.put(this.host + '/materielPedagoAdapte/', materielPedagoAdapte, {observe: 'response'});
   }
   deleteMaterielPedagoAdapte(id: number) {
