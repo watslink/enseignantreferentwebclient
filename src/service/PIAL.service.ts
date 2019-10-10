@@ -17,15 +17,12 @@ export class PIALServiceService {
   getListPIAL(): Observable<PIAL[]> {
     return this.http.get<PIAL[]>(this.host + '/pials');
   }
-
   getPIAL(id: number): Observable<PIAL> {
     return this.http.get<PIAL>(this.host + '/pial/' + id);
   }
-
   addPIAL(structure: PIAL) {
     return this.http.post(this.host + '/pial/', structure, {observe: 'response'});
   }
-
   updatePIAL(structure: PIAL) {
     return this.http.put(this.host + '/pial/', structure, {observe: 'response'});
   }

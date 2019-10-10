@@ -17,15 +17,12 @@ export class StructureService {
   getListStructure(): Observable<Structure[]> {
     return this.http.get<Structure[]>(this.host + '/structurePros');
   }
-
   getStructure(id: number): Observable<Structure> {
     return this.http.get<Structure>(this.host + '/structurePro/' + id);
   }
-
   addStructure(structure: Structure) {
     return this.http.post(this.host + '/structurePro/', structure, {observe: 'response'});
   }
-
   updateStrutcture(structure: Structure) {
     return this.http.put(this.host + '/structurePro/', structure, {observe: 'response'});
   }
