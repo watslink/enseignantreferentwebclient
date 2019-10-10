@@ -21,10 +21,10 @@ export class PIALServiceService {
     return this.http.get<PIAL>(this.host + '/pial/' + id);
   }
   addPIAL(structure: PIAL) {
-    return this.http.post(this.host + '/pial/', structure, {observe: 'response'});
+    return this.http.post(this.host + '/pial', structure, {observe: 'response'});
   }
   updatePIAL(structure: PIAL) {
-    return this.http.put(this.host + '/pial/', structure, {observe: 'response'});
+    return this.http.put(this.host + '/pial', structure, {observe: 'response'});
   }
   deletePIAL(id: number) {
     return this.http.delete(this.host + '/pial/' + id, {observe: 'response'} );

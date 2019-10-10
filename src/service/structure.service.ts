@@ -21,10 +21,10 @@ export class StructureService {
     return this.http.get<Structure>(this.host + '/structurePro/' + id);
   }
   addStructure(structure: Structure) {
-    return this.http.post(this.host + '/structurePro/', structure, {observe: 'response'});
+    return this.http.post(this.host + '/structurePro', structure, {observe: 'response'});
   }
   updateStrutcture(structure: Structure) {
-    return this.http.put(this.host + '/structurePro/', structure, {observe: 'response'});
+    return this.http.put(this.host + '/structurePro', structure, {observe: 'response'});
   }
   deleteStructure(id: number) {
     return this.http.delete(this.host + '/structurePro/' + id, {observe: 'response'} );

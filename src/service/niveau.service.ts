@@ -21,10 +21,10 @@ export class NiveauService {
     return this.http.get<Niveau>(this.host + '/niveau/' + id);
   }
   addNiveau(niveau: Niveau) {
-    return this.http.post(this.host + '/niveau/', niveau, {observe: 'response'});
+    return this.http.post(this.host + '/niveau', niveau, {observe: 'response'});
   }
   updateNiveau(niveau: Niveau) {
-    return this.http.put(this.host + '/niveau/', niveau, {observe: 'response'});
+    return this.http.put(this.host + '/niveau', niveau, {observe: 'response'});
   }
   deleteNiveau(id: number) {
     return this.http.delete(this.host + '/niveau/' + id, {observe: 'response'} );

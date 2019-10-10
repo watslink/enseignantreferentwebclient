@@ -21,10 +21,10 @@ export class AESHServiceService {
     return this.http.get<AESH>(this.host + '/aesh/' + id);
   }
   addAESH(structure: AESH) {
-    return this.http.post(this.host + '/aesh/', structure, {observe: 'response'});
+    return this.http.post(this.host + '/aesh', structure, {observe: 'response'});
   }
   updateAESH(structure: AESH) {
-    return this.http.put(this.host + '/aesh/', structure, {observe: 'response'});
+    return this.http.put(this.host + '/aesh', structure, {observe: 'response'});
   }
   deleteAESH(id: number) {
     return this.http.delete(this.host + '/aesh/' + id, {observe: 'response'} );

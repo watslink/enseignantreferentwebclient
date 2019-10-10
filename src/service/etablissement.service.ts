@@ -21,10 +21,10 @@ export class EtablissementService {
     return this.http.get<Etablissement>(this.host + '/etablissement/' + id);
   }
   addEtablissement(etablissement: Etablissement) {
-    return this.http.post(this.host + '/etablissement/', etablissement, {observe: 'response'});
+    return this.http.post(this.host + '/etablissement', etablissement, {observe: 'response'});
   }
   updateEtablissement(etablissement: Etablissement) {
-    return this.http.put(this.host + '/etablissement/', etablissement, {observe: 'response'});
+    return this.http.put(this.host + '/etablissement', etablissement, {observe: 'response'});
   }
   deleteEtablissement(id: number) {
     return this.http.delete(this.host + '/etablissement/' + id, {observe: 'response'} );

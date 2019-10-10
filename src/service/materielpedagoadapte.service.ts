@@ -21,10 +21,10 @@ export class MaterielPedagoAdapteService {
     return this.http.get<MaterielPedagoAdapte>(this.host + '/materielPedagoAdapte/' + id);
   }
   addMaterielPedagoAdapte(materielPedagoAdapte: MaterielPedagoAdapte) {
-    return this.http.post(this.host + '/materielPedagoAdapte/', materielPedagoAdapte, {observe: 'response'});
+    return this.http.post(this.host + '/materielPedagoAdapte', materielPedagoAdapte, {observe: 'response'});
   }
   updateMaterielPedagoAdapte(materielPedagoAdapte: MaterielPedagoAdapte) {
-    return this.http.put(this.host + '/materielPedagoAdapte/', materielPedagoAdapte, {observe: 'response'});
+    return this.http.put(this.host + '/materielPedagoAdapte', materielPedagoAdapte, {observe: 'response'});
   }
   deleteMaterielPedagoAdapte(id: number) {
     return this.http.delete(this.host + '/materielPedagoAdapte/' + id, {observe: 'response'} );
