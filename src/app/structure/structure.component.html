@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 mx-auto">
+      <div class="md-form">
+        <input type="text" class="form-control" [(ngModel)]="searchText" (keyup)="searchItems()" id="search-input"
+               mdbInput>
+        <label for="search-input">Rechercher...</label>
+      </div>
+    </div>
+    <table mdbTable #tableEl="mdbTable" hover="true" striped="true" class="z-depth-1">
+      <thead class="sticky-top">
+      <tr>
+        <th [mdbTableSort]="structures" sortBy="nom" scope="col">Nom <mdb-icon fas icon="sort"></mdb-icon></th>
+        <th [mdbTableSort]="structures" sortBy="specialite" scope="col">Specialite <mdb-icon fas icon="sort"></mdb-icon></th>
+        <th [mdbTableSort]="structures" sortBy="adresse.ville" scope="col">Ville <mdb-icon fas icon="sort"></mdb-icon></th>
+        <th  scope="col"></th>
+      </tr>
+      </thead>
+      <tbody >
+      <tr *ngFor="let st of structures; let i = index">
+        <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">{{st.nom}}</td>
+        <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">{{st.specialite}}</td>
+        <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">{{st.adresse.ville}}</td>
+        <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">
+          <button mdbBtn (click)="openModal(st)" color="blue" rounded="true" size="sm" mdbWavesEffect type="button" class="m-0">Details</button>
+        </td>
+      </tr>
+      </tbody>
+      <tfoot class="grey lighten-5 w-100">
+      <tr>
+        <td colspan="4">
+          <mdb-table-pagination [tableEl]="tableEl" paginationAlign="" [searchDataSource]="structures"></mdb-table-pagination>
+        </td>
+      </tr>
+      </tfoot>
+    </table>
+  </div>
+</div>
+
+
+

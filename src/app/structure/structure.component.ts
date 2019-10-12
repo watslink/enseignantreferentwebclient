@@ -1,0 +1,77 @@
+import {AfterViewInit, ChangeDetectorRef, Component, ElementRef, HostListener, OnInit, PipeTransform, ViewChild} from '@angular/core';
+import {Structure} from '../../model/Structure.model';
+import {AuthenticationService} from '../../service/authentication.service';
+import {StructureService} from '../../service/structure.service';
+import {Router} from '@angular/router';
+import {MDBModalRef, MDBModalService, MdbTableDirective, MdbTablePaginationComponent} from 'angular-bootstrap-md';
+import {StructureDetailsModalComponent} from '../structure-details-modal/structure-details-modal.component';
+
+
+
+@Component({
+  selector: 'app-structure',
+  templateUrl: './structure.component.html',
+  styleUrls: ['./structure.component.css']
+})
+export class StructureComponent implements OnInit, AfterViewInit {
+  @ViewChild(MdbTableDirective, { static: true }) mdbTable: MdbTableDirective;
+  @ViewChild(MdbTablePaginationComponent, { static: true }) mdbTablePagination: MdbTablePaginationComponent;
+
+  public structures: Structure[] = [];
+  public structuresData: Structure[] = [];
+  searchText = '';
+  previous: string;
+
+  maxVisibleItems = 8;
+
+  modalRef: MDBModalRef;
+
+  constructor(private authServ: AuthenticationService,
+              private structureServ: StructureService,
+              private router: Router,
+              private cdRef: ChangeDetectorRef,
+              private modalService: MDBModalService) {
+  }
+
+  @HostListener('input') oninput() {
+    this.mdbTablePagination.searchText = this.searchText;
+  }
+
+  ngOnInit() {
+    this.structureServ.getListStructure().subscribe(
+      struct => {
+        this.structuresData = struct;
+        this.mdbTable.setDataSource(this.structuresData);
+        this.structures = this.mdbTable.getDataSource();
+        this.previous = this.mdbTable.getDataSource();
+      },
+      err => {
+        this.authServ.logout();
+        this.router.navigateByUrl('/login');
+      });
+  }
+  ngAfterViewInit() {
+    this.mdbTablePagination.setMaxVisibleItemsNumberTo(this.maxVisibleItems);
+
+    this.mdbTablePagination.calculateFirstItemIndex();
+    this.mdbTablePagination.calculateLastItemIndex();
+    this.cdRef.detectChanges();
+  }
+  searchItems() {
+    const prev = this.mdbTable.getDataSource();
+
+    if (!this.searchText) {
+      this.mdbTable.setDataSource(prev);
+      this.structures = this.mdbTable.getDataSource();
+    }
+
+    if (this.searchText) {
+      this.structures = this.mdbTable.searchLocalDataBy(this.searchText);
+      this.mdbTable.setDataSource(this.mdbTable.getDataSource());
+    }
+  }
+  openModal(struc: Structure) {
+      this.modalRef = this.modalService.show(StructureDetailsModalComponent, {data: {structure: struc}});
+
+  }
+}
