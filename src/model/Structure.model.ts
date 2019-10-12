@@ -1,3 +1,4 @@
+import {Adresse} from './Adresse.model';
 
 export class Structure {
 
@@ -6,6 +7,7 @@ export class Structure {
   public specialite: string;
   public mail: string;
   public telephone: string;
+  public adresse: Adresse;
 
   constructor() {}
 

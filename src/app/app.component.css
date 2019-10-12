@@ -2,18 +2,14 @@
   color: white;
 }
 
-nav{
-  border-radius: 0;
-}
+
 .navbar-brand, .navbar-dark .navbar-nav > li > a{
   color : white;
 }
 
-.navbar-brand:hover, .navbar-dark .navbar-nav > li > a:hover{
-  background-color: black;
-}
 
-.item-dropdown:hover{
+
+.dropdown-item:hover{
   background: url('../assets/images/tableau1.jpg') no-repeat center fixed;
 }
 

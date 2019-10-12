@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {NgModule, NO_ERRORS_SCHEMA} from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -21,6 +21,8 @@ import {NiveauService} from '../service/niveau.service';
 import {PIALService} from '../service/PIAL.service';
 import { StructureComponent } from './structure/structure.component';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
+import {MDBBootstrapModule, MDBModalService} from 'angular-bootstrap-md';
+import { StructureDetailsModalComponent } from './structure-details-modal/structure-details-modal.component';
 
 
 
@@ -38,7 +40,11 @@ const appRoutes: Routes = [
     LoginComponent,
     InscriptionComponent,
     AccueilComponent,
-    StructureComponent
+    StructureComponent,
+    StructureDetailsModalComponent
+  ],
+  entryComponents: [
+    StructureDetailsModalComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +53,8 @@ const appRoutes: Routes = [
     NgbModule,
     FormsModule,
     ReactiveFormsModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    MDBBootstrapModule.forRoot(),
   ],
   providers: [
     AuthenticationService,

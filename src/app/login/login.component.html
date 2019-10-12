@@ -1,24 +1,26 @@
 <div class="container ">
-  <div class="col-6 offset-3  ">
-    <div class="card ">
-      <div class="card-header font-tableau">Authentification</div>
-      <div class="alert alert-danger" *ngIf="erreur==1">
-        <strong>Informations de connection incorrectes!</strong>
+<div class="card">
+    <div class="card-header font-tableau">Authentification</div>
+  <!-- Card content -->
+  <div class="card-body">
+    <form #f="ngForm" (ngSubmit)="onLogin(f.value)">
+      <div class="form-group">
+        <input  class="form-control rounded" ngModel="" type="text" name="mail" placeholder="Mail" required>
       </div>
-      <div class="card-body">
-        <form #f="ngForm" (ngSubmit)="onLogin(f.value)">
-          <div class="form-group">
-            <input  class="form-control rounded" ngModel="" type="text" name="mail" placeholder="Mail" required>
-          </div>
-          <div class="form-group">
-            <input class="form-control rounded" ngModel="" type="password" name="motDePasse" placeholder="Mot de passe" required>
-          </div>
-        <div class="row justify-content-around">
-          <button type="submit" class="btn btn-success rounded  col-md-3 col-4">Connection</button>
-          <a href="/inscription"  class="btn btn-info rounded  col-md-3  col-5">S'inscrire</a>
-        </div>
-        </form>
+      <div class="form-group">
+        <input class="form-control rounded" ngModel="" type="password" name="motDePasse" placeholder="Mot de passe" required>
       </div>
+      <div class="row justify-content-around">
+        <button type="submit" mdbBtn  rounded="true" mdbWavesEffect class="btn btn-success">Connection</button>
+        <a href="/inscription"  mdbBtn rounded="true" mdbWavesEffect class="btn btn-info">S'inscrire</a>
+      </div>
+    </form>
+  </div>
+  <!-- Card footer -->
+  <div class="card-footer text-muted text-center" *ngIf="erreur==1">
+    <div class="alert alert-danger" >
+      <strong>Informations de connection incorrectes!</strong>
     </div>
   </div>
+</div>
 </div>
