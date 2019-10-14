@@ -2,17 +2,45 @@
   color: white;
 }
 
+.off{
+  background-color: black;
+  border-color: black;
+}
+
+fa-icon{
+  color: white;
+}
 
 .navbar-brand, .navbar-dark .navbar-nav > li > a{
   color : white;
 }
 
 
-
 .dropdown-item:hover{
   background: url('../assets/images/tableau1.jpg') no-repeat center fixed;
+  color: white;
 }
 
+header
+{
+  margin:0px;
+  text-align: center;
+  font-family: scholarfont, Tahoma, sans-serif;
+  font-weight: bold;
+  border: 1px #000000 groove ;
+  color: white;
+}
 
+.navbar-brand{
+  font-family: scholarfont, Tahoma, sans-serif;
+  padding-right: 10rem;
+  font-size: 1.3em;
+}
+
+h2
+{
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
 
 

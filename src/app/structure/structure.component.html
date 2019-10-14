@@ -21,8 +21,10 @@
         <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">{{st.nom}}</td>
         <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">{{st.specialite}}</td>
         <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">{{st.adresse.ville}}</td>
-        <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">
-          <button mdbBtn (click)="openModal(st)" color="blue" rounded="true" size="sm" mdbWavesEffect type="button" class="m-0">Details</button>
+        <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex" >
+          <button mdbBtn (click)="openModalDetails(st)"   size="sm" mdbWavesEffect  class="mh-100 rounded-pill actionBtn details"><fa-icon [icon]="facard"></fa-icon></button>
+          <button mdbBtn (click)="openModalEdit(st)"   size="sm" mdbWavesEffect  class="mh-100 rounded-pill actionBtn update"><fa-icon [icon]="fapencil"></fa-icon></button>
+          <button mdbBtn data-toggle="modal" data-target="#modalDeleteElement"   size="sm" mdbWavesEffect  class="mh-100 rounded-pill actionBtn delete"><fa-icon [icon]="fadelete"></fa-icon></button>
         </td>
       </tr>
       </tbody>
@@ -36,6 +38,7 @@
     </table>
   </div>
 </div>
+
 
 
 

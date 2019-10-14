@@ -27,35 +27,34 @@
   padding:0px;
 }
 
-.rounded {
-  border-radius: 40px;
-}
-
-header
-{
-  margin:0px;
-  text-align: center;
-  font-family: scholarfont, Tahoma, sans-serif;
-  font-weight: bold;
-  border: 1px #000000 groove ;
-  color: white;
-}
-
-.navbar-brand{
-  font-family: scholarfont, Tahoma, sans-serif;
-}
-
-h2
-{
-  margin-bottom: 5px;
-  margin-top: 5px;
-}
-
 .font-tableau
 {
   margin:0;
   background: url('./assets/images/tableau1.jpg') no-repeat center fixed;
   background-size: cover;
+}
+
+.divider-new{
+  margin-top:1rem;
+  margin-bottom:1rem;
+}
+
+.btn.btn-sm.actionBtn {
+  padding: 0.2rem 1rem 0.1rem  1rem;
+  font-size: 1rem;
+  color: white;
+}
+
+.btn.btn-sm.details {
+  background-color: #4879c1;
+}
+
+.btn.btn-sm.update {
+  background-color: #9f5f00;
+}
+
+.btn.btn-sm.delete {
+  background-color: #8c1a1a;
 }
 
 

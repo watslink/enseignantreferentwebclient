@@ -23,6 +23,7 @@ import { StructureComponent } from './structure/structure.component';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {MDBBootstrapModule, MDBModalService} from 'angular-bootstrap-md';
 import { StructureDetailsModalComponent } from './structure-details-modal/structure-details-modal.component';
+import { StructureEditModalComponent } from './structure-edit-modal/structure-edit-modal.component';
 
 
 
@@ -41,10 +42,12 @@ const appRoutes: Routes = [
     InscriptionComponent,
     AccueilComponent,
     StructureComponent,
-    StructureDetailsModalComponent
+    StructureDetailsModalComponent,
+    StructureEditModalComponent
   ],
   entryComponents: [
-    StructureDetailsModalComponent
+    StructureDetailsModalComponent,
+    StructureEditModalComponent
   ],
   imports: [
     BrowserModule,

@@ -5,6 +5,10 @@ import {StructureService} from '../../service/structure.service';
 import {Router} from '@angular/router';
 import {MDBModalRef, MDBModalService, MdbTableDirective, MdbTablePaginationComponent} from 'angular-bootstrap-md';
 import {StructureDetailsModalComponent} from '../structure-details-modal/structure-details-modal.component';
+import {StructureEditModalComponent} from '../structure-edit-modal/structure-edit-modal.component';
+import {faPencilAlt, faTimes} from '@fortawesome/free-solid-svg-icons';
+import {faAddressCard} from '@fortawesome/free-solid-svg-icons/faAddressCard';
+import {faCross} from '@fortawesome/free-solid-svg-icons/faCross';
 
 
 
@@ -17,6 +21,9 @@ export class StructureComponent implements OnInit, AfterViewInit {
   @ViewChild(MdbTableDirective, { static: true }) mdbTable: MdbTableDirective;
   @ViewChild(MdbTablePaginationComponent, { static: true }) mdbTablePagination: MdbTablePaginationComponent;
 
+  fapencil = faPencilAlt;
+  facard = faAddressCard;
+  fadelete = faTimes;
   public structures: Structure[] = [];
   public structuresData: Structure[] = [];
   searchText = '';
@@ -70,8 +77,10 @@ export class StructureComponent implements OnInit, AfterViewInit {
       this.mdbTable.setDataSource(this.mdbTable.getDataSource());
     }
   }
-  openModal(struc: Structure) {
+  openModalDetails(struc: Structure) {
       this.modalRef = this.modalService.show(StructureDetailsModalComponent, {data: {structure: struc}});
-
+  }
+  openModalEdit(struc: Structure) {
+    this.modalRef = this.modalService.show(StructureEditModalComponent, {data: {structure: struc}});
   }
 }

@@ -18,7 +18,6 @@ export class StructureDetailsModalComponent implements OnInit {
   constructor(public modalRef: MDBModalRef) { }
 
   ngOnInit() {
-    console.log(this.structure.nom);
   }
 
 }
