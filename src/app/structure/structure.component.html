@@ -24,7 +24,7 @@
         <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex" >
           <button mdbBtn (click)="openModalDetails(st)"   size="sm" mdbWavesEffect  class="mh-100 rounded-pill actionBtn details"><fa-icon [icon]="facard"></fa-icon></button>
           <button mdbBtn (click)="openModalEdit(st)"   size="sm" mdbWavesEffect  class="mh-100 rounded-pill actionBtn update"><fa-icon [icon]="fapencil"></fa-icon></button>
-          <button mdbBtn data-toggle="modal" data-target="#modalDeleteElement"   size="sm" mdbWavesEffect  class="mh-100 rounded-pill actionBtn delete"><fa-icon [icon]="fadelete"></fa-icon></button>
+          <button mdbBtn (click)="openModalDelete(st)"  size="sm" mdbWavesEffect  class="mh-100 rounded-pill actionBtn delete"><fa-icon [icon]="fadelete"></fa-icon></button>
         </td>
       </tr>
       </tbody>

@@ -42,20 +42,24 @@
 .btn.btn-sm.actionBtn {
   padding: 0.2rem 1rem 0.1rem  1rem;
   font-size: 1rem;
+}
+
+.btn.btn-sm.details, .infoModalHeader {
+  background-color: #4879c1;
   color: white;
 }
 
-.btn.btn-sm.details {
-  background-color: #4879c1;
-}
-
-.btn.btn-sm.update {
+.btn.btn-sm.update, .editModalHeader {
   background-color: #9f5f00;
+  color: white;
 }
 
-.btn.btn-sm.delete {
+.btn.btn-sm.delete, .dangerModalHeader{
   background-color: #8c1a1a;
+  color: white;
 }
+
+
 
 
 

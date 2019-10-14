@@ -9,6 +9,7 @@ import {StructureEditModalComponent} from '../structure-edit-modal/structure-edi
 import {faPencilAlt, faTimes} from '@fortawesome/free-solid-svg-icons';
 import {faAddressCard} from '@fortawesome/free-solid-svg-icons/faAddressCard';
 import {faCross} from '@fortawesome/free-solid-svg-icons/faCross';
+import {StructureDeleteModalComponent} from '../structure-delete-modal/structure-delete-modal.component';
 
 
 
@@ -82,5 +83,8 @@ export class StructureComponent implements OnInit, AfterViewInit {
   }
   openModalEdit(struc: Structure) {
     this.modalRef = this.modalService.show(StructureEditModalComponent, {data: {structure: struc}});
+  }
+  openModalDelete(struc: Structure) {
+    this.modalRef = this.modalService.show(StructureDeleteModalComponent, {data: {structure: struc}});
   }
 }
