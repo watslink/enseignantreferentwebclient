@@ -1,14 +1,20 @@
 <div class="container">
   <div class="row">
     <div class="col-md-6 mx-auto">
-      <div class="md-form">
+      <div class=" md-form">
         <input type="text" class="form-control" [(ngModel)]="searchText" (keyup)="searchItems()" id="search-input"
                mdbInput>
         <label for="search-input">Rechercher...</label>
       </div>
     </div>
-    <table mdbTable #tableEl="mdbTable" hover="true" striped="true" class="z-depth-1">
-      <thead class="sticky-top">
+    <mdb-card class="font-tableau"  >
+      <mdb-card-header class="tableHeader cardheaderChalk">
+        Structures
+        <button mdbBtn (click)="openModalNew()"   size="sm" mdbWavesEffect  class="rounded-pill actionBtn new">+</button>
+      </mdb-card-header>
+      <mdb-card-body>
+    <table mdbTable #tableEl="mdbTable" hover="true" striped="true" class="z-depth-1 listTable">
+      <thead>
       <tr>
         <th [mdbTableSort]="structures" sortBy="nom" scope="col">Nom <mdb-icon fas icon="sort"></mdb-icon></th>
         <th [mdbTableSort]="structures" sortBy="specialite" scope="col">Specialite <mdb-icon fas icon="sort"></mdb-icon></th>
@@ -36,6 +42,8 @@
       </tr>
       </tfoot>
     </table>
+      </mdb-card-body>
+    </mdb-card>
   </div>
 </div>
 

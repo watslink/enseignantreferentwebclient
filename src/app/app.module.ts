@@ -25,6 +25,7 @@ import {MDBBootstrapModule, MDBModalService} from 'angular-bootstrap-md';
 import { StructureDetailsModalComponent } from './structure-details-modal/structure-details-modal.component';
 import { StructureEditModalComponent } from './structure-edit-modal/structure-edit-modal.component';
 import { StructureDeleteModalComponent } from './structure-delete-modal/structure-delete-modal.component';
+import { StructureAddModalComponent } from './structure-add-modal/structure-add-modal.component';
 
 
 
@@ -45,12 +46,14 @@ const appRoutes: Routes = [
     StructureComponent,
     StructureDetailsModalComponent,
     StructureEditModalComponent,
-    StructureDeleteModalComponent
+    StructureDeleteModalComponent,
+    StructureAddModalComponent
   ],
   entryComponents: [
     StructureDetailsModalComponent,
     StructureEditModalComponent,
-    StructureDeleteModalComponent
+    StructureDeleteModalComponent,
+    StructureAddModalComponent
   ],
   imports: [
     BrowserModule,

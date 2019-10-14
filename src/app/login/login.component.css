@@ -2,16 +2,6 @@
   padding-top: 50px;
 }
 
-
-
-.card-header{
-  text-align: center;
-  font-family: neatchalk, Tahoma, sans-serif;
-  border-color: grey;
-  font-size: 0.6em;
-  color: white;
-}
-
 .card{
   border-color: grey;
   max-width: 500px;

@@ -10,6 +10,7 @@ import {faPencilAlt, faTimes} from '@fortawesome/free-solid-svg-icons';
 import {faAddressCard} from '@fortawesome/free-solid-svg-icons/faAddressCard';
 import {faCross} from '@fortawesome/free-solid-svg-icons/faCross';
 import {StructureDeleteModalComponent} from '../structure-delete-modal/structure-delete-modal.component';
+import {StructureAddModalComponent} from '../structure-add-modal/structure-add-modal.component';
 
 
 
@@ -86,5 +87,8 @@ export class StructureComponent implements OnInit, AfterViewInit {
   }
   openModalDelete(struc: Structure) {
     this.modalRef = this.modalService.show(StructureDeleteModalComponent, {data: {structure: struc}});
+  }
+  openModalNew() {
+    this.modalRef = this.modalService.show(StructureAddModalComponent);
   }
 }

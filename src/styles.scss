@@ -59,7 +59,39 @@
   color: white;
 }
 
+.newModalHeader{
+  background-color: #1a7523;
+  color: white;
+}
 
+.btn.btn-sm.new{
+  margin-top: 0;
+  background-color: #1a7523;
+}
+
+.listTable{
+  background-color: white;
+}
+
+.tableHeader{
+  border: none;
+}
+
+.cardheaderChalk{
+  text-align: center;
+  font-family: neatchalk, Tahoma, sans-serif;
+  border-color: grey;
+  font-size: 0.6em;
+  color: white;
+}
+
+.tableHeader{
+  font-size: 1em;
+}
+
+mdb-card{
+  width: 100%;
+}
 
 
 
