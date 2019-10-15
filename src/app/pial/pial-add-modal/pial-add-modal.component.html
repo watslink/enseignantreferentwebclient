@@ -1,0 +1,20 @@
+<div class="modal-header newModalHeader">
+  <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+    <span aria-hidden="true">×</span>
+  </button>
+  <h4 class="modal-title w-100" id="myModalLabel">Nouveau</h4>
+</div>
+<div class="modal-body -align-center">
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text" >Nom</span>
+    </div>
+    <input [(ngModel)]="pial.nom" type="text" class="form-control" aria-label="Nom" aria-describedby="inputGroup-sizing-default" required>
+  </div>
+</div>
+
+<div class="modal-footer justify-content-around">
+  <button type="button" mdbBtn  rounded="true" mdbWavesEffect class="btn btn-success"  aria-label="Save" (click)="save()">Enregistrer</button>
+  <button type="button" mdbBtn  rounded="true" mdbWavesEffect class="btn btn-info"  aria-label="Close" (click)="modalRef.hide()">Retour</button>
+</div>
+
