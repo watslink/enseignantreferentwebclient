@@ -10,13 +10,13 @@ import {StructureService} from '../../../service/structure.service';
 })
 export class StructureEditModalComponent implements OnInit {
   structure: Structure;
-  constructor(public modalRef: MDBModalRef, private structureServ: StructureService) { }
+  constructor(public modalRef: MDBModalRef, private structServ: StructureService) { }
 
   ngOnInit() {
   }
 
   save() {
-    this.structureServ.updateStructure(this.structure).subscribe();
+    this.structServ.updateStructure(this.structure).subscribe();
     this.modalRef.hide();
   }
 }

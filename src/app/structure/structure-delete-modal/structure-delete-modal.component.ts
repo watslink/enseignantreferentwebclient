@@ -11,13 +11,13 @@ import {StructureService} from '../../../service/structure.service';
 export class StructureDeleteModalComponent implements OnInit {
 
   structure: Structure;
-  constructor(public modalRef: MDBModalRef, private structureServ: StructureService) { }
+  constructor(public modalRef: MDBModalRef, private structServ: StructureService) { }
 
   ngOnInit() {
   }
 
   delete() {
-    this.structureServ.deleteStructure(this.structure.structureProId).subscribe();
+    this.structServ.deleteStructure(this.structure.structureProId).subscribe();
     this.modalRef.hide();
   }
 }

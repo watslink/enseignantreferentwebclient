@@ -1,4 +1,4 @@
-import {AfterViewInit, ChangeDetectorRef, Component, HostListener, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, ChangeDetectorRef, Component, ElementRef, HostListener, OnInit, PipeTransform, ViewChild} from '@angular/core';
 import {Structure} from '../../model/Structure.model';
 import {AuthenticationService} from '../../service/authentication.service';
 import {StructureService} from '../../service/structure.service';
@@ -8,6 +8,7 @@ import {StructureDetailsModalComponent} from './structure-details-modal/structur
 import {StructureEditModalComponent} from './structure-edit-modal/structure-edit-modal.component';
 import {faPencilAlt, faTimes} from '@fortawesome/free-solid-svg-icons';
 import {faAddressCard} from '@fortawesome/free-solid-svg-icons/faAddressCard';
+import {faCross} from '@fortawesome/free-solid-svg-icons/faCross';
 import {StructureDeleteModalComponent} from './structure-delete-modal/structure-delete-modal.component';
 import {StructureAddModalComponent} from './structure-add-modal/structure-add-modal.component';
 
@@ -59,6 +60,7 @@ export class StructureComponent implements OnInit, AfterViewInit {
   }
   ngAfterViewInit() {
     this.mdbTablePagination.setMaxVisibleItemsNumberTo(this.maxVisibleItems);
+
     this.mdbTablePagination.calculateFirstItemIndex();
     this.mdbTablePagination.calculateLastItemIndex();
     this.cdRef.detectChanges();
@@ -76,14 +78,14 @@ export class StructureComponent implements OnInit, AfterViewInit {
       this.mdbTable.setDataSource(this.mdbTable.getDataSource());
     }
   }
-  openModalDetails(element: Structure) {
-      this.modalRef = this.modalService.show(StructureDetailsModalComponent, {data: {structure: element}});
+  openModalDetails(struc: Structure) {
+      this.modalRef = this.modalService.show(StructureDetailsModalComponent, {data: {structure: struc}});
   }
-  openModalEdit(element: Structure) {
-    this.modalRef = this.modalService.show(StructureEditModalComponent, {data: {structure: element}});
+  openModalEdit(struc: Structure) {
+    this.modalRef = this.modalService.show(StructureEditModalComponent, {data: {structure: struc}});
   }
-  openModalDelete(element: Structure) {
-    this.modalRef = this.modalService.show(StructureDeleteModalComponent, {data: {structure: element}});
+  openModalDelete(struc: Structure) {
+    this.modalRef = this.modalService.show(StructureDeleteModalComponent, {data: {structure: struc}});
   }
   openModalNew() {
     this.modalRef = this.modalService.show(StructureAddModalComponent);

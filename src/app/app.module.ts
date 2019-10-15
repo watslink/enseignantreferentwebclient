@@ -7,7 +7,7 @@ import { InscriptionComponent } from './inscription/inscription.component';
 import {RouterModule, Routes} from '@angular/router';
 import {AuthenticationService} from '../service/authentication.service';
 import { AccueilComponent } from './accueil/accueil.component';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {AuthInterceptor} from '../interceptor/AuthInterceptor';
 import {StructureService} from '../service/structure.service';
@@ -26,10 +26,10 @@ import { StructureDetailsModalComponent } from './structure/structure-details-mo
 import { StructureEditModalComponent } from './structure/structure-edit-modal/structure-edit-modal.component';
 import { StructureDeleteModalComponent } from './structure/structure-delete-modal/structure-delete-modal.component';
 import { StructureAddModalComponent } from './structure/structure-add-modal/structure-add-modal.component';
-import { PialComponent } from './pial/pial.component';
-import { PialAddModalComponent } from './pial/pial-add-modal/pial-add-modal.component';
-import { PialDeleteModalComponent } from './pial/pial-delete-modal/pial-delete-modal.component';
-import { PialEditModalComponent } from './pial/pial-edit-modal/pial-edit-modal.component';
+import {PialComponent} from './pial/pial.component';
+import {PialDeleteModalComponent} from './pial/pial-delete-modal/pial-delete-modal.component';
+import {PialEditModalComponent} from './pial/pial-edit-modal/pial-edit-modal.component';
+import {PialAddModalComponent} from './pial/pial-add-modal/pial-add-modal.component';
 
 
 const appRoutes: Routes = [
@@ -53,18 +53,18 @@ const appRoutes: Routes = [
     StructureDeleteModalComponent,
     StructureAddModalComponent,
     PialComponent,
-    PialAddModalComponent,
+    PialEditModalComponent,
     PialDeleteModalComponent,
-    PialEditModalComponent
+    PialAddModalComponent
   ],
   entryComponents: [
     StructureDetailsModalComponent,
     StructureEditModalComponent,
     StructureDeleteModalComponent,
     StructureAddModalComponent,
-    PialAddModalComponent,
+    PialEditModalComponent,
     PialDeleteModalComponent,
-    PialEditModalComponent
+    PialAddModalComponent
   ],
   imports: [
     BrowserModule,
