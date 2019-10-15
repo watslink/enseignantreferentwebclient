@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {Structure} from '../../model/Structure.model';
+import {Structure} from '../../../model/Structure.model';
 import {MDBModalRef} from 'angular-bootstrap-md';
-import {StructureService} from '../../service/structure.service';
-import {Adresse} from '../../model/Adresse.model';
+import {StructureService} from '../../../service/structure.service';
+import {Adresse} from '../../../model/Adresse.model';
 
 @Component({
   selector: 'app-structure-add-modal',
