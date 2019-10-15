@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {Structure} from '../../model/Structure.model';
+import {Structure} from '../../../model/Structure.model';
 import {MDBModalRef} from 'angular-bootstrap-md';
-import {faHome, faMailBulk, faPhone} from '@fortawesome/free-solid-svg-icons';
+import {faHome, faPhone} from '@fortawesome/free-solid-svg-icons';
 import {faEnvelope} from '@fortawesome/free-solid-svg-icons/faEnvelope';
 
 @Component({

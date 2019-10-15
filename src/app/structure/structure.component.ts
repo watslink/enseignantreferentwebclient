@@ -1,16 +1,15 @@
-import {AfterViewInit, ChangeDetectorRef, Component, ElementRef, HostListener, OnInit, PipeTransform, ViewChild} from '@angular/core';
+import {AfterViewInit, ChangeDetectorRef, Component, HostListener, OnInit, ViewChild} from '@angular/core';
 import {Structure} from '../../model/Structure.model';
 import {AuthenticationService} from '../../service/authentication.service';
 import {StructureService} from '../../service/structure.service';
 import {Router} from '@angular/router';
 import {MDBModalRef, MDBModalService, MdbTableDirective, MdbTablePaginationComponent} from 'angular-bootstrap-md';
-import {StructureDetailsModalComponent} from '../structure-details-modal/structure-details-modal.component';
-import {StructureEditModalComponent} from '../structure-edit-modal/structure-edit-modal.component';
+import {StructureDetailsModalComponent} from './structure-details-modal/structure-details-modal.component';
+import {StructureEditModalComponent} from './structure-edit-modal/structure-edit-modal.component';
 import {faPencilAlt, faTimes} from '@fortawesome/free-solid-svg-icons';
 import {faAddressCard} from '@fortawesome/free-solid-svg-icons/faAddressCard';
-import {faCross} from '@fortawesome/free-solid-svg-icons/faCross';
-import {StructureDeleteModalComponent} from '../structure-delete-modal/structure-delete-modal.component';
-import {StructureAddModalComponent} from '../structure-add-modal/structure-add-modal.component';
+import {StructureDeleteModalComponent} from './structure-delete-modal/structure-delete-modal.component';
+import {StructureAddModalComponent} from './structure-add-modal/structure-add-modal.component';
 
 
 
@@ -61,7 +60,6 @@ export class StructureComponent implements OnInit, AfterViewInit {
   }
   ngAfterViewInit() {
     this.mdbTablePagination.setMaxVisibleItemsNumberTo(this.maxVisibleItems);
-
     this.mdbTablePagination.calculateFirstItemIndex();
     this.mdbTablePagination.calculateLastItemIndex();
     this.cdRef.detectChanges();
@@ -79,14 +77,14 @@ export class StructureComponent implements OnInit, AfterViewInit {
       this.mdbTable.setDataSource(this.mdbTable.getDataSource());
     }
   }
-  openModalDetails(struc: Structure) {
-      this.modalRef = this.modalService.show(StructureDetailsModalComponent, {data: {structure: struc}});
+  openModalDetails(element: Structure) {
+      this.modalRef = this.modalService.show(StructureDetailsModalComponent, {data: {structure: element}});
   }
-  openModalEdit(struc: Structure) {
-    this.modalRef = this.modalService.show(StructureEditModalComponent, {data: {structure: struc}});
+  openModalEdit(element: Structure) {
+    this.modalRef = this.modalService.show(StructureEditModalComponent, {data: {structure: element}});
   }
-  openModalDelete(struc: Structure) {
-    this.modalRef = this.modalService.show(StructureDeleteModalComponent, {data: {structure: struc}});
+  openModalDelete(element: Structure) {
+    this.modalRef = this.modalService.show(StructureDeleteModalComponent, {data: {structure: element}});
   }
   openModalNew() {
     this.modalRef = this.modalService.show(StructureAddModalComponent);

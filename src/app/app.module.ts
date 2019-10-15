@@ -7,7 +7,7 @@ import { InscriptionComponent } from './inscription/inscription.component';
 import {RouterModule, Routes} from '@angular/router';
 import {AuthenticationService} from '../service/authentication.service';
 import { AccueilComponent } from './accueil/accueil.component';
-import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {AuthInterceptor} from '../interceptor/AuthInterceptor';
 import {StructureService} from '../service/structure.service';
@@ -22,15 +22,20 @@ import {PIALService} from '../service/PIAL.service';
 import { StructureComponent } from './structure/structure.component';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {MDBBootstrapModule, MDBModalService} from 'angular-bootstrap-md';
-import { StructureDetailsModalComponent } from './structure-details-modal/structure-details-modal.component';
-import { StructureEditModalComponent } from './structure-edit-modal/structure-edit-modal.component';
-import { StructureDeleteModalComponent } from './structure-delete-modal/structure-delete-modal.component';
-import { StructureAddModalComponent } from './structure-add-modal/structure-add-modal.component';
+import { StructureDetailsModalComponent } from './structure/structure-details-modal/structure-details-modal.component';
+import { StructureEditModalComponent } from './structure/structure-edit-modal/structure-edit-modal.component';
+import { StructureDeleteModalComponent } from './structure/structure-delete-modal/structure-delete-modal.component';
+import { StructureAddModalComponent } from './structure/structure-add-modal/structure-add-modal.component';
+import { PialComponent } from './pial/pial.component';
+import { PialAddModalComponent } from './pial/pial-add-modal/pial-add-modal.component';
+import { PialDeleteModalComponent } from './pial/pial-delete-modal/pial-delete-modal.component';
+import { PialEditModalComponent } from './pial/pial-edit-modal/pial-edit-modal.component';
 
 
 
 const appRoutes: Routes = [
   {path: 'structure', component: StructureComponent},
+  {path: 'pial', component: PialComponent},
   {path: 'login', component: LoginComponent},
   {path: 'inscription', component: InscriptionComponent},
   {path: 'accueil', component: AccueilComponent},
@@ -47,13 +52,20 @@ const appRoutes: Routes = [
     StructureDetailsModalComponent,
     StructureEditModalComponent,
     StructureDeleteModalComponent,
-    StructureAddModalComponent
+    StructureAddModalComponent,
+    PialComponent,
+    PialAddModalComponent,
+    PialDeleteModalComponent,
+    PialEditModalComponent
   ],
   entryComponents: [
     StructureDetailsModalComponent,
     StructureEditModalComponent,
     StructureDeleteModalComponent,
-    StructureAddModalComponent
+    StructureAddModalComponent,
+    PialAddModalComponent,
+    PialDeleteModalComponent,
+    PialEditModalComponent
   ],
   imports: [
     BrowserModule,

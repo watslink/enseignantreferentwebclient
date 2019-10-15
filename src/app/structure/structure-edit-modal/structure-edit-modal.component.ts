@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {MDBModalRef} from 'angular-bootstrap-md';
-import {Structure} from '../../model/Structure.model';
-import {StructureService} from '../../service/structure.service';
+import {Structure} from '../../../model/Structure.model';
+import {StructureService} from '../../../service/structure.service';
 
 @Component({
   selector: 'app-structure-edit-modal',
@@ -10,13 +10,13 @@ import {StructureService} from '../../service/structure.service';
 })
 export class StructureEditModalComponent implements OnInit {
   structure: Structure;
-  constructor(public modalRef: MDBModalRef, private structServ: StructureService) { }
+  constructor(public modalRef: MDBModalRef, private structureServ: StructureService) { }
 
   ngOnInit() {
   }
 
   save() {
-    this.structServ.updateStructure(this.structure).subscribe();
+    this.structureServ.updateStructure(this.structure).subscribe();
     this.modalRef.hide();
   }
 }
