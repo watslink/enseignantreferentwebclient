@@ -31,7 +31,6 @@ export class StructureComponent implements OnInit, AfterViewInit {
   previous: string;
 
   maxVisibleItems = 8;
-
   modalRef: MDBModalRef;
 
   constructor(private authServ: AuthenticationService,

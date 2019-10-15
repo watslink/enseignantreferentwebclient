@@ -32,7 +32,6 @@ import { PialDeleteModalComponent } from './pial/pial-delete-modal/pial-delete-m
 import { PialEditModalComponent } from './pial/pial-edit-modal/pial-edit-modal.component';
 
 
-
 const appRoutes: Routes = [
   {path: 'structure', component: StructureComponent},
   {path: 'pial', component: PialComponent},
