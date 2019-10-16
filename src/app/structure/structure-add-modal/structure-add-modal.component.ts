@@ -11,7 +11,7 @@ import {Adresse} from '../../../model/Adresse.model';
 })
 export class StructureAddModalComponent implements OnInit {
   structure: Structure;
-  constructor(public modalRef: MDBModalRef, private structServ: StructureService) { }
+  constructor(public modalRef: MDBModalRef, private structureServ: StructureService) { }
 
   ngOnInit() {
     this.structure = new Structure();
@@ -19,7 +19,7 @@ export class StructureAddModalComponent implements OnInit {
   }
 
   save() {
-    this.structServ.addStructure(this.structure).subscribe();
+    this.structureServ.addStructure(this.structure).subscribe();
     this.modalRef.hide();
   }
 }

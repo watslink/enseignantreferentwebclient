@@ -12,12 +12,12 @@ import {Subject} from 'rxjs';
 export class StructureDeleteModalComponent implements OnInit {
 
   structure: Structure;
-  constructor(public modalRef: MDBModalRef, private structServ: StructureService) { }
+  constructor(public modalRef: MDBModalRef, private structureServ: StructureService) { }
   ngOnInit() {
   }
 
   delete() {
-    this.structServ.deleteStructure(this.structure.structureProId).subscribe();
+    this.structureServ.deleteStructure(this.structure.structureProId).subscribe();
     this.modalRef.hide();
   }
 }

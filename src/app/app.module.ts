@@ -30,11 +30,17 @@ import {PialComponent} from './pial/pial.component';
 import {PialDeleteModalComponent} from './pial/pial-delete-modal/pial-delete-modal.component';
 import {PialEditModalComponent} from './pial/pial-edit-modal/pial-edit-modal.component';
 import {PialAddModalComponent} from './pial/pial-add-modal/pial-add-modal.component';
+import { EtablissementComponent } from './etablissement/etablissement.component';
+import { EtablissementAddModalComponent } from './etablissement/etablissement-add-modal/etablissement-add-modal.component';
+import { EtablissementDeleteModalComponent } from './etablissement/etablissement-delete-modal/etablissement-delete-modal.component';
+import { EtablissementDetailsModalComponent } from './etablissement/etablissement-details-modal/etablissement-details-modal.component';
+import { EtablissementEditModalComponent } from './etablissement/etablissement-edit-modal/etablissement-edit-modal.component';
 
 
 const appRoutes: Routes = [
   {path: 'structure', component: StructureComponent},
   {path: 'pial', component: PialComponent},
+  {path: 'etablissement', component: EtablissementComponent},
   {path: 'login', component: LoginComponent},
   {path: 'inscription', component: InscriptionComponent},
   {path: 'accueil', component: AccueilComponent},
@@ -55,7 +61,12 @@ const appRoutes: Routes = [
     PialComponent,
     PialEditModalComponent,
     PialDeleteModalComponent,
-    PialAddModalComponent
+    PialAddModalComponent,
+    EtablissementComponent,
+    EtablissementAddModalComponent,
+    EtablissementDeleteModalComponent,
+    EtablissementDetailsModalComponent,
+    EtablissementEditModalComponent
   ],
   entryComponents: [
     StructureDetailsModalComponent,
@@ -64,7 +75,11 @@ const appRoutes: Routes = [
     StructureAddModalComponent,
     PialEditModalComponent,
     PialDeleteModalComponent,
-    PialAddModalComponent
+    PialAddModalComponent,
+    EtablissementAddModalComponent,
+    EtablissementDeleteModalComponent,
+    EtablissementDetailsModalComponent,
+    EtablissementEditModalComponent
   ],
   imports: [
     BrowserModule,

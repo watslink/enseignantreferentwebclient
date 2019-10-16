@@ -68,14 +68,14 @@ export class StructureComponent implements OnInit, AfterViewInit {
       this.mdbTable.setDataSource(this.mdbTable.getDataSource());
     }
   }
-  openModalDetails(struc: Structure) {
-      this.modalRef = this.modalService.show(StructureDetailsModalComponent, {data: {structure: struc}});
+  openModalDetails(element: Structure) {
+      this.modalRef = this.modalService.show(StructureDetailsModalComponent, {data: {structure: element}});
   }
-  openModalEdit(struc: Structure) {
-    this.modalRef = this.modalService.show(StructureEditModalComponent, {data: {structure: struc}});
+  openModalEdit(element: Structure) {
+    this.modalRef = this.modalService.show(StructureEditModalComponent, {data: {structure: element}});
   }
-  openModalDelete(struc: Structure) {
-    this.modalRef = this.modalService.show(StructureDeleteModalComponent, {data: {structure: struc}});
+  openModalDelete(element: Structure) {
+    this.modalRef = this.modalService.show(StructureDeleteModalComponent, {data: {structure: element}});
     this.modalService.close.subscribe(res => {
       this.refresh();
     });
