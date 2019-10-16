@@ -31,7 +31,7 @@ export class StructureComponent implements OnInit, AfterViewInit {
   searchText = '';
   previous: string;
 
-  maxVisibleItems = 8;
+  maxVisibleItems = 5;
   modalRef: MDBModalRef;
 
   constructor(private authServ: AuthenticationService,
@@ -46,21 +46,10 @@ export class StructureComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
-    this.structureServ.getListStructure().subscribe(
-      struct => {
-        this.structuresData = struct;
-        this.mdbTable.setDataSource(this.structuresData);
-        this.structures = this.mdbTable.getDataSource();
-        this.previous = this.mdbTable.getDataSource();
-      },
-      err => {
-        this.authServ.logout();
-        this.router.navigateByUrl('/login');
-      });
+    this.refresh();
   }
   ngAfterViewInit() {
     this.mdbTablePagination.setMaxVisibleItemsNumberTo(this.maxVisibleItems);
-
     this.mdbTablePagination.calculateFirstItemIndex();
     this.mdbTablePagination.calculateLastItemIndex();
     this.cdRef.detectChanges();
@@ -74,6 +63,7 @@ export class StructureComponent implements OnInit, AfterViewInit {
     }
 
     if (this.searchText) {
+      this.refresh();
       this.structures = this.mdbTable.searchLocalDataBy(this.searchText);
       this.mdbTable.setDataSource(this.mdbTable.getDataSource());
     }
@@ -86,8 +76,27 @@ export class StructureComponent implements OnInit, AfterViewInit {
   }
   openModalDelete(struc: Structure) {
     this.modalRef = this.modalService.show(StructureDeleteModalComponent, {data: {structure: struc}});
+    this.modalService.close.subscribe(res => {
+      this.refresh();
+    });
   }
   openModalNew() {
     this.modalRef = this.modalService.show(StructureAddModalComponent);
+    this.modalService.close.subscribe(res => {
+      this.refresh();
+    });
+  }
+  refresh() {
+    this.structureServ.getListStructure().subscribe(
+      element => {
+        this.structuresData = element;
+        this.mdbTable.setDataSource(this.structuresData);
+        this.structures = this.mdbTable.getDataSource();
+        this.previous = this.mdbTable.getDataSource();
+      },
+      err => {
+        this.authServ.logout();
+        this.router.navigateByUrl('/login');
+      });
   }
 }

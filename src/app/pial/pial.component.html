@@ -7,13 +7,13 @@
         <label for="search-input">Rechercher...</label>
       </div>
     </div>
-    <mdb-card class="font-tableau"  >
+    <mdb-card class="font-tableau "  >
       <mdb-card-header class="tableHeader cardheaderChalk">
         PIALs
         <button mdbBtn outline="true" color="white" (click)="openModalNew()"   size="sm" mdbWavesEffect  class="rounded-pill actionBtn new">+</button>
       </mdb-card-header>
       <mdb-card-body>
-        <table mdbTable #tableEl="mdbTable" hover="true" striped="true" class="z-depth-1 listTable">
+        <table mdbTable #tableEl="mdbTable" hover="true" striped="true" class="z-depth-1 listTable w-auto">
           <thead>
           <tr>
             <th [mdbTableSort]="pials" sortBy="nom" scope="col">Nom <mdb-icon fas icon="sort"></mdb-icon></th>
@@ -31,7 +31,7 @@
           </tbody>
           <tfoot class="grey lighten-5 w-100">
           <tr>
-            <td colspan="4">
+            <td colspan="2">
               <mdb-table-pagination [tableEl]="tableEl" paginationAlign="" [searchDataSource]="pials"></mdb-table-pagination>
             </td>
           </tr>

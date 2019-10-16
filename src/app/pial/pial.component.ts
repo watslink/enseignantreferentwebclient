@@ -27,7 +27,7 @@ export class PialComponent implements OnInit, AfterViewInit {
   searchText = '';
   previous: string;
 
-  maxVisibleItems = 8;
+  maxVisibleItems = 5;
 
   modalRef: MDBModalRef;
 
@@ -43,17 +43,7 @@ export class PialComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
-    this.pialServ.getListPIAL().subscribe(
-      struct => {
-        this.pialsData = struct;
-        this.mdbTable.setDataSource(this.pialsData);
-        this.pials = this.mdbTable.getDataSource();
-        this.previous = this.mdbTable.getDataSource();
-      },
-      err => {
-        this.authServ.logout();
-        this.router.navigateByUrl('/login');
-      });
+    this.refresh();
   }
   ngAfterViewInit() {
     this.mdbTablePagination.setMaxVisibleItemsNumberTo(this.maxVisibleItems);
@@ -79,8 +69,27 @@ export class PialComponent implements OnInit, AfterViewInit {
   }
   openModalDelete(element: PIAL) {
     this.modalRef = this.modalService.show(PialDeleteModalComponent, {data: {pial: element}});
+    this.modalService.close.subscribe(res => {
+      this.refresh();
+    });
   }
   openModalNew() {
     this.modalRef = this.modalService.show(PialAddModalComponent);
+    this.modalService.close.subscribe(res => {
+      this.refresh();
+    });
+  }
+  refresh() {
+    this.pialServ.getListPIAL().subscribe(
+      element => {
+        this.pialsData = element;
+        this.mdbTable.setDataSource(this.pialsData);
+        this.pials = this.mdbTable.getDataSource();
+        this.previous = this.mdbTable.getDataSource();
+      },
+      err => {
+        this.authServ.logout();
+        this.router.navigateByUrl('/login');
+      });
   }
 }
