@@ -13,7 +13,7 @@
         <button mdbBtn outline="true" color="white" (click)="openModalNew()"   size="sm" mdbWavesEffect  class="rounded-pill actionBtn new">+</button>
       </mdb-card-header>
       <mdb-card-body>
-        <table mdbTable #tableEl="mdbTable" hover="true" striped="true" class="z-depth-1 listTable w-auto">
+        <table mdbTable small="true" #tableEl="mdbTable" hover="true" striped="true" class="z-depth-1 listTable w-auto">
           <thead>
           <tr>
             <th [mdbTableSort]="pials" sortBy="nom" scope="col">Nom <mdb-icon fas icon="sort"></mdb-icon></th>

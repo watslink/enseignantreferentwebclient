@@ -35,12 +35,17 @@ import { EtablissementAddModalComponent } from './etablissement/etablissement-ad
 import { EtablissementDeleteModalComponent } from './etablissement/etablissement-delete-modal/etablissement-delete-modal.component';
 import { EtablissementDetailsModalComponent } from './etablissement/etablissement-details-modal/etablissement-details-modal.component';
 import { EtablissementEditModalComponent } from './etablissement/etablissement-edit-modal/etablissement-edit-modal.component';
+import { NiveauComponent } from './niveau/niveau.component';
+import { NiveauEditModalComponent } from './niveau/niveau-edit-modal/niveau-edit-modal.component';
+import { NiveauDeleteModalComponent } from './niveau/niveau-delete-modal/niveau-delete-modal.component';
+import { NiveauAddModalComponent } from './niveau/niveau-add-modal/niveau-add-modal.component';
 
 
 const appRoutes: Routes = [
   {path: 'structure', component: StructureComponent},
   {path: 'pial', component: PialComponent},
   {path: 'etablissement', component: EtablissementComponent},
+  {path: 'niveau', component: NiveauComponent},
   {path: 'login', component: LoginComponent},
   {path: 'inscription', component: InscriptionComponent},
   {path: 'accueil', component: AccueilComponent},
@@ -66,7 +71,11 @@ const appRoutes: Routes = [
     EtablissementAddModalComponent,
     EtablissementDeleteModalComponent,
     EtablissementDetailsModalComponent,
-    EtablissementEditModalComponent
+    EtablissementEditModalComponent,
+    NiveauComponent,
+    NiveauEditModalComponent,
+    NiveauDeleteModalComponent,
+    NiveauAddModalComponent
   ],
   entryComponents: [
     StructureDetailsModalComponent,
@@ -79,7 +88,10 @@ const appRoutes: Routes = [
     EtablissementAddModalComponent,
     EtablissementDeleteModalComponent,
     EtablissementDetailsModalComponent,
-    EtablissementEditModalComponent
+    EtablissementEditModalComponent,
+    NiveauEditModalComponent,
+    NiveauDeleteModalComponent,
+    NiveauAddModalComponent
   ],
   imports: [
     BrowserModule,

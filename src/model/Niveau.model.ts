@@ -1,7 +1,7 @@
 export class Niveau {
 
-  public NiveauId: number;
-  public nom: string;
+  public niveauId: number;
+  public libelle: string;
   public degre: number;
   public specialise: boolean;
 

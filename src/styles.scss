@@ -93,9 +93,11 @@ mdb-card{
   display: flex;
   justify-content: center;
   align-items: center;
-
 }
 
+mdb-card-body.card-body{
+  padding-top: 0;
+}
 
 
 
