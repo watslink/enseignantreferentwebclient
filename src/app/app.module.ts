@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import {NgModule, NO_ERRORS_SCHEMA} from '@angular/core';
+import {LOCALE_ID, NgModule, NO_ERRORS_SCHEMA} from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -16,7 +16,7 @@ import {AESHService} from '../service/AESH.service';
 import {CategorieService} from '../service/categorie.service';
 import {EleveService} from '../service/eleve.service';
 import {EtablissementService} from '../service/etablissement.service';
-import {MaterielPedagoAdapteService} from '../service/materielpedagoadapte.service';
+import {MaterielPedagoAdapteService} from '../service/materielPedagoAdapte.service';
 import {NiveauService} from '../service/niveau.service';
 import {PIALService} from '../service/PIAL.service';
 import { StructureComponent } from './structure/structure.component';
@@ -44,6 +44,17 @@ import { AeshAddModalComponent } from './aesh/aesh-add-modal/aesh-add-modal.comp
 import { AeshDeleteModalComponent } from './aesh/aesh-delete-modal/aesh-delete-modal.component';
 import { AeshEditModalComponent } from './aesh/aesh-edit-modal/aesh-edit-modal.component';
 import { AeshDetailsModalComponent } from './aesh/aesh-details-modal/aesh-details-modal.component';
+import { CategorieComponent } from './categorie/categorie.component';
+import { CategorieAddModalComponent } from './categorie/categorie-add-modal/categorie-add-modal.component';
+import { CategorieDeleteModalComponent } from './categorie/categorie-delete-modal/categorie-delete-modal.component';
+import { CategorieEditModalComponent } from './categorie/categorie-edit-modal/categorie-edit-modal.component';
+import { MaterielPedagoAdapteComponent } from './materiel-pedago-adapte/materiel-pedago-adapte.component';
+// tslint:disable-next-line:max-line-length
+import { MaterielPedagoAdapteAddModalComponent } from './materiel-pedago-adapte/materiel-pedago-adapte-add-modal/materiel-pedago-adapte-add-modal.component';
+// tslint:disable-next-line:max-line-length
+import { MaterielPedagoAdapteDeleteModalComponent } from './materiel-pedago-adapte/materiel-pedago-adapte-delete-modal/materiel-pedago-adapte-delete-modal.component';
+// tslint:disable-next-line:max-line-length
+import { MaterielPedagoAdapteEditModalComponent } from './materiel-pedago-adapte/materiel-pedago-adapte-edit-modal/materiel-pedago-adapte-edit-modal.component';
 
 
 
@@ -53,6 +64,8 @@ const appRoutes: Routes = [
   {path: 'etablissement', component: EtablissementComponent},
   {path: 'niveau', component: NiveauComponent},
   {path: 'aesh', component: AeshComponent},
+  {path: 'materielPedagoAdpate', component: MaterielPedagoAdapteComponent},
+  {path: 'categorie', component: CategorieComponent},
   {path: 'login', component: LoginComponent},
   {path: 'inscription', component: InscriptionComponent},
   {path: 'accueil', component: AccueilComponent},
@@ -87,7 +100,15 @@ const appRoutes: Routes = [
     AeshAddModalComponent,
     AeshDeleteModalComponent,
     AeshEditModalComponent,
-    AeshDetailsModalComponent
+    AeshDetailsModalComponent,
+    CategorieComponent,
+    CategorieAddModalComponent,
+    CategorieDeleteModalComponent,
+    CategorieEditModalComponent,
+    MaterielPedagoAdapteComponent,
+    MaterielPedagoAdapteAddModalComponent,
+    MaterielPedagoAdapteDeleteModalComponent,
+    MaterielPedagoAdapteEditModalComponent
   ],
   entryComponents: [
     StructureDetailsModalComponent,
@@ -107,7 +128,13 @@ const appRoutes: Routes = [
     AeshAddModalComponent,
     AeshDeleteModalComponent,
     AeshEditModalComponent,
-    AeshDetailsModalComponent
+    AeshDetailsModalComponent,
+    CategorieAddModalComponent,
+    CategorieDeleteModalComponent,
+    CategorieEditModalComponent,
+    MaterielPedagoAdapteAddModalComponent,
+    MaterielPedagoAdapteDeleteModalComponent,
+    MaterielPedagoAdapteEditModalComponent
   ],
   imports: [
     BrowserModule,

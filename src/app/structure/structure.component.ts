@@ -31,7 +31,7 @@ export class StructureComponent implements OnInit, AfterViewInit {
   searchText = '';
   previous: string;
 
-  maxVisibleItems = 5;
+  maxVisibleItems = 8;
   modalRef: MDBModalRef;
 
   constructor(private authServ: AuthenticationService,
