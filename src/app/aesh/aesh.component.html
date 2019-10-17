@@ -1,0 +1,52 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 mx-auto">
+      <div class=" md-form">
+        <input type="text" class="form-control" [(ngModel)]="searchText" (keyup)="searchItems()" id="input"
+               mdbInput>
+        <label for="input">Rechercher...</label>
+      </div>
+    </div>
+    <mdb-card class="font-tableau"  >
+      <mdb-card-header class="tableHeader cardheaderChalk">
+        AESHs
+        <button mdbBtn outline="true" color="white" (click)="openModalNew()"   size="sm" mdbWavesEffect  class="rounded-pill actionBtn new">+</button>
+      </mdb-card-header>
+      <mdb-card-body>
+        <table mdbTable small="true" #tableEl="mdbTable" hover="true" striped="true" class="z-depth-1 listTable w-auto">
+          <thead>
+          <tr>
+            <th [mdbTableSort]="aeshs" sortBy="nom" scope="col">Nom <mdb-icon fas icon="sort"></mdb-icon></th>
+            <th [mdbTableSort]="aeshs" sortBy="prenom" scope="col">Prénom <mdb-icon fas icon="sort"></mdb-icon></th>
+            <th [mdbTableSort]="aeshs" sortBy="pial" scope="col">PIAL <mdb-icon fas icon="sort"></mdb-icon></th>
+            <th  scope="col"></th>
+          </tr>
+          </thead>
+          <tbody >
+          <tr *ngFor="let el of aeshs; let i = index">
+            <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">{{el.nom}}</td>
+            <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">{{el.prenom}}</td>
+            <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">
+              <div *ngIf="el.pial!=null">
+                {{el.pial.nom}}
+              </div>
+            </td>
+            <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex" >
+              <button mdbBtn (click)="openModalDetails(el)"   size="sm" mdbWavesEffect  class="mh-100 rounded-pill actionBtn details"><fa-icon [icon]="facard"></fa-icon></button>
+              <button mdbBtn (click)="openModalEdit(el)"   size="sm" mdbWavesEffect  class="mh-100 rounded-pill actionBtn update"><fa-icon [icon]="fapencil"></fa-icon></button>
+              <button mdbBtn (click)="openModalDelete(el)"  size="sm" mdbWavesEffect  class="mh-100 rounded-pill actionBtn delete"><fa-icon [icon]="fadelete"></fa-icon></button>
+            </td>
+          </tr>
+          </tbody>
+          <tfoot class="grey lighten-5 w-100">
+          <tr>
+            <td colspan="2">
+              <mdb-table-pagination [tableEl]="tableEl" paginationAlign="" [searchDataSource]="aeshs"></mdb-table-pagination>
+            </td>
+          </tr>
+          </tfoot>
+        </table>
+      </mdb-card-body>
+    </mdb-card>
+  </div>
+</div>
