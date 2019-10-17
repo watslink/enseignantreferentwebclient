@@ -39,6 +39,12 @@ import { NiveauComponent } from './niveau/niveau.component';
 import { NiveauEditModalComponent } from './niveau/niveau-edit-modal/niveau-edit-modal.component';
 import { NiveauDeleteModalComponent } from './niveau/niveau-delete-modal/niveau-delete-modal.component';
 import { NiveauAddModalComponent } from './niveau/niveau-add-modal/niveau-add-modal.component';
+import { AeshComponent } from './aesh/aesh.component';
+import { AeshAddModalComponent } from './aesh/aesh-add-modal/aesh-add-modal.component';
+import { AeshDeleteModalComponent } from './aesh/aesh-delete-modal/aesh-delete-modal.component';
+import { AeshEditModalComponent } from './aesh/aesh-edit-modal/aesh-edit-modal.component';
+import { AeshDetailsModalComponent } from './aesh/aesh-details-modal/aesh-details-modal.component';
+
 
 
 const appRoutes: Routes = [
@@ -46,6 +52,7 @@ const appRoutes: Routes = [
   {path: 'pial', component: PialComponent},
   {path: 'etablissement', component: EtablissementComponent},
   {path: 'niveau', component: NiveauComponent},
+  {path: 'aesh', component: AeshComponent},
   {path: 'login', component: LoginComponent},
   {path: 'inscription', component: InscriptionComponent},
   {path: 'accueil', component: AccueilComponent},
@@ -75,7 +82,12 @@ const appRoutes: Routes = [
     NiveauComponent,
     NiveauEditModalComponent,
     NiveauDeleteModalComponent,
-    NiveauAddModalComponent
+    NiveauAddModalComponent,
+    AeshComponent,
+    AeshAddModalComponent,
+    AeshDeleteModalComponent,
+    AeshEditModalComponent,
+    AeshDetailsModalComponent
   ],
   entryComponents: [
     StructureDetailsModalComponent,
@@ -91,7 +103,11 @@ const appRoutes: Routes = [
     EtablissementEditModalComponent,
     NiveauEditModalComponent,
     NiveauDeleteModalComponent,
-    NiveauAddModalComponent
+    NiveauAddModalComponent,
+    AeshAddModalComponent,
+    AeshDeleteModalComponent,
+    AeshEditModalComponent,
+    AeshDetailsModalComponent
   ],
   imports: [
     BrowserModule,

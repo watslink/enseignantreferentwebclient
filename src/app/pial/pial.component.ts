@@ -1,4 +1,4 @@
-import {AfterViewInit, ChangeDetectorRef, Component,  HostListener, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, ChangeDetectorRef, Component, ElementRef, HostListener, OnInit, PipeTransform, ViewChild} from '@angular/core';
 import {PIAL} from '../../model/PIAL.model';
 import {AuthenticationService} from '../../service/authentication.service';
 import {PIALService} from '../../service/PIAL.service';
@@ -6,6 +6,8 @@ import {Router} from '@angular/router';
 import {MDBModalRef, MDBModalService, MdbTableDirective, MdbTablePaginationComponent} from 'angular-bootstrap-md';
 import {PialEditModalComponent} from './pial-edit-modal/pial-edit-modal.component';
 import {faPencilAlt, faTimes} from '@fortawesome/free-solid-svg-icons';
+import {faAddressCard} from '@fortawesome/free-solid-svg-icons/faAddressCard';
+import {faCross} from '@fortawesome/free-solid-svg-icons/faCross';
 import {PialDeleteModalComponent} from './pial-delete-modal/pial-delete-modal.component';
 import {PialAddModalComponent} from './pial-add-modal/pial-add-modal.component';
 
@@ -21,6 +23,7 @@ export class PialComponent implements OnInit, AfterViewInit {
   @ViewChild(MdbTablePaginationComponent, { static: true }) mdbTablePagination: MdbTablePaginationComponent;
 
   fapencil = faPencilAlt;
+  facard = faAddressCard;
   fadelete = faTimes;
   public pials: PIAL[] = [];
   public pialsData: PIAL[] = [];
@@ -28,7 +31,6 @@ export class PialComponent implements OnInit, AfterViewInit {
   previous: string;
 
   maxVisibleItems = 5;
-
   modalRef: MDBModalRef;
 
   constructor(private authServ: AuthenticationService,
@@ -60,6 +62,7 @@ export class PialComponent implements OnInit, AfterViewInit {
     }
 
     if (this.searchText) {
+      this.refresh();
       this.pials = this.mdbTable.searchLocalDataBy(this.searchText);
       this.mdbTable.setDataSource(this.mdbTable.getDataSource());
     }
