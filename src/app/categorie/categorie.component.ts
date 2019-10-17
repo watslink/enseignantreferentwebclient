@@ -1,4 +1,4 @@
-import {AfterViewInit, ChangeDetectorRef, Component, ElementRef, HostListener, OnInit, PipeTransform, ViewChild} from '@angular/core';
+import {AfterViewInit, ChangeDetectorRef, Component,  HostListener, OnInit, ViewChild} from '@angular/core';
 import {Categorie} from '../../model/Categorie.model';
 import {AuthenticationService} from '../../service/authentication.service';
 import {CategorieService} from '../../service/categorie.service';
@@ -6,10 +6,9 @@ import {Router} from '@angular/router';
 import {MDBModalRef, MDBModalService, MdbTableDirective, MdbTablePaginationComponent} from 'angular-bootstrap-md';
 import {CategorieEditModalComponent} from './categorie-edit-modal/categorie-edit-modal.component';
 import {faPencilAlt, faTimes} from '@fortawesome/free-solid-svg-icons';
-// tslint:disable-next-line:import-spacing max-line-length
 import {CategorieDeleteModalComponent} from './categorie-delete-modal/categorie-delete-modal.component';
 import {CategorieAddModalComponent} from './categorie-add-modal/categorie-add-modal.component';
-
+import {faAddressCard} from '@fortawesome/free-solid-svg-icons/faAddressCard';
 
 
 @Component({
@@ -23,12 +22,14 @@ export class CategorieComponent implements OnInit, AfterViewInit {
 
   fapencil = faPencilAlt;
   fadelete = faTimes;
+  facard = faAddressCard;
   public categories: Categorie[] = [];
   public categoriesData: Categorie[] = [];
   searchText = '';
   previous: string;
 
   maxVisibleItems = 8;
+
   modalRef: MDBModalRef;
 
   constructor(private authServ: AuthenticationService,
@@ -60,7 +61,6 @@ export class CategorieComponent implements OnInit, AfterViewInit {
     }
 
     if (this.searchText) {
-      this.refresh();
       this.categories = this.mdbTable.searchLocalDataBy(this.searchText);
       this.mdbTable.setDataSource(this.mdbTable.getDataSource());
     }

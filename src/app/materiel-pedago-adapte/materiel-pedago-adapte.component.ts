@@ -60,7 +60,6 @@ export class MaterielPedagoAdapteComponent implements OnInit, AfterViewInit {
     }
 
     if (this.searchText) {
-      this.refresh();
       this.materielPedagoAdaptes = this.mdbTable.searchLocalDataBy(this.searchText);
       this.mdbTable.setDataSource(this.mdbTable.getDataSource());
     }

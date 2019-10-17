@@ -61,7 +61,6 @@ export class NiveauComponent implements OnInit, AfterViewInit {
     }
 
     if (this.searchText) {
-      this.refresh();
       this.niveaux = this.mdbTable.searchLocalDataBy(this.searchText);
       this.mdbTable.setDataSource(this.mdbTable.getDataSource());
     }

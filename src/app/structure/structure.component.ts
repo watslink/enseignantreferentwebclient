@@ -63,7 +63,6 @@ export class StructureComponent implements OnInit, AfterViewInit {
     }
 
     if (this.searchText) {
-      this.refresh();
       this.structures = this.mdbTable.searchLocalDataBy(this.searchText);
       this.mdbTable.setDataSource(this.mdbTable.getDataSource());
     }

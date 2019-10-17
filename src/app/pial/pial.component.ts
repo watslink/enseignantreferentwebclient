@@ -62,7 +62,6 @@ export class PialComponent implements OnInit, AfterViewInit {
     }
 
     if (this.searchText) {
-      this.refresh();
       this.pials = this.mdbTable.searchLocalDataBy(this.searchText);
       this.mdbTable.setDataSource(this.mdbTable.getDataSource());
     }
