@@ -88,7 +88,7 @@ export class AeshComponent implements OnInit, AfterViewInit {
     });
   }
   refresh() {
-    this.aeshServ.getListAESH().subscribe(
+    this.aeshServ.getListAESH(parseInt(localStorage.getItem('idEnsRef'), 10)).subscribe(
       element => {
         this.aeshsData = element;
         this.mdbTable.setDataSource(this.aeshsData);

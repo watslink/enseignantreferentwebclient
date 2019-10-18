@@ -1,4 +1,5 @@
 import {PIAL} from './PIAL.model';
+import {EnseignantReferent} from './EnseignantReferent.model';
 
 export class AESH {
 
@@ -8,6 +9,7 @@ export class AESH {
   public mail: string;
   public telephone: string;
   public pial: PIAL;
+  public enseignantReferent: EnseignantReferent;
 
   constructor() {}
 

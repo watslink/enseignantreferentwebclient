@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
         const jwt = resp.headers.get('Authorization');
         this.authService.saveToken( jwt );
         this.authService.loadToken();
-        this.authService.getEnsRef(user).subscribe( resp2 => {
+        this.authService.getEnsRefByMail(user).subscribe( resp2 => {
           this.ensRef = resp2;
           localStorage.setItem('idEnsRef', this.ensRef.enseignantReferentId.toString());
         });

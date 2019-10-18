@@ -14,8 +14,8 @@ export class AESHService {
 
   }
 
-  getListAESH(): Observable<AESH[]> {
-    return this.http.get<AESH[]>(this.host + '/aeshs');
+  getListAESH(ensRefId: number): Observable<AESH[]> {
+    return this.http.get<AESH[]>(this.host + '/aeshs/' + ensRefId );
   }
   getAESH(id: number): Observable<AESH> {
     return this.http.get<AESH>(this.host + '/aesh/' + id);

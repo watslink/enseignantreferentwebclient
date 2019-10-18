@@ -13,47 +13,52 @@ export class AuthenticationService {
   private jwtToken = null;
   private loggedIn = new BehaviorSubject<boolean>(false);
   private ensRefLogged: EnseignantReferent;
+
   constructor(private http: HttpClient, private router: Router) {
   }
 
-    get isLoggedIn() {
-     if (localStorage.getItem('token') != null) {
-      this.loggedIn.next(true);
-     }
-     return this.loggedIn.asObservable();
-    }
-
-    login(user) {
-      return this.http.post(this.host + '/login', user, {observe: 'response'});
-    }
-
-    logout() {
-      localStorage.clear();
-      this.loggedIn.next(false);
-      this.redirectLoginPage();
-    }
-
-    inscrire(ensRef) {
-      return this.http.post(this.host + '/inscription', ensRef, {observe: 'response'});
-    }
-
-    redirectLoginPage() {
-      this.router.navigate(['/login']);
-    }
-
-    saveToken(jwt: string) {
-      localStorage.setItem('token', jwt);
+  get isLoggedIn() {
+    if (localStorage.getItem('token') != null) {
       this.loggedIn.next(true);
     }
+    return this.loggedIn.asObservable();
+  }
 
-    loadToken() {
-      if (this.jwtToken == null) {
-        this.jwtToken = localStorage.getItem('token');
-      }
-      return this.jwtToken;
-    }
+  login(user) {
+    return this.http.post(this.host + '/login', user, {observe: 'response'});
+  }
 
-    getEnsRef(ensRef): Observable<EnseignantReferent> {
-      return this.http.get<EnseignantReferent>(this.host + '/enseignantReferentByMail/' + ensRef.mail );
+  logout() {
+    localStorage.clear();
+    this.loggedIn.next(false);
+    this.redirectLoginPage();
+  }
+
+  inscrire(ensRef) {
+    return this.http.post(this.host + '/inscription', ensRef, {observe: 'response'});
+  }
+
+  redirectLoginPage() {
+    this.router.navigate(['/login']);
+  }
+
+  saveToken(jwt: string) {
+    localStorage.setItem('token', jwt);
+    this.loggedIn.next(true);
+  }
+
+  loadToken() {
+    if (this.jwtToken == null) {
+      this.jwtToken = localStorage.getItem('token');
     }
+    return this.jwtToken;
+  }
+
+  getEnsRefByMail(ensRef): Observable<EnseignantReferent> {
+    return this.http.get<EnseignantReferent>(this.host + '/enseignantReferentByMail/' + ensRef.mail);
+  }
+
+  getEnsRefById(ensRefId): Observable<EnseignantReferent> {
+    return this.http.get<EnseignantReferent>(this.host + '/enseignantReferent/' + ensRefId);
+  }
 }
