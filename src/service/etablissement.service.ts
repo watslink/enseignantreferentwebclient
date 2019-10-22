@@ -14,8 +14,8 @@ export class EtablissementService {
 
   }
 
-  getListEtablissement(): Observable<Etablissement[]> {
-    return this.http.get<Etablissement[]>(this.host + '/etablissements');
+  getListEtablissement(ensRefId: number): Observable<Etablissement[]> {
+    return this.http.get<Etablissement[]>(this.host + '/etablissements/' + ensRefId);
   }
   getEtablissement(id: number): Observable<Etablissement> {
     return this.http.get<Etablissement>(this.host + '/etablissement/' + id);

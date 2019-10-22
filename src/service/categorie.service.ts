@@ -14,8 +14,8 @@ export class CategorieService {
 
   }
 
-  getListCategorie(): Observable<Categorie[]> {
-    return this.http.get<Categorie[]>(this.host + '/categories');
+  getListCategorie(ensRefId: number): Observable<Categorie[]> {
+    return this.http.get<Categorie[]>(this.host + '/categories/' + ensRefId);
   }
   getCategorie(id: number): Observable<Categorie> {
     return this.http.get<Categorie>(this.host + '/categorie/' + id);

@@ -14,8 +14,8 @@ export class MaterielPedagoAdapteService {
 
   }
 
-  getListMaterielPedagoAdapte(): Observable<MaterielPedagoAdapte[]> {
-    return this.http.get<MaterielPedagoAdapte[]>(this.host + '/materielPedagoAdaptes');
+  getListMaterielPedagoAdapte(ensRefId: number): Observable<MaterielPedagoAdapte[]> {
+    return this.http.get<MaterielPedagoAdapte[]>(this.host + '/materielPedagoAdaptes/' + ensRefId);
   }
   getMaterielPedagoAdapte(id: number): Observable<MaterielPedagoAdapte> {
     return this.http.get<MaterielPedagoAdapte>(this.host + '/materielPedagoAdapte/' + id);

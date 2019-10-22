@@ -14,8 +14,8 @@ export class NiveauService {
 
   }
 
-  getListNiveau(): Observable<Niveau[]> {
-    return this.http.get<Niveau[]>(this.host + '/niveaux');
+  getListNiveau(ensRefId: number): Observable<Niveau[]> {
+    return this.http.get<Niveau[]>(this.host + '/niveaux/' + ensRefId);
   }
   getNiveau(id: number): Observable<Niveau> {
     return this.http.get<Niveau>(this.host + '/niveau/' + id);

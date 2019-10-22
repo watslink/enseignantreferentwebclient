@@ -14,8 +14,8 @@ export class PIALService {
 
   }
 
-  getListPIAL(): Observable<PIAL[]> {
-    return this.http.get<PIAL[]>(this.host + '/pials');
+  getListPIAL(ensRefId: number): Observable<PIAL[]> {
+    return this.http.get<PIAL[]>(this.host + '/pials/' + ensRefId);
   }
   getPIAL(id: number): Observable<PIAL> {
     return this.http.get<PIAL>(this.host + '/pial/' + id);

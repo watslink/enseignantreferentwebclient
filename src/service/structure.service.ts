@@ -14,8 +14,8 @@ export class StructureService {
 
   }
 
-  getListStructure(): Observable<Structure[]> {
-    return this.http.get<Structure[]>(this.host + '/structurePros');
+  getListStructure(ensRefId: number): Observable<Structure[]> {
+    return this.http.get<Structure[]>(this.host + '/structurePros/' + ensRefId);
   }
   getStructure(id: number): Observable<Structure> {
     return this.http.get<Structure>(this.host + '/structurePro/' + id);
