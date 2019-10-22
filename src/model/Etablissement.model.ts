@@ -1,5 +1,6 @@
 import {Adresse} from './Adresse.model';
 import {PIAL} from './PIAL.model';
+import {EnseignantReferent} from './EnseignantReferent.model';
 
 
 export class Etablissement {
@@ -11,6 +12,7 @@ export class Etablissement {
   public telephone: string;
   public adresse: Adresse;
   public pial: PIAL;
+  public enseignantReferent: EnseignantReferent;
 
   constructor() {}
 

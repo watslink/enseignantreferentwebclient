@@ -1,4 +1,5 @@
 import {Adresse} from './Adresse.model';
+import {EnseignantReferent} from './EnseignantReferent.model';
 
 export class Structure {
 
@@ -8,6 +9,7 @@ export class Structure {
   public mail: string;
   public telephone: string;
   public adresse: Adresse;
+  public enseignantReferent: EnseignantReferent;
 
   constructor() {}
 
