@@ -82,7 +82,7 @@ export class PialComponent implements OnInit, AfterViewInit {
     });
   }
   refresh() {
-    this.pialServ.getListPIAL().subscribe(
+    this.pialServ.getListPIAL(parseInt(localStorage.getItem('idEnsRef'), 10)).subscribe(
       element => {
         this.pialsData = element;
         this.mdbTable.setDataSource(this.pialsData);

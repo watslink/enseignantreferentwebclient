@@ -81,7 +81,7 @@ export class NiveauComponent implements OnInit, AfterViewInit {
     });
   }
   refresh() {
-    this.niveauxerv.getListNiveau().subscribe(
+    this.niveauxerv.getListNiveau(parseInt(localStorage.getItem('idEnsRef'), 10)).subscribe(
       element => {
         this.niveauxData = element;
         this.mdbTable.setDataSource(this.niveauxData);

@@ -80,7 +80,7 @@ export class MaterielPedagoAdapteComponent implements OnInit, AfterViewInit {
     });
   }
   refresh() {
-    this.materielPedagoAdapteServ.getListMaterielPedagoAdapte().subscribe(
+    this.materielPedagoAdapteServ.getListMaterielPedagoAdapte(parseInt(localStorage.getItem('idEnsRef'), 10)).subscribe(
       element => {
         this.materielPedagoAdaptesData = element;
         this.mdbTable.setDataSource(this.materielPedagoAdaptesData);

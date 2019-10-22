@@ -85,7 +85,7 @@ export class EtablissementComponent implements OnInit, AfterViewInit {
     });
   }
   refresh() {
-    this.etablissementServ.getListEtablissement().subscribe(
+    this.etablissementServ.getListEtablissement(parseInt(localStorage.getItem('idEnsRef'), 10)).subscribe(
       element => {
         this.etablissementsData = element;
         this.mdbTable.setDataSource(this.etablissementsData);

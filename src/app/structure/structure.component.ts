@@ -86,7 +86,7 @@ export class StructureComponent implements OnInit, AfterViewInit {
     });
   }
   refresh() {
-    this.structureServ.getListStructure().subscribe(
+    this.structureServ.getListStructure(parseInt(localStorage.getItem('idEnsRef'), 10)).subscribe(
       element => {
         this.structuresData = element;
         this.mdbTable.setDataSource(this.structuresData);

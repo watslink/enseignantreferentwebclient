@@ -81,7 +81,7 @@ export class CategorieComponent implements OnInit, AfterViewInit {
     });
   }
   refresh() {
-    this.categorieServ.getListCategorie().subscribe(
+    this.categorieServ.getListCategorie(parseInt(localStorage.getItem('idEnsRef'), 10)).subscribe(
       element => {
         this.categoriesData = element;
         this.mdbTable.setDataSource(this.categoriesData);
