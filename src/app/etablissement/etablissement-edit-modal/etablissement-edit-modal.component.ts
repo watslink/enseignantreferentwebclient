@@ -17,7 +17,7 @@ export class EtablissementEditModalComponent implements OnInit {
               private pialServ: PIALService) { }
 
   ngOnInit() {
-    this.pialServ.getListPIAL().subscribe( res => {
+    this.pialServ.getListPIAL(parseInt(localStorage.getItem('idEnsRef'), 10)).subscribe( res => {
       this.pials = res;
     });
   }

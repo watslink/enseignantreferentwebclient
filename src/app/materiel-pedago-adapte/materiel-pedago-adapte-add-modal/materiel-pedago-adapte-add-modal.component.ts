@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {MaterielPedagoAdapte} from '../../../model/MaterielPedagoAdapte.model';
 import {MDBModalRef} from 'angular-bootstrap-md';
 import {MaterielPedagoAdapteService} from '../../../service/materielPedagoAdapte.service';
-import {Adresse} from '../../../model/Adresse.model';
+import {AuthenticationService} from '../../../service/authentication.service';
 
 @Component({
   selector: 'app-materiel-pedago-adapte-add-modal',
@@ -11,14 +11,19 @@ import {Adresse} from '../../../model/Adresse.model';
 })
 export class MaterielPedagoAdapteAddModalComponent implements OnInit {
   materielPedagoAdapte: MaterielPedagoAdapte;
-  constructor(public modalRef: MDBModalRef, private materielPedagoAdapteServ: MaterielPedagoAdapteService) { }
+  constructor(public modalRef: MDBModalRef,
+              private materielPedagoAdapteServ: MaterielPedagoAdapteService,
+              private authServ: AuthenticationService) { }
 
   ngOnInit() {
     this.materielPedagoAdapte = new MaterielPedagoAdapte();
   }
 
   save() {
-    this.materielPedagoAdapteServ.addMaterielPedagoAdapte(this.materielPedagoAdapte).subscribe();
+    this.authServ.getEnsRefById(parseInt(localStorage.getItem('idEnsRef'), 10)).subscribe( res => {
+      this.materielPedagoAdapte.enseignantReferent = res;
+      this.materielPedagoAdapteServ.addMaterielPedagoAdapte(this.materielPedagoAdapte).subscribe();
+    });
     this.modalRef.hide();
   }
 }

@@ -5,6 +5,7 @@ import {EtablissementService} from '../../../service/etablissement.service';
 import {Adresse} from '../../../model/Adresse.model';
 import {PIAL} from '../../../model/PIAL.model';
 import {PIALService} from '../../../service/PIAL.service';
+import {AuthenticationService} from '../../../service/authentication.service';
 
 @Component({
   selector: 'app-etablissement-add-modal',
@@ -14,20 +15,25 @@ import {PIALService} from '../../../service/PIAL.service';
 export class EtablissementAddModalComponent implements OnInit {
   etablissement: Etablissement;
   pials: PIAL[];
-  constructor(public modalRef: MDBModalRef, private etablissementServ: EtablissementService,
-              private pialServ: PIALService) { }
+  constructor(public modalRef: MDBModalRef,
+              private etablissementServ: EtablissementService,
+              private pialServ: PIALService,
+              private authServ: AuthenticationService) { }
 
   ngOnInit() {
     this.etablissement = new Etablissement();
     this.etablissement.adresse = new Adresse();
     this.etablissement.pial = new PIAL();
-    this.pialServ.getListPIAL().subscribe( res => {
+    this.pialServ.getListPIAL(parseInt(localStorage.getItem('idEnsRef'), 10)).subscribe( res => {
       this.pials = res;
     });
   }
 
   save() {
-    this.etablissementServ.addEtablissement(this.etablissement).subscribe();
+    this.authServ.getEnsRefById(parseInt(localStorage.getItem('idEnsRef'), 10)).subscribe( res => {
+      this.etablissement.enseignantReferent = res;
+      this.etablissementServ.addEtablissement(this.etablissement).subscribe();
+    });
     this.modalRef.hide();
   }
 }

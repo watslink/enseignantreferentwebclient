@@ -3,6 +3,7 @@ import {Structure} from '../../../model/Structure.model';
 import {MDBModalRef} from 'angular-bootstrap-md';
 import {StructureService} from '../../../service/structure.service';
 import {Adresse} from '../../../model/Adresse.model';
+import {AuthenticationService} from '../../../service/authentication.service';
 
 @Component({
   selector: 'app-structure-add-modal',
@@ -11,7 +12,9 @@ import {Adresse} from '../../../model/Adresse.model';
 })
 export class StructureAddModalComponent implements OnInit {
   structure: Structure;
-  constructor(public modalRef: MDBModalRef, private structureServ: StructureService) { }
+  constructor(public modalRef: MDBModalRef,
+              private structureServ: StructureService,
+              private authServ: AuthenticationService) { }
 
   ngOnInit() {
     this.structure = new Structure();
@@ -19,7 +22,10 @@ export class StructureAddModalComponent implements OnInit {
   }
 
   save() {
-    this.structureServ.addStructure(this.structure).subscribe();
+    this.authServ.getEnsRefById(parseInt(localStorage.getItem('idEnsRef'), 10)).subscribe( res => {
+      this.structure.enseignantReferent = res;
+      this.structureServ.addStructure(this.structure).subscribe();
+    });
     this.modalRef.hide();
   }
 }
