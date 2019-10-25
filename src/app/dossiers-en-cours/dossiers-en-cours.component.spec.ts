@@ -1,8 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DossiersEnCoursComponent } from './dossier-en-cours.component';
+import { DossiersEnCoursComponent } from './dossiers-en-cours.component';
 
-describe('DossierEnCoursComponent', () => {
+describe('DossiersEnCoursComponent', () => {
   let component: DossiersEnCoursComponent;
   let fixture: ComponentFixture<DossiersEnCoursComponent>;
 
