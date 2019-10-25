@@ -14,20 +14,20 @@ export class EleveService {
 
   }
 
-  getListEleve(): Observable<Eleve[]> {
-    return this.http.get<Eleve[]>(this.host + '/eleves');
+  getListEleve(ensRefId: number): Observable<Eleve[]> {
+    return this.http.get<Eleve[]>(this.host + '/eleves/' + ensRefId);
   }
-  getListEleveInscrits(): Observable<Eleve[]> {
-    return this.http.get<Eleve[]>(this.host + '/eleves/inscrits');
+  getListEleveInscrits(ensRefId: number): Observable<Eleve[]> {
+    return this.http.get<Eleve[]>(this.host + '/eleves/inscrits/' + ensRefId);
   }
-  getListEleveNonInscrits(): Observable<Eleve[]> {
-    return this.http.get<Eleve[]>(this.host + '/eleves/noninscrits');
+  getListEleveNonInscrits(ensRefId: number): Observable<Eleve[]> {
+    return this.http.get<Eleve[]>(this.host + '/eleves/noninscrits/' + ensRefId);
   }
-  getListEleveVus(): Observable<Eleve[]> {
-    return this.http.get<Eleve[]>(this.host + '/eleves/vus');
+  getListEleveVus(ensRefId: number): Observable<Eleve[]> {
+    return this.http.get<Eleve[]>(this.host + '/eleves/vus/' + ensRefId);
   }
-  getListEleveNonVus(): Observable<Eleve[]> {
-    return this.http.get<Eleve[]>(this.host + '/eleves/nonvus');
+  getListEleveNonVus(ensRefId: number): Observable<Eleve[]> {
+    return this.http.get<Eleve[]>(this.host + '/eleves/nonvus/' + ensRefId);
   }
   getEleve(id: number): Observable<Eleve> {
     return this.http.get<Eleve>(this.host + '/eleve/' + id);

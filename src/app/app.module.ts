@@ -63,10 +63,17 @@ import { DocumentInscriptionRequisDeleteModalComponent } from './document-inscri
 // tslint:disable-next-line:max-line-length
 import { DocumentInscriptionRequisAddModalComponent } from './document-inscription-requis/document-inscription-requis-add-modal/document-inscription-requis-add-modal.component';
 import {DocumentInscriptionRequisService} from '../service/documentinscriptionrequis.service';
-
+import { DossiersEnCoursComponent } from './dossiers-en-cours/dossiers-en-cours.component';
+import { DossiersEnCoursEditModalComponent } from './dossiers-en-cours/dossiers-en-cours-edit-modal/dossiers-en-cours-edit-modal.component';
+// tslint:disable-next-line:max-line-length
+import { DossiersEnCoursDeleteModalComponent } from './dossiers-en-cours/dossiers-en-cours-delete-modal/dossiers-en-cours-delete-modal.component';
+import localeFr from '@angular/common/locales/fr';
+import {registerLocaleData} from '@angular/common';
+registerLocaleData(localeFr);
 
 
 const appRoutes: Routes = [
+  // PATH for "Gestion"
   {path: 'structure', component: StructureComponent},
   {path: 'pial', component: PialComponent},
   {path: 'etablissement', component: EtablissementComponent},
@@ -74,7 +81,10 @@ const appRoutes: Routes = [
   {path: 'aesh', component: AeshComponent},
   {path: 'materielPedagoAdpate', component: MaterielPedagoAdapteComponent},
   {path: 'categorie', component: CategorieComponent},
+  // PATH for "Inscription"
   {path: 'docRequis', component: DocumentInscriptionRequisComponent},
+  {path: 'dossierEnCours', component: DossiersEnCoursComponent},
+  // Other PATH
   {path: 'login', component: LoginComponent},
   {path: 'inscription', component: InscriptionComponent},
   {path: 'accueil', component: AccueilComponent},
@@ -121,7 +131,10 @@ const appRoutes: Routes = [
     DocumentInscriptionRequisComponent,
     DocumentInscriptionRequisEditModalComponent,
     DocumentInscriptionRequisDeleteModalComponent,
-    DocumentInscriptionRequisAddModalComponent
+    DocumentInscriptionRequisAddModalComponent,
+    DossiersEnCoursComponent,
+    DossiersEnCoursEditModalComponent,
+    DossiersEnCoursDeleteModalComponent
   ],
   entryComponents: [
     StructureDetailsModalComponent,
@@ -163,6 +176,7 @@ const appRoutes: Routes = [
     MDBBootstrapModule.forRoot(),
   ],
   providers: [
+    { provide: LOCALE_ID, useValue: 'fr-FR' },
     AuthenticationService,
     AuthInterceptor,
     {
