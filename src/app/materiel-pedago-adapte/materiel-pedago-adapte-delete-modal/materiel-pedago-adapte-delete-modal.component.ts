@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {MaterielPedagoAdapte} from '../../../model/MaterielPedagoAdapte.model';
 import {MDBModalRef} from 'angular-bootstrap-md';
 import {MaterielPedagoAdapteService} from '../../../service/materielPedagoAdapte.service';
-import {Subject} from 'rxjs';
+
 
 @Component({
   selector: 'app-materiel-pedago-adapte-delete-modal',

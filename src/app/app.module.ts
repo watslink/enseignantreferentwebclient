@@ -51,10 +51,18 @@ import { CategorieEditModalComponent } from './categorie/categorie-edit-modal/ca
 import { MaterielPedagoAdapteComponent } from './materiel-pedago-adapte/materiel-pedago-adapte.component';
 // tslint:disable-next-line:max-line-length
 import { MaterielPedagoAdapteAddModalComponent } from './materiel-pedago-adapte/materiel-pedago-adapte-add-modal/materiel-pedago-adapte-add-modal.component';
-// tslint:disable-next-line:max-line-length
+// tslint:disable-next-line:max-line-length max-line-length
 import { MaterielPedagoAdapteDeleteModalComponent } from './materiel-pedago-adapte/materiel-pedago-adapte-delete-modal/materiel-pedago-adapte-delete-modal.component';
 // tslint:disable-next-line:max-line-length
 import { MaterielPedagoAdapteEditModalComponent } from './materiel-pedago-adapte/materiel-pedago-adapte-edit-modal/materiel-pedago-adapte-edit-modal.component';
+import { DocumentInscriptionRequisComponent } from './document-inscription-requis/document-inscription-requis.component';
+// tslint:disable-next-line:max-line-length
+import { DocumentInscriptionRequisEditModalComponent } from './document-inscription-requis/document-inscription-requis-edit-modal/document-inscription-requis-edit-modal.component';
+// tslint:disable-next-line:max-line-length max-line-length
+import { DocumentInscriptionRequisDeleteModalComponent } from './document-inscription-requis/document-inscription-requis-delete-modal/document-inscription-requis-delete-modal.component';
+// tslint:disable-next-line:max-line-length
+import { DocumentInscriptionRequisAddModalComponent } from './document-inscription-requis/document-inscription-requis-add-modal/document-inscription-requis-add-modal.component';
+import {DocumentInscriptionRequisService} from '../service/documentinscriptionrequis.service';
 
 
 
@@ -66,6 +74,7 @@ const appRoutes: Routes = [
   {path: 'aesh', component: AeshComponent},
   {path: 'materielPedagoAdpate', component: MaterielPedagoAdapteComponent},
   {path: 'categorie', component: CategorieComponent},
+  {path: 'docRequis', component: DocumentInscriptionRequisComponent},
   {path: 'login', component: LoginComponent},
   {path: 'inscription', component: InscriptionComponent},
   {path: 'accueil', component: AccueilComponent},
@@ -108,7 +117,11 @@ const appRoutes: Routes = [
     MaterielPedagoAdapteComponent,
     MaterielPedagoAdapteAddModalComponent,
     MaterielPedagoAdapteDeleteModalComponent,
-    MaterielPedagoAdapteEditModalComponent
+    MaterielPedagoAdapteEditModalComponent,
+    DocumentInscriptionRequisComponent,
+    DocumentInscriptionRequisEditModalComponent,
+    DocumentInscriptionRequisDeleteModalComponent,
+    DocumentInscriptionRequisAddModalComponent
   ],
   entryComponents: [
     StructureDetailsModalComponent,
@@ -134,7 +147,10 @@ const appRoutes: Routes = [
     CategorieEditModalComponent,
     MaterielPedagoAdapteAddModalComponent,
     MaterielPedagoAdapteDeleteModalComponent,
-    MaterielPedagoAdapteEditModalComponent
+    MaterielPedagoAdapteEditModalComponent,
+    DocumentInscriptionRequisEditModalComponent,
+    DocumentInscriptionRequisDeleteModalComponent,
+    DocumentInscriptionRequisAddModalComponent
   ],
   imports: [
     BrowserModule,
@@ -161,7 +177,8 @@ const appRoutes: Routes = [
     EtablissementService,
     MaterielPedagoAdapteService,
     NiveauService,
-    PIALService
+    PIALService,
+    DocumentInscriptionRequisService
   ],
   bootstrap: [AppComponent]
 })

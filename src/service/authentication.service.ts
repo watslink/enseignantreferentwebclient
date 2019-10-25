@@ -20,6 +20,8 @@ export class AuthenticationService {
   get isLoggedIn() {
     if (localStorage.getItem('token') != null) {
       this.loggedIn.next(true);
+    } else {
+      this.loggedIn.next(false);
     }
     return this.loggedIn.asObservable();
   }
