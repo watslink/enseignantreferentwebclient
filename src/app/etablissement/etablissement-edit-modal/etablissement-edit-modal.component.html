@@ -9,19 +9,19 @@
     <div class="input-group-prepend">
       <span class="input-group-text" >Nom</span>
     </div>
-    <input [(ngModel)]="etablissement.nom" type="text" class="form-control" aria-label="Nom" aria-describedby="inputGroup-sizing-default" required>
+    <input [ngModel]="etablissement.nom" type="text" class="form-control" aria-label="Nom" aria-describedby="inputGroup-sizing-default" required>
   </div>
   <div class="input-group mb-3">
     <div class="input-group-prepend">
       <span class="input-group-text" >RNE</span>
     </div>
-    <input [(ngModel)]="etablissement.rne" type="text" class="form-control" aria-label="RNE" aria-describedby="inputGroup-sizing-default" required>
+    <input [ngModel]="etablissement.rne" type="text" class="form-control" aria-label="RNE" aria-describedby="inputGroup-sizing-default" required>
   </div>
   <div class="input-group mb-3">
   <div class="input-group-prepend">
     <span class="input-group-text" >PIAL</span>
   </div>
-    <select [(ngModel)]="etablissement.pial"  name="pial" class="browser-default custom-select form-control">
+    <select [ngModel]="etablissement.pial"  name="pial" class="browser-default custom-select form-control">
       <option  [ngValue]="null">Aucun</option>
       <option  *ngFor="let el of pials" [ngValue]="el" [selected]="etablissement.pial">{{el.nom}}</option>
     </select>
@@ -30,13 +30,13 @@
     <div class="input-group-prepend">
       <span class="input-group-text" >Téléphone</span>
     </div>
-    <input [(ngModel)]="etablissement.telephone" type="text" class="form-control" aria-label="Telephone" aria-describedby="inputGroup-sizing-default" required>
+    <input [ngModel]="etablissement.telephone" type="text" class="form-control" aria-label="Telephone" aria-describedby="inputGroup-sizing-default" required>
   </div>
   <div class="input-group mb-3">
     <div class="input-group-prepend">
       <span class="input-group-text" >Mail</span>
     </div>
-    <input [(ngModel)]="etablissement.mail" type="text" class="form-control" aria-label="Mail" aria-describedby="inputGroup-sizing-default" required>
+    <input [ngModel]="etablissement.mail" type="text" class="form-control" aria-label="Mail" aria-describedby="inputGroup-sizing-default" required>
   </div>
   <div class="divider-new">
     <h6 class="text-center font-weight-bold">Adresse</h6>
@@ -45,25 +45,25 @@
     <div class="input-group-prepend">
       <span class="input-group-text" >Numero</span>
     </div>
-    <input [(ngModel)]="etablissement.adresse.numero" type="text" class="form-control" aria-label="Numero" aria-describedby="inputGroup-sizing-default" required>
+    <input [ngModel]="etablissement.adresse.numero" type="text" class="form-control" aria-label="Numero" aria-describedby="inputGroup-sizing-default" required>
   </div>
   <div class="input-group mb-3">
     <div class="input-group-prepend">
       <span class="input-group-text" >Voie</span>
     </div>
-    <input [(ngModel)]="etablissement.adresse.voie" type="text" class="form-control" aria-label="Voie" aria-describedby="inputGroup-sizing-default" required>
+    <input [ngModel]="etablissement.adresse.voie" type="text" class="form-control" aria-label="Voie" aria-describedby="inputGroup-sizing-default" required>
   </div>
   <div class="input-group mb-3">
     <div class="input-group-prepend">
       <span class="input-group-text" >CP</span>
     </div>
-    <input [(ngModel)]="etablissement.adresse.codePostal" type="text" class="form-control" aria-label="CP" aria-describedby="inputGroup-sizing-default" required>
+    <input [ngModel]="etablissement.adresse.codePostal" type="text" class="form-control" aria-label="CP" aria-describedby="inputGroup-sizing-default" required>
   </div>
   <div class="input-group mb-3">
     <div class="input-group-prepend">
       <span class="input-group-text" >Ville</span>
     </div>
-    <input [(ngModel)]="etablissement.adresse.ville" type="text" class="form-control" aria-label="Ville" aria-describedby="inputGroup-sizing-default" required>
+    <input [ngModel]="etablissement.adresse.ville" type="text" class="form-control" aria-label="Ville" aria-describedby="inputGroup-sizing-default" required>
   </div>
 </div>
 

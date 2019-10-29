@@ -69,6 +69,9 @@ import { DossiersEnCoursEditModalComponent } from './dossiers-en-cours/dossiers-
 import { DossiersEnCoursDeleteModalComponent } from './dossiers-en-cours/dossiers-en-cours-delete-modal/dossiers-en-cours-delete-modal.component';
 import localeFr from '@angular/common/locales/fr';
 import {registerLocaleData} from '@angular/common';
+import { DossiersEnCoursAddModalComponent } from './dossiers-en-cours/dossiers-en-cours-add-modal/dossiers-en-cours-add-modal.component';
+// tslint:disable-next-line:max-line-length
+import { DossiersEnCoursValidateModalComponent } from './dossiers-en-cours/dossiers-en-cours-validate-modal/dossiers-en-cours-validate-modal.component';
 registerLocaleData(localeFr);
 
 
@@ -134,7 +137,9 @@ const appRoutes: Routes = [
     DocumentInscriptionRequisAddModalComponent,
     DossiersEnCoursComponent,
     DossiersEnCoursEditModalComponent,
-    DossiersEnCoursDeleteModalComponent
+    DossiersEnCoursDeleteModalComponent,
+    DossiersEnCoursAddModalComponent,
+    DossiersEnCoursValidateModalComponent
   ],
   entryComponents: [
     StructureDetailsModalComponent,
@@ -163,7 +168,10 @@ const appRoutes: Routes = [
     MaterielPedagoAdapteEditModalComponent,
     DocumentInscriptionRequisEditModalComponent,
     DocumentInscriptionRequisDeleteModalComponent,
-    DocumentInscriptionRequisAddModalComponent
+    DocumentInscriptionRequisAddModalComponent,
+    DossiersEnCoursEditModalComponent,
+    DossiersEnCoursDeleteModalComponent,
+    DossiersEnCoursAddModalComponent
   ],
   imports: [
     BrowserModule,

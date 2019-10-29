@@ -7,6 +7,10 @@ import {faPencilAlt, faTimes} from '@fortawesome/free-solid-svg-icons';
 import {DossiersEnCoursDeleteModalComponent} from './dossiers-en-cours-delete-modal/dossiers-en-cours-delete-modal.component';
 import {Eleve} from '../../model/Eleve.model';
 import {EleveService} from '../../service/eleve.service';
+import {NiveauAddModalComponent} from '../niveau/niveau-add-modal/niveau-add-modal.component';
+import {DossiersEnCoursAddModalComponent} from './dossiers-en-cours-add-modal/dossiers-en-cours-add-modal.component';
+import {DossiersEnCoursValidateModalComponent} from './dossiers-en-cours-validate-modal/dossiers-en-cours-validate-modal.component';
+import {faCheck} from '@fortawesome/free-solid-svg-icons/faCheck';
 
 
 
@@ -21,6 +25,7 @@ export class DossiersEnCoursComponent implements OnInit, AfterViewInit {
 
   fapencil = faPencilAlt;
   fadelete = faTimes;
+  favalidate = faCheck;
   public eleves: Eleve[] = [];
   public elevesData: Eleve[] = [];
   searchText = '';
@@ -67,6 +72,18 @@ export class DossiersEnCoursComponent implements OnInit, AfterViewInit {
   }
   openModalDelete(element: Eleve) {
     this.modalRef = this.modalService.show(DossiersEnCoursDeleteModalComponent, {data: {eleve: element}});
+    this.modalService.close.subscribe(res => {
+      this.refresh();
+    });
+  }
+  openModalNew() {
+    this.modalRef = this.modalService.show(DossiersEnCoursAddModalComponent);
+    this.modalService.close.subscribe(res => {
+      this.refresh();
+    });
+  }
+  openModalValidate(element: Eleve) {
+    this.modalRef = this.modalService.show(DossiersEnCoursValidateModalComponent, {data: {eleve: element}});
     this.modalService.close.subscribe(res => {
       this.refresh();
     });

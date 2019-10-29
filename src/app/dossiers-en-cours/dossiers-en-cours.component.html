@@ -11,6 +11,7 @@
     <mdb-card class="font-tableau"  >
       <mdb-card-header class="tableHeader cardheaderChalk">
         Dossiers en cours
+        <button mdbBtn outline="true" color="white" (click)="openModalNew()"   size="sm" mdbWavesEffect  class="rounded-pill actionBtn new">+</button>
       </mdb-card-header>
       <mdb-card-body>
         <table mdbTable small="true" #tableEl="mdbTable" hover="true" striped="true" class="z-depth-1 listTable">
@@ -29,6 +30,7 @@
             <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">{{el.dateNaissance | date:'d MMMM yyyy'}}</td>
             <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex" >
               <button mdbBtn (click)="openModalEdit(el)"   size="sm" mdbWavesEffect  class="mh-100 rounded-pill actionBtn update"><fa-icon [icon]="fapencil"></fa-icon></button>
+              <button mdbBtn (click)="openModalValidate(el)"  color="green" size="sm" mdbWavesEffect  class="mh-100 rounded-pill actionBtn delete"><fa-icon [icon]="favalidate"></fa-icon></button>
               <button mdbBtn (click)="openModalDelete(el)"  size="sm" mdbWavesEffect  class="mh-100 rounded-pill actionBtn delete"><fa-icon [icon]="fadelete"></fa-icon></button>
             </td>
           </tr>
