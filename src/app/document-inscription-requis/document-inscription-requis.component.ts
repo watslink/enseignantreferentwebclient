@@ -67,6 +67,9 @@ export class DocumentInscriptionRequisComponent implements OnInit, AfterViewInit
   }
   openModalEdit(element: DocumentInscriptionRequis) {
     this.modalRef = this.modalService.show(DocumentInscriptionRequisEditModalComponent, {data: {documentInscriptionRequis: element}});
+    this.modalService.close.subscribe(res => {
+      this.refresh();
+    });
   }
   openModalDelete(element: DocumentInscriptionRequis) {
     this.modalRef = this.modalService.show(DocumentInscriptionRequisDeleteModalComponent, {data: {documentInscriptionRequis: element}});

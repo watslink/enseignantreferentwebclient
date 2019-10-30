@@ -67,6 +67,9 @@ export class CategorieComponent implements OnInit, AfterViewInit {
   }
   openModalEdit(element: Categorie) {
     this.modalRef = this.modalService.show(CategorieEditModalComponent, {data: {categorie: element}});
+    this.modalService.close.subscribe(res => {
+      this.refresh();
+    });
   }
   openModalDelete(element: Categorie) {
     this.modalRef = this.modalService.show(CategorieDeleteModalComponent, {data: {categorie: element}});

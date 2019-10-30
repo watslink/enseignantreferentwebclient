@@ -11,7 +11,7 @@ import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {AuthInterceptor} from '../interceptor/AuthInterceptor';
 import {StructureService} from '../service/structure.service';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {NgbDateAdapter, NgbDateNativeAdapter, NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {AESHService} from '../service/AESH.service';
 import {CategorieService} from '../service/categorie.service';
 import {EleveService} from '../service/eleve.service';
@@ -185,6 +185,7 @@ const appRoutes: Routes = [
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'fr-FR' },
+    {provide: NgbDateAdapter, useClass: NgbDateNativeAdapter},
     AuthenticationService,
     AuthInterceptor,
     {

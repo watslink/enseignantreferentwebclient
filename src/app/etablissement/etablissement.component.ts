@@ -71,6 +71,9 @@ export class EtablissementComponent implements OnInit, AfterViewInit {
   }
   openModalEdit(element: Etablissement) {
     this.modalRef = this.modalService.show(EtablissementEditModalComponent, {data: {etablissement: element}});
+    this.modalService.close.subscribe(res => {
+      this.refresh();
+    });
   }
   openModalDelete(element: Etablissement) {
     this.modalRef = this.modalService.show(EtablissementDeleteModalComponent, {data: {etablissement: element}});

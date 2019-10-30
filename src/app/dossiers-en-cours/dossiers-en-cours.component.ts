@@ -69,6 +69,9 @@ export class DossiersEnCoursComponent implements OnInit, AfterViewInit {
   }
   openModalEdit(element: Eleve) {
     this.modalRef = this.modalService.show(DossiersEnCoursEditModalComponent, {data: {eleve: element}});
+    this.modalService.close.subscribe(res => {
+      this.refresh();
+    });
   }
   openModalDelete(element: Eleve) {
     this.modalRef = this.modalService.show(DossiersEnCoursDeleteModalComponent, {data: {eleve: element}});

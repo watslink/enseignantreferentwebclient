@@ -9,7 +9,7 @@
     <div class="input-group-prepend">
       <span class="input-group-text" >Nom</span>
     </div>
-    <input [ngModel]="categorie.nom" type="text" class="form-control" aria-label="Nom" aria-describedby="inputGroup-sizing-default" required>
+    <input [(ngModel)]="categorie.nom" type="text" class="form-control" aria-label="Nom" aria-describedby="inputGroup-sizing-default" required>
   </div>
   <div class="modal-footer justify-content-around">
     <button type="button" mdbBtn  rounded="true" mdbWavesEffect class="btn btn-success"  aria-label="Save" (click)="save()">Enregistrer</button>

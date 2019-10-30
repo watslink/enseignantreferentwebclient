@@ -72,6 +72,9 @@ export class StructureComponent implements OnInit, AfterViewInit {
   }
   openModalEdit(element: Structure) {
     this.modalRef = this.modalService.show(StructureEditModalComponent, {data: {structure: element}});
+    this.modalService.close.subscribe(res => {
+      this.refresh();
+    });
   }
   openModalDelete(element: Structure) {
     this.modalRef = this.modalService.show(StructureDeleteModalComponent, {data: {structure: element}});

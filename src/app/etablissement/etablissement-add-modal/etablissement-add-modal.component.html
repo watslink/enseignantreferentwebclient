@@ -21,9 +21,9 @@
     <div class="input-group-prepend">
       <span class="input-group-text" >PIAL</span>
     </div>
-    <select [(ngModel)]="etablissement.pial"  name="pial" class="browser-default custom-select form-control">
+    <select [(ngModel)]="etablissement.pial.pialId"  name="pial" class="browser-default custom-select form-control">
       <option  [ngValue]="null">Aucun</option>
-      <option  *ngFor="let el of pials" [ngValue]="el" [selected]="etablissement.pial">{{el.nom}}</option>
+      <option  *ngFor="let el of pials" [ngValue]="el.pialId" >{{el.nom}}</option>
     </select>
   </div>
   <div class="input-group mb-3">

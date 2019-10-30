@@ -66,6 +66,9 @@ export class MaterielPedagoAdapteComponent implements OnInit, AfterViewInit {
   }
   openModalEdit(element: MaterielPedagoAdapte) {
     this.modalRef = this.modalService.show(MaterielPedagoAdapteEditModalComponent, {data: {materielPedagoAdapte: element}});
+    this.modalService.close.subscribe(res => {
+      this.refresh();
+    });
   }
   openModalDelete(element: MaterielPedagoAdapte) {
     this.modalRef = this.modalService.show(MaterielPedagoAdapteDeleteModalComponent, {data: {materielPedagoAdapte: element}});

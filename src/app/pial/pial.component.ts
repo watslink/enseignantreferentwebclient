@@ -68,6 +68,9 @@ export class PialComponent implements OnInit, AfterViewInit {
   }
   openModalEdit(element: PIAL) {
     this.modalRef = this.modalService.show(PialEditModalComponent, {data: {pial: element}});
+    this.modalService.close.subscribe(res => {
+      this.refresh();
+    });
   }
   openModalDelete(element: PIAL) {
     this.modalRef = this.modalService.show(PialDeleteModalComponent, {data: {pial: element}});

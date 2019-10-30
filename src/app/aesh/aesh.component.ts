@@ -74,6 +74,9 @@ export class AeshComponent implements OnInit, AfterViewInit {
   }
   openModalEdit(element: AESH) {
     this.modalRef = this.modalService.show(AeshEditModalComponent, {data: {aesh: element}});
+    this.modalService.close.subscribe(res => {
+      this.refresh();
+    });
   }
   openModalDelete(element: AESH) {
     this.modalRef = this.modalService.show(AeshDeleteModalComponent, {data: {aesh: element}});

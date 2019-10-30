@@ -67,6 +67,9 @@ export class NiveauComponent implements OnInit, AfterViewInit {
   }
   openModalEdit(element: Niveau) {
     this.modalRef = this.modalService.show(NiveauEditModalComponent, {data: {niveau: element}});
+    this.modalService.close.subscribe(res => {
+      this.refresh();
+    });
   }
   openModalDelete(element: Niveau) {
     this.modalRef = this.modalService.show(NiveauDeleteModalComponent, {data: {niveau: element}});
