@@ -73,6 +73,9 @@ import { DossiersEnCoursAddModalComponent } from './dossiers-en-cours/dossiers-e
 // tslint:disable-next-line:max-line-length
 import { DossiersEnCoursValidateModalComponent } from './dossiers-en-cours/dossiers-en-cours-validate-modal/dossiers-en-cours-validate-modal.component';
 registerLocaleData(localeFr);
+import {FileUploadModule} from 'ng2-file-upload';
+import {FileService} from '../service/file.service';
+import { FileAddModalComponent } from './file/file-add-modal/file-add-modal.component';
 
 
 const appRoutes: Routes = [
@@ -139,7 +142,8 @@ const appRoutes: Routes = [
     DossiersEnCoursEditModalComponent,
     DossiersEnCoursDeleteModalComponent,
     DossiersEnCoursAddModalComponent,
-    DossiersEnCoursValidateModalComponent
+    DossiersEnCoursValidateModalComponent,
+    FileAddModalComponent
   ],
   entryComponents: [
     StructureDetailsModalComponent,
@@ -182,6 +186,7 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     FontAwesomeModule,
     MDBBootstrapModule.forRoot(),
+    FileUploadModule
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'fr-FR' },
@@ -201,7 +206,8 @@ const appRoutes: Routes = [
     MaterielPedagoAdapteService,
     NiveauService,
     PIALService,
-    DocumentInscriptionRequisService
+    DocumentInscriptionRequisService,
+    FileService
   ],
   bootstrap: [AppComponent]
 })
