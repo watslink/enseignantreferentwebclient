@@ -26,4 +26,7 @@ export class EtablissementEditModalComponent implements OnInit {
     this.etablissementServ.updateEtablissement(this.etablissement).subscribe();
     this.modalRef.hide();
   }
+  compareFnPial(p1: PIAL, p2: PIAL): boolean {
+    return p1 && p2 ? p1.pialId === p2.pialId : p1 === p2;
+  }
 }

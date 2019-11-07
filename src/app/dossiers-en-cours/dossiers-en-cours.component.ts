@@ -67,12 +67,6 @@ export class DossiersEnCoursComponent implements OnInit, AfterViewInit {
       this.mdbTable.setDataSource(this.mdbTable.getDataSource());
     }
   }
-  openModalEdit(element: Eleve) {
-    this.modalRef = this.modalService.show(DossiersEnCoursEditModalComponent, {data: {eleve: element}});
-    this.modalService.close.subscribe(res => {
-      this.refresh();
-    });
-  }
   openModalDelete(element: Eleve) {
     this.modalRef = this.modalService.show(DossiersEnCoursDeleteModalComponent, {data: {eleve: element}});
     this.modalService.close.subscribe(res => {
@@ -85,11 +79,8 @@ export class DossiersEnCoursComponent implements OnInit, AfterViewInit {
       this.refresh();
     });
   }
-  openModalValidate(element: Eleve) {
-    this.modalRef = this.modalService.show(DossiersEnCoursValidateModalComponent, {data: {eleve: element}});
-    this.modalService.close.subscribe(res => {
-      this.refresh();
-    });
+  openEleveEdit(element: Eleve) {
+    this.router.navigateByUrl('eleveEdit', {state: element});
   }
   refresh() {
     this.eleveServ.getListEleveNonInscrits(parseInt(localStorage.getItem('idEnsRef'), 10)).subscribe(

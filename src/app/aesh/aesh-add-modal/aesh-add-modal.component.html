@@ -33,9 +33,9 @@
     <div class="input-group-prepend">
       <span class="input-group-text" >PIAL</span>
     </div>
-    <select [(ngModel)]="aesh.pial.pialId"  name="pial" class="browser-default custom-select form-control">
+    <select [compareWith]="compareFnPial" [(ngModel)]="aesh.pial"  name="pial" class="browser-default custom-select form-control">
       <option  [ngValue]="null">Aucun</option>
-      <option  *ngFor="let el of pials" [ngValue]="el.pialId">{{el.nom}}</option>
+      <option  *ngFor="let el of pials" [ngValue]="el">{{el.nom}}</option>
     </select>
   </div>
 </div>

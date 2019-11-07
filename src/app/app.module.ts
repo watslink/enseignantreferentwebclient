@@ -76,6 +76,7 @@ registerLocaleData(localeFr);
 import {FileUploadModule} from 'ng2-file-upload';
 import {FileService} from '../service/file.service';
 import { FileAddModalComponent } from './file/file-add-modal/file-add-modal.component';
+import { EleveEditComponent } from './eleve/eleve-edit/eleve-edit.component';
 
 
 const appRoutes: Routes = [
@@ -87,6 +88,8 @@ const appRoutes: Routes = [
   {path: 'aesh', component: AeshComponent},
   {path: 'materielPedagoAdpate', component: MaterielPedagoAdapteComponent},
   {path: 'categorie', component: CategorieComponent},
+  // PATH for "Eleve"
+  {path: 'eleveEdit', component: EleveEditComponent},
   // PATH for "Inscription"
   {path: 'docRequis', component: DocumentInscriptionRequisComponent},
   {path: 'dossierEnCours', component: DossiersEnCoursComponent},
@@ -143,7 +146,8 @@ const appRoutes: Routes = [
     DossiersEnCoursDeleteModalComponent,
     DossiersEnCoursAddModalComponent,
     DossiersEnCoursValidateModalComponent,
-    FileAddModalComponent
+    FileAddModalComponent,
+    EleveEditComponent
   ],
   entryComponents: [
     StructureDetailsModalComponent,
