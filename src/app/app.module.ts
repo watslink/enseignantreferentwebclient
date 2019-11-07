@@ -175,7 +175,8 @@ const appRoutes: Routes = [
     DocumentInscriptionRequisAddModalComponent,
     DossiersEnCoursEditModalComponent,
     DossiersEnCoursDeleteModalComponent,
-    DossiersEnCoursAddModalComponent
+    DossiersEnCoursAddModalComponent,
+    FileAddModalComponent
   ],
   imports: [
     BrowserModule,

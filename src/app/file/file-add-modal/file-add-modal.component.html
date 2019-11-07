@@ -1,0 +1,18 @@
+<div class="modal-header newModalHeader">
+  <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+    <span aria-hidden="true">×</span>
+  </button>
+  <h4 class="modal-title w-100" id="myModalLabel">{{eleveDocRequis.documentInscriptionRequis.nom}}</h4>
+</div>
+<div class="modal-body -align-center">
+  <div class="form-group">
+    <input type="file"
+           id="file"
+            (change)="handleFileInput($event)">
+  </div>
+</div>
+<div class="modal-footer justify-content-around">
+  <button type="button" mdbBtn  rounded="true" mdbWavesEffect class="btn btn-success"  aria-label="Save" (click)="save()">Enregistrer</button>
+  <button type="button" mdbBtn  rounded="true" mdbWavesEffect class="btn btn-info"  aria-label="Close" (click)="modalRef.hide()">Retour</button>
+</div>
+
