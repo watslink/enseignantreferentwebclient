@@ -29,9 +29,9 @@ export class FileAddModalComponent implements OnInit {
       eleveDirectory, this.eleveDocRequis.documentInscriptionRequis.nom).subscribe( res => {
       for (const eleveDocReq of this.eleve.listEleveDocumentsInscriptionRequis) {
         if (eleveDocReq === this.eleveDocRequis) {
-          eleveDocReq.lien = res.body.toString();
-          console.log(this.eleve.listEleveDocumentsInscriptionRequis[0].lien);
-          // this.eleveService.updateEleve(this.eleve);
+          eleveDocReq.extension = this.fileToUpload.name.substr(this.fileToUpload.name.lastIndexOf ('.') + 1);
+          console.log(eleveDocReq.extension);
+          this.eleveService.updateEleve(this.eleve);
         }
       }
     });

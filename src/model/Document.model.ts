@@ -4,7 +4,7 @@ export class Document {
 
   public documentId: number;
   public nom: string;
-  public lien: string;
+  public extension: string;
   public categorie: Categorie;
 
   constructor() {}
