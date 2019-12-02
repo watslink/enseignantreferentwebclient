@@ -1,0 +1,35 @@
+<span class="d-flex justify-content-center eleveTitle font-tableau cardheaderChalk">
+    {{eleve.nom}} {{eleve.prenom}}
+  </span>
+<div class="row justify-content-around">
+  <mdb-card class="col-10 col-md-5 eleveEditCard">
+    <mdb-card-header class="eleveEditCardHeader">
+      Documents requis
+    </mdb-card-header>
+    <mdb-card-body>
+      <table>
+        <tr *ngFor="let el of eleve.listEleveDocumentsInscriptionRequis">
+          <td><span>{{el.documentInscriptionRequis.nom}}</span></td>
+          <td *ngIf="!el.ok">
+            <button type="button" mdbBtn  size="sm" rounded="true" mdbWavesEffect class="btn"  color="orange" aria-label="File" (click)="openFileModal(el)">Sélectionner</button>
+          </td>
+          <td *ngIf="el.ok">
+            <button type="button" mdbBtn  size="sm" rounded="true" mdbWavesEffect class="btn"  color="green" aria-label="File" (click)="openFileModal(el)">Modifier</button>
+          </td>
+          <td *ngIf="el.ok">
+            <button type="button" mdbBtn  size="sm" rounded="true" mdbWavesEffect class="btn"  color="blue" aria-label="File" (click)="viewFile(el)"><fa-icon [icon]="faView"></fa-icon></button>
+          </td>
+          <td *ngIf="el.ok">
+            <button type="button" mdbBtn  size="sm" rounded="true" mdbWavesEffect class="btn"  color="blue" aria-label="File" (click)="openFile(el)"><fa-icon [icon]="faDown"></fa-icon></button>
+          </td>
+        </tr>
+      </table>
+    </mdb-card-body>
+  </mdb-card>
+</div>
+<div class="row justify-content-around">
+
+</div>
+
+
+

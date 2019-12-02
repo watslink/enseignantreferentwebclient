@@ -36,6 +36,7 @@
     "ng2-bootstrap-modal": "^1.0.1",
     "ng2-file-upload": "^1.4.0",
     "ngb-modal": "^2.0.3",
+    "ngx-doc-viewer": "^0.1.24",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"

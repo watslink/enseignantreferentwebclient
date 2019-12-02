@@ -1,0 +1,101 @@
+<span class="d-flex justify-content-center eleveTitle font-tableau cardheaderChalk">
+    {{eleve.nom}} {{eleve.prenom}}
+  </span>
+  <div class="row justify-content-around">
+  <mdb-card class="col-10 col-md-5 eleveEditCard">
+    <mdb-card-header class="eleveEditCardHeader">
+      Informations
+    </mdb-card-header>
+  <mdb-card-body >
+  <div class="row justify-content-around">
+    <div class="col input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text">Nom</span>
+      </div>
+      <input [(ngModel)]="eleve.nom" type="text" class="form-control" aria-label="Nom" aria-describedby="inputGroup-sizing-default" required>
+    </div>
+    <div class="col input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" >Prénom</span>
+      </div>
+      <input [(ngModel)]="eleve.prenom" type="text" class="form-control" aria-label="Prenom" aria-describedby="inputGroup-sizing-default" required>
+    </div>
+  </div>
+  <div class="row justify-content-around">
+    <div class="col input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" >Date de naissance</span>
+      </div>
+      <input type="date" [(ngModel)]="eleve.dateNaissance" class="form-control" aria-label="DateNaissance" aria-describedby="inputGroup-sizing-default" required />
+    </div>
+  </div>
+  <div class="row justify-content-around">
+    <div class="col input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" >Niveau</span>
+      </div>
+      <select [(ngModel)]="eleve.niveau.niveauId" name="niveau"  class="form-control">
+        <option  [ngValue]="null">Aucun</option>
+        <option *ngFor="let el of niveaux" [ngValue]="el.niveauId">{{el.libelle}}</option>
+      </select>
+    </div>
+  </div>
+  <div class="row justify-content-around">
+    <div class="col input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" >Etablissement</span>
+      </div>
+      <select [compareWith]="compareFnEtablissement" [(ngModel)]="eleve.etablissement" name="etablissement"  class="form-control">
+        <option  [ngValue]="null">Aucun</option>
+        <option *ngFor="let el of etablissements" [ngValue]="el">{{el.nom}}</option>
+      </select>
+      <div class="input-group-append">
+        <button class="input-group-text" (click)="openModalAddEtablissement()" >+</button>
+      </div>
+    </div>
+  </div>
+    <div class="divider-new">
+      <h6 class="text-center font-weight-bold">AESH</h6>
+    </div>
+    <div class="row justify-content-around">
+      <div class="col input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" >AESH</span>
+        </div>
+        <select [compareWith]="compareFnAesh" [(ngModel)]="eleve.aesh" name="aesh"  class="form-control">
+          <option  [ngValue]="null">Aucun</option>
+          <option *ngFor="let el of aeshs" [ngValue]="el">{{el.nom}} {{el.prenom}}</option>
+        </select>
+        <div class="input-group-append">
+          <button class="input-group-text" (click)="openModalAddAesh()" >+</button>
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-around">
+      <div class="col input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" >Notification</span>
+        </div>
+        <input type="date" [(ngModel)]="eleve.dateNotificationAesh" class="form-control" aria-label="DateNotificationAesh" aria-describedby="inputGroup-sizing-default" required />
+      </div>
+    </div>
+  </mdb-card-body>
+  </mdb-card>
+    <mdb-card class="col-10 col-md-5 eleveEditCard">
+      <mdb-card-header class="eleveEditCardHeader">
+        Documents requis
+      </mdb-card-header>
+      <mdb-card-body>
+
+      </mdb-card-body>
+    </mdb-card>
+  </div>
+<div class="row justify-content-around">
+
+  </div>
+<div class="row justify-content-around">
+  <button type="button" mdbBtn  rounded="true" mdbWavesEffect class="btn btn-success"  aria-label="Save" (click)="save()">Enregistrer</button>
+  <button type="button" mdbBtn  rounded="true" mdbWavesEffect class="btn btn-info"  aria-label="Close" (click)="modalRef.hide()">Retour</button>
+</div>
+
+

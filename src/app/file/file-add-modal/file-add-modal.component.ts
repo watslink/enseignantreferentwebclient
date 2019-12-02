@@ -28,11 +28,12 @@ export class FileAddModalComponent implements OnInit {
     this.fileService.addFile(this.fileToUpload,
       eleveDirectory, this.eleveDocRequis.documentInscriptionRequis.nom).subscribe( res => {
       for (const eleveDocReq of this.eleve.listEleveDocumentsInscriptionRequis) {
-        if (eleveDocReq === this.eleveDocRequis) {
+        if (eleveDocReq.documentInscriptionRequis === this.eleveDocRequis.documentInscriptionRequis) {
           eleveDocReq.extension = this.fileToUpload.name.substr(this.fileToUpload.name.lastIndexOf ('.') + 1);
-          console.log(eleveDocReq.extension);
-          this.eleveService.updateEleve(this.eleve);
+          eleveDocReq.ok = true;
+          this.eleveService.updateEleve(this.eleve).subscribe();
         }
+
       }
     });
     this.modalRef.hide();

@@ -64,7 +64,6 @@ import { DocumentInscriptionRequisDeleteModalComponent } from './document-inscri
 import { DocumentInscriptionRequisAddModalComponent } from './document-inscription-requis/document-inscription-requis-add-modal/document-inscription-requis-add-modal.component';
 import {DocumentInscriptionRequisService} from '../service/documentinscriptionrequis.service';
 import { DossiersEnCoursComponent } from './dossiers-en-cours/dossiers-en-cours.component';
-import { DossiersEnCoursEditModalComponent } from './dossiers-en-cours/dossiers-en-cours-edit-modal/dossiers-en-cours-edit-modal.component';
 // tslint:disable-next-line:max-line-length
 import { DossiersEnCoursDeleteModalComponent } from './dossiers-en-cours/dossiers-en-cours-delete-modal/dossiers-en-cours-delete-modal.component';
 import localeFr from '@angular/common/locales/fr';
@@ -77,6 +76,9 @@ import {FileUploadModule} from 'ng2-file-upload';
 import {FileService} from '../service/file.service';
 import { FileAddModalComponent } from './file/file-add-modal/file-add-modal.component';
 import { EleveEditComponent } from './eleve/eleve-edit/eleve-edit.component';
+import {NgxDocViewerModule} from 'ngx-doc-viewer';
+import { FileViewerModalComponent } from './file/file-viewer-modal/file-viewer-modal.component';
+import { DossiersEnCoursDocRequisComponent } from './dossiers-en-cours/dossiers-en-cours-doc-requis/dossiers-en-cours-doc-requis.component';
 
 
 const appRoutes: Routes = [
@@ -93,6 +95,7 @@ const appRoutes: Routes = [
   // PATH for "Inscription"
   {path: 'docRequis', component: DocumentInscriptionRequisComponent},
   {path: 'dossierEnCours', component: DossiersEnCoursComponent},
+  {path: 'eleveDocRequisEdit', component: DossiersEnCoursDocRequisComponent},
   // Other PATH
   {path: 'login', component: LoginComponent},
   {path: 'inscription', component: InscriptionComponent},
@@ -142,12 +145,13 @@ const appRoutes: Routes = [
     DocumentInscriptionRequisDeleteModalComponent,
     DocumentInscriptionRequisAddModalComponent,
     DossiersEnCoursComponent,
-    DossiersEnCoursEditModalComponent,
     DossiersEnCoursDeleteModalComponent,
     DossiersEnCoursAddModalComponent,
     DossiersEnCoursValidateModalComponent,
     FileAddModalComponent,
-    EleveEditComponent
+    EleveEditComponent,
+    FileViewerModalComponent,
+    DossiersEnCoursDocRequisComponent
   ],
   entryComponents: [
     StructureDetailsModalComponent,
@@ -177,10 +181,10 @@ const appRoutes: Routes = [
     DocumentInscriptionRequisEditModalComponent,
     DocumentInscriptionRequisDeleteModalComponent,
     DocumentInscriptionRequisAddModalComponent,
-    DossiersEnCoursEditModalComponent,
     DossiersEnCoursDeleteModalComponent,
     DossiersEnCoursAddModalComponent,
-    FileAddModalComponent
+    FileAddModalComponent,
+    FileViewerModalComponent
   ],
   imports: [
     BrowserModule,
@@ -191,7 +195,8 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     FontAwesomeModule,
     MDBBootstrapModule.forRoot(),
-    FileUploadModule
+    FileUploadModule,
+    NgxDocViewerModule
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'fr-FR' },
