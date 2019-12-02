@@ -188,7 +188,8 @@ const appRoutes: Routes = [
     DossiersEnCoursDeleteModalComponent,
     DossiersEnCoursAddModalComponent,
     FileAddModalComponent,
-    FileViewerModalComponent
+    FileViewerModalComponent,
+    RepresentantLegalAddModalComponent
   ],
   imports: [
     BrowserModule,

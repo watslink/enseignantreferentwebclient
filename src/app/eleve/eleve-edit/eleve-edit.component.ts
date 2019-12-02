@@ -13,6 +13,8 @@ import {AeshAddModalComponent} from '../../aesh/aesh-add-modal/aesh-add-modal.co
 import {faPencilAlt, faTimes} from '@fortawesome/free-solid-svg-icons';
 import {faAddressCard} from '@fortawesome/free-solid-svg-icons/faAddressCard';
 import {RepresentantLegal} from '../../../model/RepresentantLegal.model';
+// tslint:disable-next-line:max-line-length
+import {RepresentantLegalAddModalComponent} from '../../representant-legal/representant-legal-add-modal/representant-legal-add-modal.component';
 
 @Component({
   selector: 'app-eleve-edit',
@@ -86,7 +88,8 @@ export class EleveEditComponent implements OnInit {
 
   }
   openModalRLAdd() {
-
+    this.modalRef = this.modalService.show(RepresentantLegalAddModalComponent, {data: {eleve: this.eleve}});
+    this.modalService.close.subscribe();
   }
 }
 
