@@ -10,6 +10,9 @@ import {EtablissementAddModalComponent} from '../../etablissement/etablissement-
 import {AESH} from '../../../model/AESH.model';
 import {AESHService} from '../../../service/AESH.service';
 import {AeshAddModalComponent} from '../../aesh/aesh-add-modal/aesh-add-modal.component';
+import {faPencilAlt, faTimes} from '@fortawesome/free-solid-svg-icons';
+import {faAddressCard} from '@fortawesome/free-solid-svg-icons/faAddressCard';
+import {RepresentantLegal} from '../../../model/RepresentantLegal.model';
 
 @Component({
   selector: 'app-eleve-edit',
@@ -23,6 +26,9 @@ export class EleveEditComponent implements OnInit {
   etablissements: Etablissement[];
   aeshs: AESH[];
   modalRef: MDBModalRef;
+  fapencil = faPencilAlt;
+  fadelete = faTimes;
+  facard = faAddressCard;
   constructor(private eleveServ: EleveService,
               private niveauServ: NiveauService,
               private etablissementServ: EtablissementService,
@@ -70,5 +76,17 @@ export class EleveEditComponent implements OnInit {
     return e1 && e2 ? e1.etablissementId === e2.etablissementId : e1 === e2;
   }
 
+  openModalRLDetails(element: RepresentantLegal) {
+
+  }
+  openModalRLEdit(element: RepresentantLegal) {
+
+  }
+  openModalRLDelete(element: RepresentantLegal) {
+
+  }
+  openModalRLAdd() {
+
+  }
 }
 

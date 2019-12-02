@@ -83,10 +83,19 @@
   </mdb-card>
     <mdb-card class="col-10 col-md-5 eleveEditCard">
       <mdb-card-header class="eleveEditCardHeader">
-        Documents requis
+        Représentants Legaux  <button mdbBtn (click)="openModalRLAdd()"   color="green" size="sm" mdbWavesEffect  class="mh-100 rounded-pill actionBtn details">+</button>
       </mdb-card-header>
       <mdb-card-body>
-
+        <table>
+          <tr *ngFor="let el of eleve.listRepresentantsLegaux">
+            <td><span>{{el.identite}}</span></td>
+            <td>
+              <button mdbBtn (click)="openModalRLDetails(el)"   size="sm" mdbWavesEffect  class="mh-100 rounded-pill actionBtn details"><fa-icon [icon]="facard"></fa-icon></button>
+              <button mdbBtn (click)="openModalRLEdit(el)"   size="sm" mdbWavesEffect  class="mh-100 rounded-pill actionBtn update"><fa-icon [icon]="fapencil"></fa-icon></button>
+              <button mdbBtn (click)="openModalRLDelete(el)"  size="sm" mdbWavesEffect  class="mh-100 rounded-pill actionBtn delete"><fa-icon [icon]="fadelete"></fa-icon></button>
+            </td>
+          </tr>
+        </table>
       </mdb-card-body>
     </mdb-card>
   </div>

@@ -79,6 +79,9 @@ import { EleveEditComponent } from './eleve/eleve-edit/eleve-edit.component';
 import {NgxDocViewerModule} from 'ngx-doc-viewer';
 import { FileViewerModalComponent } from './file/file-viewer-modal/file-viewer-modal.component';
 import { DossiersEnCoursDocRequisComponent } from './dossiers-en-cours/dossiers-en-cours-doc-requis/dossiers-en-cours-doc-requis.component';
+// tslint:disable-next-line:max-line-length
+import { RepresentantLegalAddModalComponent } from './representant-legal/representant-legal-add-modal/representant-legal-add-modal.component';
+import {RepresentantLegalService} from '../service/representantlegal.service';
 
 
 const appRoutes: Routes = [
@@ -151,7 +154,8 @@ const appRoutes: Routes = [
     FileAddModalComponent,
     EleveEditComponent,
     FileViewerModalComponent,
-    DossiersEnCoursDocRequisComponent
+    DossiersEnCoursDocRequisComponent,
+    RepresentantLegalAddModalComponent
   ],
   entryComponents: [
     StructureDetailsModalComponent,
@@ -217,7 +221,8 @@ const appRoutes: Routes = [
     NiveauService,
     PIALService,
     DocumentInscriptionRequisService,
-    FileService
+    FileService,
+    RepresentantLegalService
   ],
   bootstrap: [AppComponent]
 })
