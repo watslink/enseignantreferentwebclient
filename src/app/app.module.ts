@@ -84,6 +84,10 @@ import { RepresentantLegalAddModalComponent } from './representant-legal/represe
 import {RepresentantLegalService} from '../service/representantlegal.service';
 // tslint:disable-next-line:max-line-length
 import { RepresentantLegalDetailsModalComponent } from './representant-legal/representant-legal-details-modal/representant-legal-details-modal.component';
+// tslint:disable-next-line:max-line-length
+import { RepresentantLegalEditModalComponent } from './representant-legal/representant-legal-edit-modal/representant-legal-edit-modal.component';
+// tslint:disable-next-line:max-line-length
+import { RepresentantLegalDeleteModalComponent } from './representant-legal/representant-legal-delete-modal/representant-legal-delete-modal.component';
 
 
 const appRoutes: Routes = [
@@ -158,7 +162,9 @@ const appRoutes: Routes = [
     FileViewerModalComponent,
     DossiersEnCoursDocRequisComponent,
     RepresentantLegalAddModalComponent,
-    RepresentantLegalDetailsModalComponent
+    RepresentantLegalDetailsModalComponent,
+    RepresentantLegalEditModalComponent,
+    RepresentantLegalDeleteModalComponent
   ],
   entryComponents: [
     StructureDetailsModalComponent,
@@ -193,7 +199,9 @@ const appRoutes: Routes = [
     FileAddModalComponent,
     FileViewerModalComponent,
     RepresentantLegalAddModalComponent,
-    RepresentantLegalDetailsModalComponent
+    RepresentantLegalDetailsModalComponent,
+    RepresentantLegalEditModalComponent,
+    RepresentantLegalDeleteModalComponent
   ],
   imports: [
     BrowserModule,

@@ -10,7 +10,7 @@ import {EleveDocumentInscriptionRequis} from './EleveDocumentInscriptionRequis.m
 
 export class Eleve {
 
-  public EleveId: number;
+  public eleveId: number;
   public nom: string;
   public prenom: string;
   public dateNaissance: Date;

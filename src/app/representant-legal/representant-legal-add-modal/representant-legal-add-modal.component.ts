@@ -5,6 +5,7 @@ import {RepresentantLegalService} from '../../../service/representantlegal.servi
 import {Adresse} from '../../../model/Adresse.model';
 import {AuthenticationService} from '../../../service/authentication.service';
 import {Eleve} from '../../../model/Eleve.model';
+import {EleveService} from '../../../service/eleve.service';
 
 @Component({
   selector: 'app-representant-legal-add-modal',
@@ -15,7 +16,7 @@ export class RepresentantLegalAddModalComponent implements OnInit {
   eleve: Eleve;
   representantLegal: RepresentantLegal;
   constructor(public modalRef: MDBModalRef,
-              private representantLegalServ: RepresentantLegalService,
+              private eleveServ: EleveService,
               private authServ: AuthenticationService) { }
 
   ngOnInit() {
@@ -26,7 +27,8 @@ export class RepresentantLegalAddModalComponent implements OnInit {
   save() {
     this.authServ.getEnsRefById(parseInt(localStorage.getItem('idEnsRef'), 10)).subscribe( res => {
       this.representantLegal.enseignantReferent = res;
-      this.representantLegalServ.addRepresentantLegal(this.representantLegal).subscribe();
+      this.eleve.listRepresentantsLegaux.push(this.representantLegal);
+      this.eleveServ.updateEleve(this.eleve).subscribe();
     });
     this.modalRef.hide();
   }

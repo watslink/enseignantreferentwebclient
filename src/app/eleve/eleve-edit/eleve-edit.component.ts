@@ -18,6 +18,8 @@ import {RepresentantLegalAddModalComponent} from '../../representant-legal/repre
 // tslint:disable-next-line:max-line-length
 import {RepresentantLegalDetailsModalComponent} from '../../representant-legal/representant-legal-details-modal/representant-legal-details-modal.component';
 import {RepresentantLegalService} from '../../../service/representantlegal.service';
+// tslint:disable-next-line:max-line-length
+import {RepresentantLegalDeleteModalComponent} from '../../representant-legal/representant-legal-delete-modal/representant-legal-delete-modal.component';
 
 @Component({
   selector: 'app-eleve-edit',
@@ -30,8 +32,6 @@ export class EleveEditComponent implements OnInit {
   niveaux: Niveau[];
   etablissements: Etablissement[];
   aeshs: AESH[];
-  representants: RepresentantLegal[];
-  representantAdded: RepresentantLegal;
   modalRef: MDBModalRef;
   fapencil = faPencilAlt;
   fadelete = faTimes;
@@ -44,8 +44,8 @@ export class EleveEditComponent implements OnInit {
               private modalService: MDBModalService) { }
 
   ngOnInit() {
-    this.representantAdded = null;
     this.eleve = history.state;
+    console.log(this.eleve.eleveId);
     this.niveauServ.getListNiveau(parseInt(localStorage.getItem('idEnsRef'), 10)).subscribe( res => {
       this.niveaux = res;
     });
@@ -54,9 +54,6 @@ export class EleveEditComponent implements OnInit {
     });
     this.aeshServ.getListAESH(parseInt(localStorage.getItem('idEnsRef'), 10)).subscribe( res => {
       this.aeshs = res;
-    });
-    this.representantLegalServ.getListRepresentantLegal(parseInt(localStorage.getItem('idEnsRef'), 10)).subscribe( res => {
-      this.representants = res;
     });
   }
 
@@ -95,18 +92,15 @@ export class EleveEditComponent implements OnInit {
 
   }
   openModalRLDelete(element: RepresentantLegal) {
-
-  }
-  openModalRLAdd() {
-    this.modalRef = this.modalService.show(RepresentantLegalAddModalComponent, {data: {eleve: this.eleve}});
+    this.modalRef = this.modalService.show(RepresentantLegalDeleteModalComponent, {data: {representantLegal: element}});
     this.modalService.close.subscribe(res => {
-      this.representantLegalServ.getListRepresentantLegal(parseInt(localStorage.getItem('idEnsRef'), 10)).subscribe( res2 => {
-        this.representants = res2;
+      this.eleveServ.getEleve(this.eleve.eleveId).subscribe( res2 => {
+        this.eleve = res2;
       });
     });
   }
-  addRepresentant() {
-    this.eleve.listRepresentantsLegaux.push(this.representantAdded);
+  openModalRLAdd() {
+    this.modalRef = this.modalService.show(RepresentantLegalAddModalComponent, {data: {eleve: this.eleve}});
   }
 }
 
