@@ -1,0 +1,20 @@
+<div class="modal-header infoModalHeader">
+  <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+    <span aria-hidden="true">×</span>
+  </button>
+  <h4 class="modal-title w-100" id="myModalLabel">{{representantLegal.identite}} </h4>
+</div>
+<div class="modal-body -align-center">
+  <div class="card" >
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item"><fa-icon [icon]="fatel"></fa-icon> {{representantLegal.telephone}}</li>
+      <li class="list-group-item"><fa-icon [icon]="famail"></fa-icon><a href="mailto:{{representantLegal.mail}}"> {{representantLegal.mail}}</a> </li>
+      <li class="list-group-item"><fa-icon [icon]="faAdres"></fa-icon> {{representantLegal.adresse.numero}}, {{representantLegal.adresse.voie}} {{representantLegal.adresse.codePostal}} {{representantLegal.adresse.ville}} </li>
+    </ul>
+  </div>
+</div>
+<div class="modal-footer">
+  <button type="button" mdbBtn  rounded="true" mdbWavesEffect class="btn btn-info" aria-label="Close" (click)="modalRef.hide()" >Retour</button>
+</div>
+
+

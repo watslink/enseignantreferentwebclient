@@ -15,6 +15,9 @@ import {faAddressCard} from '@fortawesome/free-solid-svg-icons/faAddressCard';
 import {RepresentantLegal} from '../../../model/RepresentantLegal.model';
 // tslint:disable-next-line:max-line-length
 import {RepresentantLegalAddModalComponent} from '../../representant-legal/representant-legal-add-modal/representant-legal-add-modal.component';
+// tslint:disable-next-line:max-line-length
+import {RepresentantLegalDetailsModalComponent} from '../../representant-legal/representant-legal-details-modal/representant-legal-details-modal.component';
+import {RepresentantLegalService} from '../../../service/representantlegal.service';
 
 @Component({
   selector: 'app-eleve-edit',
@@ -27,6 +30,8 @@ export class EleveEditComponent implements OnInit {
   niveaux: Niveau[];
   etablissements: Etablissement[];
   aeshs: AESH[];
+  representants: RepresentantLegal[];
+  representantAdded: RepresentantLegal;
   modalRef: MDBModalRef;
   fapencil = faPencilAlt;
   fadelete = faTimes;
@@ -35,9 +40,11 @@ export class EleveEditComponent implements OnInit {
               private niveauServ: NiveauService,
               private etablissementServ: EtablissementService,
               private aeshServ: AESHService,
+              private representantLegalServ: RepresentantLegalService,
               private modalService: MDBModalService) { }
 
   ngOnInit() {
+    this.representantAdded = null;
     this.eleve = history.state;
     this.niveauServ.getListNiveau(parseInt(localStorage.getItem('idEnsRef'), 10)).subscribe( res => {
       this.niveaux = res;
@@ -47,6 +54,9 @@ export class EleveEditComponent implements OnInit {
     });
     this.aeshServ.getListAESH(parseInt(localStorage.getItem('idEnsRef'), 10)).subscribe( res => {
       this.aeshs = res;
+    });
+    this.representantLegalServ.getListRepresentantLegal(parseInt(localStorage.getItem('idEnsRef'), 10)).subscribe( res => {
+      this.representants = res;
     });
   }
 
@@ -79,7 +89,7 @@ export class EleveEditComponent implements OnInit {
   }
 
   openModalRLDetails(element: RepresentantLegal) {
-
+    this.modalRef = this.modalService.show(RepresentantLegalDetailsModalComponent, {data: {representantLegal: element}});
   }
   openModalRLEdit(element: RepresentantLegal) {
 
@@ -89,7 +99,14 @@ export class EleveEditComponent implements OnInit {
   }
   openModalRLAdd() {
     this.modalRef = this.modalService.show(RepresentantLegalAddModalComponent, {data: {eleve: this.eleve}});
-    this.modalService.close.subscribe();
+    this.modalService.close.subscribe(res => {
+      this.representantLegalServ.getListRepresentantLegal(parseInt(localStorage.getItem('idEnsRef'), 10)).subscribe( res2 => {
+        this.representants = res2;
+      });
+    });
+  }
+  addRepresentant() {
+    this.eleve.listRepresentantsLegaux.push(this.representantAdded);
   }
 }
 

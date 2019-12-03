@@ -26,7 +26,7 @@ export class RepresentantLegalAddModalComponent implements OnInit {
   save() {
     this.authServ.getEnsRefById(parseInt(localStorage.getItem('idEnsRef'), 10)).subscribe( res => {
       this.representantLegal.enseignantReferent = res;
-      this.eleve.listRepresentantsLegaux.push(this.representantLegal);
+      this.representantLegalServ.addRepresentantLegal(this.representantLegal).subscribe();
     });
     this.modalRef.hide();
   }

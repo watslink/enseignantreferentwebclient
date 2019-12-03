@@ -83,9 +83,24 @@
   </mdb-card>
     <mdb-card class="col-10 col-md-5 eleveEditCard">
       <mdb-card-header class="eleveEditCardHeader">
-        Représentants Legaux  <button mdbBtn (click)="openModalRLAdd()"   color="green" size="sm" mdbWavesEffect  class="mh-100 rounded-pill actionBtn details">+</button>
+        Représentants Legaux
       </mdb-card-header>
       <mdb-card-body>
+        <div class="row justify-content-around">
+          <div class="col input-group mb-1">
+            <div class="input-group-prepend">
+              <span class="input-group-text" >Séléctionner:</span>
+            </div>
+            <select  [(ngModel)]="representantAdded" name="aesh"  class="form-control">
+              <option *ngFor="let el of representants" [ngValue]="el">{{el.identite}}</option>
+            </select>
+            <div class="input-group-append">
+              <button class="input-group-text" (click)="openModalRLAdd()" >+</button>
+            </div>
+          </div>
+          <button mdbBtn (click)="addRepresentant()"   size="sm" mdbWavesEffect  color="green" class="rounded-pill actionBtn">Ajouter</button>
+        </div>
+
         <table>
           <tr *ngFor="let el of eleve.listRepresentantsLegaux">
             <td><span>{{el.identite}}</span></td>
