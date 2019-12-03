@@ -2,8 +2,8 @@ import {Adresse} from './Adresse.model';
 import {EnseignantReferent} from './EnseignantReferent.model';
 
 
-export class RepresentantLegal {
 
+export class RepresentantLegal {
   public representantLegalId: number;
   public identite: string;
   public telephone: string;

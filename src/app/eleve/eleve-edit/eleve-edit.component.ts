@@ -20,6 +20,8 @@ import {RepresentantLegalDetailsModalComponent} from '../../representant-legal/r
 import {RepresentantLegalService} from '../../../service/representantlegal.service';
 // tslint:disable-next-line:max-line-length
 import {RepresentantLegalDeleteModalComponent} from '../../representant-legal/representant-legal-delete-modal/representant-legal-delete-modal.component';
+// tslint:disable-next-line:max-line-length
+import {RepresentantLegalEditModalComponent} from '../../representant-legal/representant-legal-edit-modal/representant-legal-edit-modal.component';
 
 @Component({
   selector: 'app-eleve-edit',
@@ -89,7 +91,12 @@ export class EleveEditComponent implements OnInit {
     this.modalRef = this.modalService.show(RepresentantLegalDetailsModalComponent, {data: {representantLegal: element}});
   }
   openModalRLEdit(element: RepresentantLegal) {
-
+    this.modalRef = this.modalService.show(RepresentantLegalEditModalComponent, {data: {representantLegal: element, eleve: this.eleve}});
+    this.modalService.close.subscribe(res => {
+      this.eleveServ.getEleve(this.eleve.eleveId).subscribe( res2 => {
+        this.eleve = res2;
+      });
+    });
   }
   openModalRLDelete(element: RepresentantLegal) {
     this.modalRef = this.modalService.show(RepresentantLegalDeleteModalComponent, {data: {representantLegal: element}});

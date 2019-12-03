@@ -34,3 +34,4 @@ export class RepresentantLegalAddModalComponent implements OnInit {
   }
 }
 
+
