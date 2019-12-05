@@ -31,7 +31,7 @@
             <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex" >
               <button mdbBtn (click)="openEleveEdit(el)" size="sm" mdbWavesEffect  class="mh-100 rounded-pill actionBtn update"><fa-icon [icon]="fapencil"></fa-icon></button>
               <button mdbBtn (click)="openDocRequisEdit(el)" size="sm" mdbWavesEffect color="grey" class="mh-100 rounded-pill actionBtn"><fa-icon [icon]="falist"></fa-icon></button>
-              <button mdbBtn (click)="validate(el)" size="sm" mdbWavesEffect  color="green" class="mh-100 rounded-pill actionBtn update"><fa-icon [icon]="favalidate"></fa-icon></button>
+              <button mdbBtn [disabled]="!checkIfCanValidate(el)" (click)="validate(el)" size="sm" mdbWavesEffect  color="green" class="mh-100 rounded-pill actionBtn update"><fa-icon [icon]="favalidate"></fa-icon></button>
               <button mdbBtn (click)="openModalDelete(el)"  size="sm" mdbWavesEffect  class="mh-100 rounded-pill actionBtn delete"><fa-icon [icon]="fadelete"></fa-icon></button>
             </td>
           </tr>

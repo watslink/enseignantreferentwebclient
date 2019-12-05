@@ -90,6 +90,14 @@ export class DossiersEnCoursComponent implements OnInit, AfterViewInit {
       this.refresh();
     });
   }
+  checkIfCanValidate(element: Eleve): boolean {
+    for ( const edir of element.listEleveDocumentsInscriptionRequis ) {
+      if (!edir.ok) {
+        return false;
+      }
+  }
+    return true;
+  }
   refresh() {
     this.eleveServ.getListEleveNonInscrits(parseInt(localStorage.getItem('idEnsRef'), 10)).subscribe(
       element => {

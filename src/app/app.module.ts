@@ -196,6 +196,7 @@ const appRoutes: Routes = [
     DocumentInscriptionRequisAddModalComponent,
     DossiersEnCoursDeleteModalComponent,
     DossiersEnCoursAddModalComponent,
+    DossiersEnCoursValidateModalComponent,
     FileAddModalComponent,
     FileViewerModalComponent,
     RepresentantLegalAddModalComponent,
