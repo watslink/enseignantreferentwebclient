@@ -1,9 +1,10 @@
 import {Structure} from './Structure.model';
 
 
+
 export class EleveStructure {
 
-  public structure: Structure;
+  public structurePro: Structure;
   public dateNotification: Date;
 
   constructor() {}

@@ -50,7 +50,7 @@
         <option *ngFor="let el of etablissements" [ngValue]="el">{{el.nom}}</option>
       </select>
       <div class="input-group-append">
-        <button class="input-group-text" (click)="openModalAddEtablissement()" >Nouveau...</button>
+        <button class="input-group-text" (click)="openModalAddEtablissement()" >...</button>
       </div>
     </div>
   </div>
@@ -67,7 +67,7 @@
           <option *ngFor="let el of aeshs" [ngValue]="el">{{el.nom}} {{el.prenom}}</option>
         </select>
         <div class="input-group-append">
-          <button class="input-group-text" (click)="openModalAddAesh()" >Nouveau...</button>
+          <button class="input-group-text" (click)="openModalAddAesh()" >...</button>
         </div>
       </div>
     </div>
@@ -108,24 +108,61 @@
     </mdb-card>
   </div>
 <div class="row justify-content-around">
-
-  </div>
-<div class="row justify-content-around">
   <mdb-card class="col-10 col-md-5 eleveEditCard">
     <mdb-card-header class="eleveEditCardHeader">
       Structures professionnelles
     </mdb-card-header>
-    <mdb-card-body >
-
-
+    <mdb-card-body>
+      <div class="row justify-content-around">
+          <div class="col input-group mb-3">
+            <select  [(ngModel)]="structureAdd" name="mat"  class="form-control">
+              <option   [ngValue]="null">Sélection...</option>
+              <option *ngFor="let el of structures" [ngValue]="el">{{el.nom}} / {{el.specialite}}</option>
+            </select>
+            <div class="input-group-append">
+              <button class="input-group-text" (click)="openModalAddStructure()" >...</button>
+            </div>
+          </div>
+      <button mdbBtn   (click)="addStructureToEleve()" size="sm" mdbWavesEffect  color="green" class="h-75 rounded-pill actionBtn" [disabled]="structureAdd==null">+</button>
+      </div>
+      <div class="row justify-content-around">
+          <div class="col input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" >Notification</span>
+            </div>
+            <input type="date" [(ngModel)]="dateStructureAdd" class="form-control" aria-label="DateNotificationStruct" aria-describedby="inputGroup-sizing-default" required />
+          </div>
+        </div>
+        <div class="row justify-content-around">
+          <table mdbTable small="true">
+            <thead>
+              <tr>
+                <th>Nom</th>
+                <th>Specialité</th>
+                <th>Fin</th>
+                <th>Retirer</th>
+              </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let st of eleve.listEleveStructurePros">
+              <td><span>{{st.structurePro.nom}}</span></td>
+              <td><span>{{st.structurePro.specialite}}</span></td>
+              <td><span>{{st.dateNotification}}</span></td>
+              <td>
+                <button mdbBtn (click)="removeStructureOfELeve(st)"  size="sm" mdbWavesEffect  class="mh-100 rounded-pill actionBtn delete">-</button>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
     </mdb-card-body>
   </mdb-card>
+
   <mdb-card class="col-10 col-md-5 eleveEditCard">
     <mdb-card-header class="eleveEditCardHeader">
       Materiels adaptés
     </mdb-card-header>
     <mdb-card-body>
-      <form #insForm = "ngForm" (ngSubmit)="addMaterielToEleve(insForm.value)">
       <div class="row justify-content-around">
       <div class="col input-group mb-3">
         <select  [(ngModel)]="materielAdd" name="mat"  class="form-control">
@@ -133,24 +170,31 @@
           <option *ngFor="let el of materiels" [ngValue]="el">{{el.nom}}</option>
         </select>
         <div class="input-group-append">
-          <button class="input-group-text" (click)="openModalAddMateriel()" >Nouveau...</button>
+          <button class="input-group-text" (click)="openModalAddMateriel()" >...</button>
         </div>
       </div>
-        <button mdbBtn   size="sm" mdbWavesEffect  color="green" class="submit h-75 rounded-pill actionBtn" [disabled]="materielAdd==null">+</button>
+        <button mdbBtn  (click)="addMaterielToEleve()"  size="sm" mdbWavesEffect  color="green" class="submit h-75 rounded-pill actionBtn" [disabled]="materielAdd==null">+</button>
         <div class="row justify-content-around">
     </div>
       </div>
       <div class="row justify-content-around">
-      <table>
+      <table mdbTable small="true">
+        <thead>
+        <tr>
+          <th>Nom</th>
+          <th>Retirer</th>
+        </tr>
+        </thead>
+        <tbody>
         <tr *ngFor="let el of eleve.listMaterielsPedagoAdaptes">
           <td><span>{{el.nom}}</span></td>
           <td>
             <button mdbBtn (click)="removeMaterielOfELeve(el)"  size="sm" mdbWavesEffect  class="mh-100 rounded-pill actionBtn delete">-</button>
           </td>
         </tr>
+        </tbody>
       </table>
       </div>
-      </form>
     </mdb-card-body>
   </mdb-card>
 </div>

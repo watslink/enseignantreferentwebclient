@@ -3,10 +3,10 @@ import {Etablissement} from './Etablissement.model';
 import {AESH} from './AESH.model';
 import {EnseignantReferent} from './EnseignantReferent.model';
 import {RepresentantLegal} from './RepresentantLegal.model';
-import {Structure} from './Structure.model';
 import {MaterielPedagoAdapte} from './MaterielPedagoAdapte.model';
 import {Document} from './Document.model';
 import {EleveDocumentInscriptionRequis} from './EleveDocumentInscriptionRequis.model';
+import {EleveStructure} from './EleveStructure.model';
 
 export class Eleve {
 
@@ -23,7 +23,7 @@ export class Eleve {
   public dateNotificationAesh: Date;
   public enseignantReferent: EnseignantReferent;
   public listRepresentantsLegaux: RepresentantLegal[];
-  public listStructurePros: Structure[];
+  public listEleveStructurePros: EleveStructure[];
   public listMaterielsPedagoAdaptes: MaterielPedagoAdapte[];
   public listDocuments: Document[];
   public listEleveDocumentsInscriptionRequis: EleveDocumentInscriptionRequis[];

@@ -28,6 +28,9 @@ import {StructureService} from '../../../service/structure.service';
 import {MaterielPedagoAdapteService} from '../../../service/materielPedagoAdapte.service';
 // tslint:disable-next-line:max-line-length
 import {MaterielPedagoAdapteAddModalComponent} from '../../materiel-pedago-adapte/materiel-pedago-adapte-add-modal/materiel-pedago-adapte-add-modal.component';
+import {EleveStructure} from '../../../model/EleveStructure.model';
+import {StructureAddModalComponent} from '../../structure/structure-add-modal/structure-add-modal.component';
+import {of} from 'rxjs';
 
 @Component({
   selector: 'app-eleve-edit',
@@ -41,6 +44,8 @@ export class EleveEditComponent implements OnInit {
   etablissements: Etablissement[];
   aeshs: AESH[];
   structures: Structure[];
+  structureAdd: Structure;
+  dateStructureAdd: Date;
   materiels: MaterielPedagoAdapte[];
   materielAdd: MaterielPedagoAdapte;
   modalRef: MDBModalRef;
@@ -59,6 +64,8 @@ export class EleveEditComponent implements OnInit {
   ngOnInit() {
     this.eleve = history.state;
     this.materielAdd = null;
+    this.structureAdd = null;
+    this.dateStructureAdd = null;
     this.niveauServ.getListNiveau(parseInt(localStorage.getItem('idEnsRef'), 10)).subscribe( res => {
       this.niveaux = res;
     });
@@ -141,15 +148,66 @@ export class EleveEditComponent implements OnInit {
     });
   }
 
-  addMaterielToEleve(materielAdapte) {
-    this.eleve.listMaterielsPedagoAdaptes.push(materielAdapte);
-    this.eleveServ.updateEleve(this.eleve).subscribe();
+  addMaterielToEleve() {
+    if (this.eleve.listMaterielsPedagoAdaptes === undefined) {
+      this.eleve.listMaterielsPedagoAdaptes = [];
+    }
+    let present = false;
+    for (const el of this.eleve.listMaterielsPedagoAdaptes) {
+      if (el.materielPedagoAdapteId === this.materielAdd.materielPedagoAdapteId) {
+        present = true;
+      }
+    }
+    if (!present) {
+      this.eleve.listMaterielsPedagoAdaptes.push(this.materielAdd);
+      this.eleveServ.updateEleve(this.eleve).subscribe();
+    }
   }
 
   removeMaterielOfELeve(el: MaterielPedagoAdapte) {
     const index: number = this.eleve.listMaterielsPedagoAdaptes.indexOf(el);
     if (index !== -1) {
       this.eleve.listMaterielsPedagoAdaptes.splice(index, 1);
+      this.eleveServ.updateEleve(this.eleve).subscribe();
+    }
+  }
+
+  addStructureToEleve() {
+    if (this.eleve.listEleveStructurePros === undefined) {
+      this.eleve.listEleveStructurePros = [];
+    }
+    let present = false;
+    for (const el of this.eleve.listEleveStructurePros) {
+      if (el.structurePro.structureProId === this.structureAdd.structureProId) {
+        present = true;
+        if (el.dateNotification !== this.dateStructureAdd) {
+          el.dateNotification = this.dateStructureAdd;
+          this.eleveServ.updateEleve(this.eleve).subscribe();
+        }
+      }
+    }
+    if (!present) {
+      const eleveStruc: EleveStructure = new EleveStructure();
+      eleveStruc.structurePro = this.structureAdd;
+      eleveStruc.dateNotification = this.dateStructureAdd;
+      this.eleve.listEleveStructurePros.push(eleveStruc);
+      this.eleveServ.updateEleve(this.eleve).subscribe();
+    }
+  }
+
+  openModalAddStructure() {
+    this.modalRef = this.modalService.show(StructureAddModalComponent);
+    this.modalService.close.subscribe(res => {
+      this.structureServ.getListStructure(parseInt(localStorage.getItem('idEnsRef'), 10)).subscribe( res2 => {
+        this.structures = res2;
+      });
+    });
+  }
+
+  removeStructureOfELeve(el: EleveStructure) {
+    const index: number = this.eleve.listEleveStructurePros.indexOf(el);
+    if (index !== -1) {
+      this.eleve.listEleveStructurePros.splice(index, 1);
       this.eleveServ.updateEleve(this.eleve).subscribe();
     }
   }
