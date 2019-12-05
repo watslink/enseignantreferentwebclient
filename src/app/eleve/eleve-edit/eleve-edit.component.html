@@ -50,7 +50,7 @@
         <option *ngFor="let el of etablissements" [ngValue]="el">{{el.nom}}</option>
       </select>
       <div class="input-group-append">
-        <button class="input-group-text" (click)="openModalAddEtablissement()" >+</button>
+        <button class="input-group-text" (click)="openModalAddEtablissement()" >Nouveau...</button>
       </div>
     </div>
   </div>
@@ -67,7 +67,7 @@
           <option *ngFor="let el of aeshs" [ngValue]="el">{{el.nom}} {{el.prenom}}</option>
         </select>
         <div class="input-group-append">
-          <button class="input-group-text" (click)="openModalAddAesh()" >+</button>
+          <button class="input-group-text" (click)="openModalAddAesh()" >Nouveau...</button>
         </div>
       </div>
     </div>
@@ -79,6 +79,9 @@
         <input type="date" [(ngModel)]="eleve.dateNotificationAesh" class="form-control" aria-label="DateNotificationAesh" aria-describedby="inputGroup-sizing-default" required />
       </div>
     </div>
+    <div class="row justify-content-around">
+      <button type="button" mdbBtn  rounded="true" mdbWavesEffect class="btn btn-success"  aria-label="Save" (click)="save()">Enregistrer</button>
+    </div>
   </mdb-card-body>
   </mdb-card>
     <mdb-card class="col-10 col-md-5 eleveEditCard">
@@ -87,9 +90,9 @@
       </mdb-card-header>
       <mdb-card-body>
         <div class="row justify-content-around">
-          <button mdbBtn (click)="openModalRLAdd()"   size="sm" mdbWavesEffect  color="green" class="rounded-pill actionBtn">Ajouter</button>
+          <button mdbBtn (click)="openModalRLAdd()"   size="sm" mdbWavesEffect  color="green" class="rounded-pill actionBtn">+</button>
         </div>
-
+        <div class="row justify-content-around">
         <table>
           <tr *ngFor="let el of eleve.listRepresentantsLegaux">
             <td><span>{{el.identite}}</span></td>
@@ -100,6 +103,7 @@
             </td>
           </tr>
         </table>
+        </div>
       </mdb-card-body>
     </mdb-card>
   </div>
@@ -107,8 +111,51 @@
 
   </div>
 <div class="row justify-content-around">
-  <button type="button" mdbBtn  rounded="true" mdbWavesEffect class="btn btn-success"  aria-label="Save" (click)="save()">Enregistrer</button>
-  <button type="button" mdbBtn  rounded="true" mdbWavesEffect class="btn btn-info"  aria-label="Close" (click)="modalRef.hide()">Retour</button>
+  <mdb-card class="col-10 col-md-5 eleveEditCard">
+    <mdb-card-header class="eleveEditCardHeader">
+      Structures professionnelles
+    </mdb-card-header>
+    <mdb-card-body >
+
+
+    </mdb-card-body>
+  </mdb-card>
+  <mdb-card class="col-10 col-md-5 eleveEditCard">
+    <mdb-card-header class="eleveEditCardHeader">
+      Materiels adaptés
+    </mdb-card-header>
+    <mdb-card-body>
+      <form #insForm = "ngForm" (ngSubmit)="addMaterielToEleve(insForm.value)">
+      <div class="row justify-content-around">
+      <div class="col input-group mb-3">
+        <select  [(ngModel)]="materielAdd" name="mat"  class="form-control">
+          <option   [ngValue]="null">Sélection...</option>
+          <option *ngFor="let el of materiels" [ngValue]="el">{{el.nom}}</option>
+        </select>
+        <div class="input-group-append">
+          <button class="input-group-text" (click)="openModalAddMateriel()" >Nouveau...</button>
+        </div>
+      </div>
+        <button mdbBtn   size="sm" mdbWavesEffect  color="green" class="submit h-75 rounded-pill actionBtn" [disabled]="materielAdd==null">+</button>
+        <div class="row justify-content-around">
+    </div>
+      </div>
+      <div class="row justify-content-around">
+      <table>
+        <tr *ngFor="let el of eleve.listMaterielsPedagoAdaptes">
+          <td><span>{{el.nom}}</span></td>
+          <td>
+            <button mdbBtn (click)="removeMaterielOfELeve(el)"  size="sm" mdbWavesEffect  class="mh-100 rounded-pill actionBtn delete">-</button>
+          </td>
+        </tr>
+      </table>
+      </div>
+      </form>
+    </mdb-card-body>
+  </mdb-card>
 </div>
+<div class="row justify-content-around">
+</div>
+
 
 

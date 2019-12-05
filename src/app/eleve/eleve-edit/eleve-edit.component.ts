@@ -22,6 +22,12 @@ import {RepresentantLegalService} from '../../../service/representantlegal.servi
 import {RepresentantLegalDeleteModalComponent} from '../../representant-legal/representant-legal-delete-modal/representant-legal-delete-modal.component';
 // tslint:disable-next-line:max-line-length
 import {RepresentantLegalEditModalComponent} from '../../representant-legal/representant-legal-edit-modal/representant-legal-edit-modal.component';
+import {Structure} from '../../../model/Structure.model';
+import {MaterielPedagoAdapte} from '../../../model/MaterielPedagoAdapte.model';
+import {StructureService} from '../../../service/structure.service';
+import {MaterielPedagoAdapteService} from '../../../service/materielPedagoAdapte.service';
+// tslint:disable-next-line:max-line-length
+import {MaterielPedagoAdapteAddModalComponent} from '../../materiel-pedago-adapte/materiel-pedago-adapte-add-modal/materiel-pedago-adapte-add-modal.component';
 
 @Component({
   selector: 'app-eleve-edit',
@@ -34,6 +40,9 @@ export class EleveEditComponent implements OnInit {
   niveaux: Niveau[];
   etablissements: Etablissement[];
   aeshs: AESH[];
+  structures: Structure[];
+  materiels: MaterielPedagoAdapte[];
+  materielAdd: MaterielPedagoAdapte;
   modalRef: MDBModalRef;
   fapencil = faPencilAlt;
   fadelete = faTimes;
@@ -42,12 +51,14 @@ export class EleveEditComponent implements OnInit {
               private niveauServ: NiveauService,
               private etablissementServ: EtablissementService,
               private aeshServ: AESHService,
+              private structureServ: StructureService,
+              private materielServ: MaterielPedagoAdapteService,
               private representantLegalServ: RepresentantLegalService,
               private modalService: MDBModalService) { }
 
   ngOnInit() {
     this.eleve = history.state;
-    console.log(this.eleve.eleveId);
+    this.materielAdd = null;
     this.niveauServ.getListNiveau(parseInt(localStorage.getItem('idEnsRef'), 10)).subscribe( res => {
       this.niveaux = res;
     });
@@ -56,6 +67,12 @@ export class EleveEditComponent implements OnInit {
     });
     this.aeshServ.getListAESH(parseInt(localStorage.getItem('idEnsRef'), 10)).subscribe( res => {
       this.aeshs = res;
+    });
+    this.structureServ.getListStructure(parseInt(localStorage.getItem('idEnsRef'), 10)).subscribe( res => {
+      this.structures = res;
+    });
+    this.materielServ.getListMaterielPedagoAdapte(parseInt(localStorage.getItem('idEnsRef'), 10)).subscribe( res => {
+      this.materiels = res;
     });
   }
 
@@ -108,6 +125,33 @@ export class EleveEditComponent implements OnInit {
   }
   openModalRLAdd() {
     this.modalRef = this.modalService.show(RepresentantLegalAddModalComponent, {data: {eleve: this.eleve}});
+    this.modalService.close.subscribe(res => {
+      this.eleveServ.getEleve(this.eleve.eleveId).subscribe( res2 => {
+        this.eleve = res2;
+      });
+    });
+  }
+
+  openModalAddMateriel() {
+    this.modalRef = this.modalService.show(MaterielPedagoAdapteAddModalComponent);
+    this.modalService.close.subscribe(res => {
+      this.materielServ.getListMaterielPedagoAdapte(parseInt(localStorage.getItem('idEnsRef'), 10)).subscribe( res2 => {
+        this.materiels = res2;
+      });
+    });
+  }
+
+  addMaterielToEleve(materielAdapte) {
+    this.eleve.listMaterielsPedagoAdaptes.push(materielAdapte);
+    this.eleveServ.updateEleve(this.eleve).subscribe();
+  }
+
+  removeMaterielOfELeve(el: MaterielPedagoAdapte) {
+    const index: number = this.eleve.listMaterielsPedagoAdaptes.indexOf(el);
+    if (index !== -1) {
+      this.eleve.listMaterielsPedagoAdaptes.splice(index, 1);
+      this.eleveServ.updateEleve(this.eleve).subscribe();
+    }
   }
 }
 

@@ -24,7 +24,7 @@ export class Eleve {
   public enseignantReferent: EnseignantReferent;
   public listRepresentantsLegaux: RepresentantLegal[];
   public listStructurePros: Structure[];
-  public listMaterielPedagoAdaptes: MaterielPedagoAdapte[];
+  public listMaterielsPedagoAdaptes: MaterielPedagoAdapte[];
   public listDocuments: Document[];
   public listEleveDocumentsInscriptionRequis: EleveDocumentInscriptionRequis[];
 
