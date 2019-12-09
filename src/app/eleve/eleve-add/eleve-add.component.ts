@@ -32,6 +32,7 @@ import {EleveStructure} from '../../../model/EleveStructure.model';
 import {StructureAddModalComponent} from '../../structure/structure-add-modal/structure-add-modal.component';
 import {AuthenticationService} from '../../../service/authentication.service';
 import {EleveDocumentInscriptionRequis} from '../../../model/EleveDocumentInscriptionRequis.model';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-eleve-add',
@@ -61,7 +62,8 @@ export class EleveAddComponent implements OnInit {
               private materielServ: MaterielPedagoAdapteService,
               private representantLegalServ: RepresentantLegalService,
               private modalService: MDBModalService,
-              private authServ: AuthenticationService) { }
+              private authServ: AuthenticationService,
+              private location: Location) { }
 
   ngOnInit() {
     this.eleve = new Eleve();
@@ -99,6 +101,7 @@ export class EleveAddComponent implements OnInit {
 
   save() {
     this.eleveServ.addEleve(this.eleve).subscribe();
+    this.location.back();
   }
 
   openModalAddEtablissement() {

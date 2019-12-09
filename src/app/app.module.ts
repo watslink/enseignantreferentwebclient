@@ -88,6 +88,7 @@ import { RepresentantLegalEditModalComponent } from './representant-legal/repres
 // tslint:disable-next-line:max-line-length
 import { RepresentantLegalDeleteModalComponent } from './representant-legal/representant-legal-delete-modal/representant-legal-delete-modal.component';
 import { EleveAddComponent } from './eleve/eleve-add/eleve-add.component';
+import { ElevesComponent } from './eleve/eleves/eleves.component';
 
 
 const appRoutes: Routes = [
@@ -102,9 +103,10 @@ const appRoutes: Routes = [
   // PATH for "Eleve"
   {path: 'eleveEdit', component: EleveEditComponent},
   {path: 'eleveAdd', component: EleveAddComponent},
+  {path: 'eleves/:select', component: ElevesComponent, runGuardsAndResolvers: 'always'},
   // PATH for "Inscription"
   {path: 'docRequis', component: DocumentInscriptionRequisComponent},
-  {path: 'dossierEnCours', component: DossiersEnCoursComponent},
+  {path: 'dossierEnCours', component: DossiersEnCoursComponent, runGuardsAndResolvers: 'always'},
   {path: 'eleveDocRequisEdit', component: DossiersEnCoursDocRequisComponent},
   // Other PATH
   {path: 'login', component: LoginComponent},
@@ -165,7 +167,8 @@ const appRoutes: Routes = [
     RepresentantLegalDetailsModalComponent,
     RepresentantLegalEditModalComponent,
     RepresentantLegalDeleteModalComponent,
-    EleveAddComponent
+    EleveAddComponent,
+    ElevesComponent
   ],
   entryComponents: [
     StructureDetailsModalComponent,
@@ -206,7 +209,7 @@ const appRoutes: Routes = [
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(appRoutes),
+    RouterModule.forRoot(appRoutes, {onSameUrlNavigation: 'reload'}),
     HttpClientModule,
     NgbModule,
     FormsModule,

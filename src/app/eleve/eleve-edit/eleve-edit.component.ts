@@ -30,6 +30,7 @@ import {MaterielPedagoAdapteService} from '../../../service/materielPedagoAdapte
 import {MaterielPedagoAdapteAddModalComponent} from '../../materiel-pedago-adapte/materiel-pedago-adapte-add-modal/materiel-pedago-adapte-add-modal.component';
 import {EleveStructure} from '../../../model/EleveStructure.model';
 import {StructureAddModalComponent} from '../../structure/structure-add-modal/structure-add-modal.component';
+import {Location} from '@angular/common';
 
 
 @Component({
@@ -59,7 +60,9 @@ export class EleveEditComponent implements OnInit {
               private structureServ: StructureService,
               private materielServ: MaterielPedagoAdapteService,
               private representantLegalServ: RepresentantLegalService,
-              private modalService: MDBModalService) { }
+              private modalService: MDBModalService,
+              private location: Location
+              ) { }
 
   ngOnInit() {
     this.eleve = history.state;
@@ -85,6 +88,7 @@ export class EleveEditComponent implements OnInit {
 
   save() {
     this.eleveServ.updateEleve(this.eleve).subscribe();
+    this.location.back();
   }
 
   openModalAddEtablissement() {
