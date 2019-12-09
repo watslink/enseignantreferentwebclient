@@ -38,6 +38,7 @@
     "ngb-modal": "^2.0.3",
     "ngx-doc-viewer": "^0.1.24",
     "rxjs": "~6.4.0",
+    "serialize-javascript": "^2.1.1",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"
   },
