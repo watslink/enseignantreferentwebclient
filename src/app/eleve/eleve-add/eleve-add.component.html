@@ -1,0 +1,202 @@
+<span class="d-flex justify-content-center eleveTitle font-tableau cardheaderChalk">
+    Ajouter un eleve
+  </span>
+<div class="row justify-content-around">
+  <mdb-card class="col-10 col-md-5 eleveEditCard">
+    <mdb-card-header class="eleveEditCardHeader">
+      Informations
+    </mdb-card-header>
+    <mdb-card-body >
+      <div class="row justify-content-around">
+        <div class="col input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Nom</span>
+          </div>
+          <input [(ngModel)]="eleve.nom" type="text" class="form-control" aria-label="Nom" aria-describedby="inputGroup-sizing-default" required>
+        </div>
+        <div class="col input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" >Prénom</span>
+          </div>
+          <input [(ngModel)]="eleve.prenom" type="text" class="form-control" aria-label="Prenom" aria-describedby="inputGroup-sizing-default" required>
+        </div>
+      </div>
+      <div class="row justify-content-around">
+        <div class="col input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" >Date de naissance</span>
+          </div>
+          <input type="date" [(ngModel)]="eleve.dateNaissance" class="form-control" aria-label="DateNaissance" aria-describedby="inputGroup-sizing-default" required />
+        </div>
+      </div>
+      <div class="row justify-content-around">
+        <div class="col input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" >Niveau</span>
+          </div>
+          <select [compareWith]="compareFnNiveau" [(ngModel)]="eleve.niveau" name="niveau"  class="form-control">
+            <option  [ngValue]="null">Aucun</option>
+            <option *ngFor="let el of niveaux" [ngValue]="el">{{el.libelle}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="row justify-content-around">
+        <div class="col input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" >Etablissement</span>
+          </div>
+          <select [compareWith]="compareFnEtablissement" [(ngModel)]="eleve.etablissement" name="etablissement"  class="form-control">
+            <option  [ngValue]="null">Aucun</option>
+            <option *ngFor="let el of etablissements" [ngValue]="el">{{el.nom}}</option>
+          </select>
+          <div class="input-group-append">
+            <button class="input-group-text" (click)="openModalAddEtablissement()" >...</button>
+          </div>
+        </div>
+      </div>
+      <div class="divider-new">
+        <h6 class="text-center font-weight-bold">AESH</h6>
+      </div>
+      <div class="row justify-content-around">
+        <div class="col input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" >AESH</span>
+          </div>
+          <select [compareWith]="compareFnAesh" [(ngModel)]="eleve.aesh" name="aesh"  class="form-control">
+            <option  [ngValue]="null">Aucun</option>
+            <option *ngFor="let el of aeshs" [ngValue]="el">{{el.nom}} {{el.prenom}}</option>
+          </select>
+          <div class="input-group-append">
+            <button class="input-group-text" (click)="openModalAddAesh()" >...</button>
+          </div>
+        </div>
+      </div>
+      <div class="row justify-content-around">
+        <div class="col input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" >Notification</span>
+          </div>
+          <input type="date" [(ngModel)]="eleve.dateNotificationAesh" class="form-control" aria-label="DateNotificationAesh" aria-describedby="inputGroup-sizing-default" required />
+        </div>
+      </div>
+    </mdb-card-body>
+  </mdb-card>
+  <mdb-card class="col-10 col-md-5 eleveEditCard">
+    <mdb-card-header class="eleveEditCardHeader">
+      Représentants Legaux
+    </mdb-card-header>
+    <mdb-card-body>
+      <div class="row justify-content-around">
+        <button mdbBtn (click)="openModalRLAdd()"   size="sm" mdbWavesEffect  color="green" class="rounded-pill actionBtn">+</button>
+      </div>
+      <div class="row justify-content-around">
+        <table>
+          <tr *ngFor="let el of eleve.listRepresentantsLegaux">
+            <td><span>{{el.identite}}</span></td>
+            <td>
+              <button mdbBtn (click)="openModalRLDetails(el)"   size="sm" mdbWavesEffect  class="mh-100 rounded-pill actionBtn details"><fa-icon [icon]="facard"></fa-icon></button>
+              <button mdbBtn (click)="openModalRLEdit(el)"   size="sm" mdbWavesEffect  class="mh-100 rounded-pill actionBtn update"><fa-icon [icon]="fapencil"></fa-icon></button>
+              <button mdbBtn (click)="openModalRLDelete(el)"  size="sm" mdbWavesEffect  class="mh-100 rounded-pill actionBtn delete"><fa-icon [icon]="fadelete"></fa-icon></button>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </mdb-card-body>
+  </mdb-card>
+</div>
+<div class="row justify-content-around">
+  <mdb-card class="col-10 col-md-5 eleveEditCard">
+    <mdb-card-header class="eleveEditCardHeader">
+      Structures professionnelles
+    </mdb-card-header>
+    <mdb-card-body>
+      <div class="row justify-content-around">
+        <div class="col input-group mb-3">
+          <select  [(ngModel)]="structureAdd" name="mat"  class="form-control">
+            <option   [ngValue]="null">Sélection...</option>
+            <option *ngFor="let el of structures" [ngValue]="el">{{el.nom}} / {{el.specialite}}</option>
+          </select>
+          <div class="input-group-append">
+            <button class="input-group-text" (click)="openModalAddStructure()" >...</button>
+          </div>
+        </div>
+        <button mdbBtn   (click)="addStructureToEleve()" size="sm" mdbWavesEffect  color="green" class="h-75 rounded-pill actionBtn" [disabled]="structureAdd==null">+</button>
+      </div>
+      <div class="row justify-content-around">
+        <div class="col input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" >Notification</span>
+          </div>
+          <input type="date" [(ngModel)]="dateStructureAdd" class="form-control" aria-label="DateNotificationStruct" aria-describedby="inputGroup-sizing-default" required />
+        </div>
+      </div>
+      <div class="row justify-content-around">
+        <table mdbTable small="true">
+          <thead>
+          <tr>
+            <th>Nom</th>
+            <th>Specialité</th>
+            <th>Fin</th>
+            <th>Retirer</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let st of eleve.listEleveStructurePros">
+            <td><span>{{st.structurePro.nom}}</span></td>
+            <td><span>{{st.structurePro.specialite}}</span></td>
+            <td><span>{{st.dateNotification}}</span></td>
+            <td>
+              <button mdbBtn (click)="removeStructureOfELeve(st)"  size="sm" mdbWavesEffect  class="mh-100 rounded-pill actionBtn delete">-</button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </mdb-card-body>
+  </mdb-card>
+
+  <mdb-card class="col-10 col-md-5 eleveEditCard">
+    <mdb-card-header class="eleveEditCardHeader">
+      Materiels adaptés
+    </mdb-card-header>
+    <mdb-card-body>
+      <div class="row justify-content-around">
+        <div class="col input-group mb-3">
+          <select  [(ngModel)]="materielAdd" name="mat"  class="form-control">
+            <option   [ngValue]="null">Sélection...</option>
+            <option *ngFor="let el of materiels" [ngValue]="el">{{el.nom}}</option>
+          </select>
+          <div class="input-group-append">
+            <button class="input-group-text" (click)="openModalAddMateriel()" >...</button>
+          </div>
+        </div>
+        <button mdbBtn  (click)="addMaterielToEleve()"  size="sm" mdbWavesEffect  color="green" class="submit h-75 rounded-pill actionBtn" [disabled]="materielAdd==null">+</button>
+        <div class="row justify-content-around">
+        </div>
+      </div>
+      <div class="row justify-content-around">
+        <table mdbTable small="true">
+          <thead>
+          <tr>
+            <th>Nom</th>
+            <th>Retirer</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let el of eleve.listMaterielsPedagoAdaptes">
+            <td><span>{{el.nom}}</span></td>
+            <td>
+              <button mdbBtn (click)="removeMaterielOfELeve(el)"  size="sm" mdbWavesEffect  class="mh-100 rounded-pill actionBtn delete">-</button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </mdb-card-body>
+  </mdb-card>
+</div>
+<div class="row justify-content-around">
+</div>
+<div class="row justify-content-around">
+  <button type="button" mdbBtn  rounded="true" mdbWavesEffect class="btn btn-success"  aria-label="Save" (click)="save()">Enregistrer</button>
+</div>
