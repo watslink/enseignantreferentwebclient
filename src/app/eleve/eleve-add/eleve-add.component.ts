@@ -98,7 +98,6 @@ export class EleveAddComponent implements OnInit {
   }
 
   save() {
-    console.log(this.eleve);
     this.eleveServ.addEleve(this.eleve).subscribe();
   }
 
