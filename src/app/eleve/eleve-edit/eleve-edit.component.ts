@@ -30,7 +30,7 @@ import {MaterielPedagoAdapteService} from '../../../service/materielPedagoAdapte
 import {MaterielPedagoAdapteAddModalComponent} from '../../materiel-pedago-adapte/materiel-pedago-adapte-add-modal/materiel-pedago-adapte-add-modal.component';
 import {EleveStructure} from '../../../model/EleveStructure.model';
 import {StructureAddModalComponent} from '../../structure/structure-add-modal/structure-add-modal.component';
-import {of} from 'rxjs';
+
 
 @Component({
   selector: 'app-eleve-edit',
@@ -110,33 +110,21 @@ export class EleveEditComponent implements OnInit {
   compareFnEtablissement(e1: Etablissement, e2: Etablissement): boolean {
     return e1 && e2 ? e1.etablissementId === e2.etablissementId : e1 === e2;
   }
+  compareFnNiveau(n1: Niveau, n2: Niveau): boolean {
+    return n1 && n2 ? n1.niveauId === n2.niveauId : n1 === n2;
+  }
 
   openModalRLDetails(element: RepresentantLegal) {
     this.modalRef = this.modalService.show(RepresentantLegalDetailsModalComponent, {data: {representantLegal: element}});
   }
   openModalRLEdit(element: RepresentantLegal) {
     this.modalRef = this.modalService.show(RepresentantLegalEditModalComponent, {data: {representantLegal: element, eleve: this.eleve}});
-    this.modalService.close.subscribe(res => {
-      this.eleveServ.getEleve(this.eleve.eleveId).subscribe( res2 => {
-        this.eleve = res2;
-      });
-    });
   }
   openModalRLDelete(element: RepresentantLegal) {
-    this.modalRef = this.modalService.show(RepresentantLegalDeleteModalComponent, {data: {representantLegal: element}});
-    this.modalService.close.subscribe(res => {
-      this.eleveServ.getEleve(this.eleve.eleveId).subscribe( res2 => {
-        this.eleve = res2;
-      });
-    });
+    this.modalRef = this.modalService.show(RepresentantLegalDeleteModalComponent, {data: {representantLegal: element, eleve: this.eleve}});
   }
   openModalRLAdd() {
     this.modalRef = this.modalService.show(RepresentantLegalAddModalComponent, {data: {eleve: this.eleve}});
-    this.modalService.close.subscribe(res => {
-      this.eleveServ.getEleve(this.eleve.eleveId).subscribe( res2 => {
-        this.eleve = res2;
-      });
-    });
   }
 
   openModalAddMateriel() {
@@ -160,7 +148,6 @@ export class EleveEditComponent implements OnInit {
     }
     if (!present) {
       this.eleve.listMaterielsPedagoAdaptes.push(this.materielAdd);
-      this.eleveServ.updateEleve(this.eleve).subscribe();
     }
   }
 
@@ -168,7 +155,6 @@ export class EleveEditComponent implements OnInit {
     const index: number = this.eleve.listMaterielsPedagoAdaptes.indexOf(el);
     if (index !== -1) {
       this.eleve.listMaterielsPedagoAdaptes.splice(index, 1);
-      this.eleveServ.updateEleve(this.eleve).subscribe();
     }
   }
 
@@ -182,7 +168,6 @@ export class EleveEditComponent implements OnInit {
         present = true;
         if (el.dateNotification !== this.dateStructureAdd) {
           el.dateNotification = this.dateStructureAdd;
-          this.eleveServ.updateEleve(this.eleve).subscribe();
         }
       }
     }
@@ -191,7 +176,6 @@ export class EleveEditComponent implements OnInit {
       eleveStruc.structurePro = this.structureAdd;
       eleveStruc.dateNotification = this.dateStructureAdd;
       this.eleve.listEleveStructurePros.push(eleveStruc);
-      this.eleveServ.updateEleve(this.eleve).subscribe();
     }
   }
 
@@ -208,7 +192,6 @@ export class EleveEditComponent implements OnInit {
     const index: number = this.eleve.listEleveStructurePros.indexOf(el);
     if (index !== -1) {
       this.eleve.listEleveStructurePros.splice(index, 1);
-      this.eleveServ.updateEleve(this.eleve).subscribe();
     }
   }
 }

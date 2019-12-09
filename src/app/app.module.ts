@@ -68,7 +68,6 @@ import { DossiersEnCoursComponent } from './dossiers-en-cours/dossiers-en-cours.
 import { DossiersEnCoursDeleteModalComponent } from './dossiers-en-cours/dossiers-en-cours-delete-modal/dossiers-en-cours-delete-modal.component';
 import localeFr from '@angular/common/locales/fr';
 import {registerLocaleData} from '@angular/common';
-import { DossiersEnCoursAddModalComponent } from './dossiers-en-cours/dossiers-en-cours-add-modal/dossiers-en-cours-add-modal.component';
 // tslint:disable-next-line:max-line-length
 import { DossiersEnCoursValidateModalComponent } from './dossiers-en-cours/dossiers-en-cours-validate-modal/dossiers-en-cours-validate-modal.component';
 registerLocaleData(localeFr);
@@ -88,6 +87,7 @@ import { RepresentantLegalDetailsModalComponent } from './representant-legal/rep
 import { RepresentantLegalEditModalComponent } from './representant-legal/representant-legal-edit-modal/representant-legal-edit-modal.component';
 // tslint:disable-next-line:max-line-length
 import { RepresentantLegalDeleteModalComponent } from './representant-legal/representant-legal-delete-modal/representant-legal-delete-modal.component';
+import { EleveAddComponent } from './eleve/eleve-add/eleve-add.component';
 
 
 const appRoutes: Routes = [
@@ -101,6 +101,7 @@ const appRoutes: Routes = [
   {path: 'categorie', component: CategorieComponent},
   // PATH for "Eleve"
   {path: 'eleveEdit', component: EleveEditComponent},
+  {path: 'eleveAdd', component: EleveAddComponent},
   // PATH for "Inscription"
   {path: 'docRequis', component: DocumentInscriptionRequisComponent},
   {path: 'dossierEnCours', component: DossiersEnCoursComponent},
@@ -155,7 +156,6 @@ const appRoutes: Routes = [
     DocumentInscriptionRequisAddModalComponent,
     DossiersEnCoursComponent,
     DossiersEnCoursDeleteModalComponent,
-    DossiersEnCoursAddModalComponent,
     DossiersEnCoursValidateModalComponent,
     FileAddModalComponent,
     EleveEditComponent,
@@ -164,7 +164,8 @@ const appRoutes: Routes = [
     RepresentantLegalAddModalComponent,
     RepresentantLegalDetailsModalComponent,
     RepresentantLegalEditModalComponent,
-    RepresentantLegalDeleteModalComponent
+    RepresentantLegalDeleteModalComponent,
+    EleveAddComponent
   ],
   entryComponents: [
     StructureDetailsModalComponent,
@@ -195,7 +196,6 @@ const appRoutes: Routes = [
     DocumentInscriptionRequisDeleteModalComponent,
     DocumentInscriptionRequisAddModalComponent,
     DossiersEnCoursDeleteModalComponent,
-    DossiersEnCoursAddModalComponent,
     DossiersEnCoursValidateModalComponent,
     FileAddModalComponent,
     FileViewerModalComponent,

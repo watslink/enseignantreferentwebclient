@@ -34,9 +34,9 @@
       <div class="input-group-prepend">
         <span class="input-group-text" >Niveau</span>
       </div>
-      <select [(ngModel)]="eleve.niveau.niveauId" name="niveau"  class="form-control">
+      <select [compareWith]="compareFnNiveau" [(ngModel)]="eleve.niveau" name="niveau"  class="form-control">
         <option  [ngValue]="null">Aucun</option>
-        <option *ngFor="let el of niveaux" [ngValue]="el.niveauId">{{el.libelle}}</option>
+        <option *ngFor="let el of niveaux" [ngValue]="el">{{el.libelle}}</option>
       </select>
     </div>
   </div>
@@ -78,9 +78,6 @@
         </div>
         <input type="date" [(ngModel)]="eleve.dateNotificationAesh" class="form-control" aria-label="DateNotificationAesh" aria-describedby="inputGroup-sizing-default" required />
       </div>
-    </div>
-    <div class="row justify-content-around">
-      <button type="button" mdbBtn  rounded="true" mdbWavesEffect class="btn btn-success"  aria-label="Save" (click)="save()">Enregistrer</button>
     </div>
   </mdb-card-body>
   </mdb-card>
@@ -199,6 +196,9 @@
   </mdb-card>
 </div>
 <div class="row justify-content-around">
+</div>
+<div class="row justify-content-around">
+  <button type="button" mdbBtn  rounded="true" mdbWavesEffect class="btn btn-success"  aria-label="Save" (click)="save()">Enregistrer</button>
 </div>
 
 

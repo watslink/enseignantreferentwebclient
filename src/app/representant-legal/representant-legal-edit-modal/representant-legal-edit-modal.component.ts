@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {RepresentantLegal} from '../../../model/RepresentantLegal.model';
 import {MDBModalRef} from 'angular-bootstrap-md';
 import {Eleve} from '../../../model/Eleve.model';
-import {EleveService} from '../../../service/eleve.service';
+
 
 
 @Component({
@@ -14,7 +14,7 @@ export class RepresentantLegalEditModalComponent implements OnInit {
   eleve: Eleve;
   index: number;
   representantLegal: RepresentantLegal;
-  constructor(public modalRef: MDBModalRef, private eleveServ: EleveService) { }
+  constructor(public modalRef: MDBModalRef) { }
 
   ngOnInit() {
    this.index = this.eleve.listRepresentantsLegaux.indexOf(this.representantLegal);
@@ -22,7 +22,6 @@ export class RepresentantLegalEditModalComponent implements OnInit {
 
   save() {
     this.eleve.listRepresentantsLegaux[this.index] = this.representantLegal;
-    this.eleveServ.updateEleve(this.eleve).subscribe();
     this.modalRef.hide();
   }
 }

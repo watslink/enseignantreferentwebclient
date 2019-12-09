@@ -6,9 +6,9 @@ import {faClipboardList, faPencilAlt, faTimes} from '@fortawesome/free-solid-svg
 import {DossiersEnCoursDeleteModalComponent} from './dossiers-en-cours-delete-modal/dossiers-en-cours-delete-modal.component';
 import {Eleve} from '../../model/Eleve.model';
 import {EleveService} from '../../service/eleve.service';
-import {DossiersEnCoursAddModalComponent} from './dossiers-en-cours-add-modal/dossiers-en-cours-add-modal.component';
 import {DossiersEnCoursValidateModalComponent} from './dossiers-en-cours-validate-modal/dossiers-en-cours-validate-modal.component';
 import {faCheck} from '@fortawesome/free-solid-svg-icons/faCheck';
+import {EleveAddComponent} from '../eleve/eleve-add/eleve-add.component';
 
 
 
@@ -72,11 +72,8 @@ export class DossiersEnCoursComponent implements OnInit, AfterViewInit {
       this.refresh();
     });
   }
-  openModalNew() {
-    this.modalRef = this.modalService.show(DossiersEnCoursAddModalComponent);
-    this.modalService.close.subscribe(res => {
-      this.refresh();
-    });
+  openEleveAdd() {
+    this.router.navigateByUrl('eleveAdd');
   }
   openEleveEdit(element: Eleve) {
     this.router.navigateByUrl('eleveEdit', {state: element});
