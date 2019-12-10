@@ -11,6 +11,7 @@ import {FileService} from '../../../service/file.service';
 import {EleveDocumentInscriptionRequis} from '../../../model/EleveDocumentInscriptionRequis.model';
 import {FileAddModalComponent} from '../../file/file-add-modal/file-add-modal.component';
 import {FileViewerModalComponent} from '../../file/file-viewer-modal/file-viewer-modal.component';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-dossiers-en-cours-doc-requis',
@@ -25,10 +26,15 @@ export class DossiersEnCoursDocRequisComponent implements OnInit {
   faView = faSearch;
   constructor(private eleveServ: EleveService,
               private modalService: MDBModalService,
-              private fileService: FileService) { }
+              private fileService: FileService,
+              private location: Location) { }
 
   ngOnInit() {
     this.eleve = history.state;
+  }
+
+  back() {
+    this.location.back();
   }
   openFileModal(element: EleveDocumentInscriptionRequis) {
     this.modalRef = this.modalService.show(FileAddModalComponent, {data: {eleve: this.eleve, eleveDocRequis: element}});
