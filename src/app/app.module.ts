@@ -89,6 +89,7 @@ import { RepresentantLegalEditModalComponent } from './representant-legal/repres
 import { RepresentantLegalDeleteModalComponent } from './representant-legal/representant-legal-delete-modal/representant-legal-delete-modal.component';
 import { EleveAddComponent } from './eleve/eleve-add/eleve-add.component';
 import { ElevesComponent } from './eleve/eleves/eleves.component';
+import { EleveDeleteModalComponent } from './eleve/eleve-delete-modal/eleve-delete-modal.component';
 
 
 const appRoutes: Routes = [
@@ -168,7 +169,8 @@ const appRoutes: Routes = [
     RepresentantLegalEditModalComponent,
     RepresentantLegalDeleteModalComponent,
     EleveAddComponent,
-    ElevesComponent
+    ElevesComponent,
+    EleveDeleteModalComponent
   ],
   entryComponents: [
     StructureDetailsModalComponent,
@@ -205,7 +207,8 @@ const appRoutes: Routes = [
     RepresentantLegalAddModalComponent,
     RepresentantLegalDetailsModalComponent,
     RepresentantLegalEditModalComponent,
-    RepresentantLegalDeleteModalComponent
+    RepresentantLegalDeleteModalComponent,
+    EleveDeleteModalComponent
   ],
   imports: [
     BrowserModule,

@@ -18,8 +18,7 @@ import {faAddressCard} from '@fortawesome/free-solid-svg-icons/faAddressCard';
 import {Eleve} from '../../../model/Eleve.model';
 import {EleveService} from '../../../service/eleve.service';
 import {AuthenticationService} from '../../../service/authentication.service';
-import {PIAL} from '../../../model/PIAL.model';
-import {DatePipe} from '@angular/common';
+import {EleveDeleteModalComponent} from '../eleve-delete-modal/eleve-delete-modal.component';
 
 
 
@@ -102,6 +101,10 @@ export class ElevesComponent implements OnInit, AfterViewInit, OnDestroy {
   openEleveEdit(element: Eleve) {
   }
   openModalDelete(element: Eleve) {
+    this.modalRef = this.modalService.show(EleveDeleteModalComponent, {data: {eleve: element}});
+    this.modalService.close.subscribe(res => {
+      this.ngOnInit();
+    });
   }
   refreshAll() {
     this.eleveServ.getListEleveInscrits(parseInt(localStorage.getItem('idEnsRef'), 10)).subscribe(

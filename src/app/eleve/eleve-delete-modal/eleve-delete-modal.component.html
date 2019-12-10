@@ -1,0 +1,13 @@
+<div class="modal-header dangerModalHeader">
+  <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+    <span aria-hidden="true">×</span>
+  </button>
+  <h4 class="modal-title w-100 " id="myModalLabel">Suppression</h4>
+</div>
+<div class="modal-body -align-center">
+  Voulez-vous supprimer l'élève<b>"{{eleve.nom}} {{eleve.prenom}} "</b> définitivement?
+</div>
+<div class="modal-footer">
+  <button type="button" mdbBtn  rounded="true" mdbWavesEffect class="btn btn-danger" aria-label="Delete" (click)="delete()" >Supprimer</button>
+  <button type="button" mdbBtn  rounded="true" mdbWavesEffect class="btn btn-info" aria-label="Close" (click)="modalRef.hide()" >Retour</button>
+</div>
