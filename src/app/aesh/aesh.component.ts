@@ -12,6 +12,7 @@ import {Structure} from '../../model/Structure.model';
 import {StructureDetailsModalComponent} from '../structure/structure-details-modal/structure-details-modal.component';
 import {faAddressCard} from '@fortawesome/free-solid-svg-icons/faAddressCard';
 import {AeshDetailsModalComponent} from './aesh-details-modal/aesh-details-modal.component';
+import {PIAL} from '../../model/PIAL.model';
 
 
 
@@ -94,6 +95,12 @@ export class AeshComponent implements OnInit, AfterViewInit {
     this.aeshServ.getListAESH(parseInt(localStorage.getItem('idEnsRef'), 10)).subscribe(
       element => {
         this.aeshsData = element;
+        for (const aesh of this.aeshsData) {
+          if (aesh.pial === null) {
+            aesh.pial = new PIAL();
+            aesh.pial.nom = 'Aucun';
+          }
+        }
         this.mdbTable.setDataSource(this.aeshsData);
         this.aeshs = this.mdbTable.getDataSource();
         this.previous = this.mdbTable.getDataSource();

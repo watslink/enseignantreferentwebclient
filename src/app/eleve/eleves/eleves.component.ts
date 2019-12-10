@@ -18,6 +18,8 @@ import {faAddressCard} from '@fortawesome/free-solid-svg-icons/faAddressCard';
 import {Eleve} from '../../../model/Eleve.model';
 import {EleveService} from '../../../service/eleve.service';
 import {AuthenticationService} from '../../../service/authentication.service';
+import {PIAL} from '../../../model/PIAL.model';
+import {DatePipe} from '@angular/common';
 
 
 
@@ -44,6 +46,8 @@ export class ElevesComponent implements OnInit, AfterViewInit, OnDestroy {
 
   navigationSubscription;
 
+  nullDate;
+
   constructor(private authServ: AuthenticationService,
               private eleveServ: EleveService,
               private router: Router,
@@ -62,6 +66,7 @@ export class ElevesComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngOnInit() {
+    this.nullDate = '1900-01-01';
     const list = this.route.snapshot.params.select;
     if ( list === 'tous') {
       this.refreshAll();
@@ -102,6 +107,11 @@ export class ElevesComponent implements OnInit, AfterViewInit, OnDestroy {
     this.eleveServ.getListEleveInscrits(parseInt(localStorage.getItem('idEnsRef'), 10)).subscribe(
       element => {
         this.elevesData = element;
+        for (const el of this.elevesData) {
+          if (el.dateReunion === null) {
+            el.dateReunion = this.nullDate;
+          }
+        }
         this.mdbTable.setDataSource(this.elevesData);
         this.eleves = this.mdbTable.getDataSource();
         this.previous = this.mdbTable.getDataSource();
@@ -115,6 +125,11 @@ export class ElevesComponent implements OnInit, AfterViewInit, OnDestroy {
     this.eleveServ.getListEleveNonVus(parseInt(localStorage.getItem('idEnsRef'), 10)).subscribe(
       element => {
         this.elevesData = element;
+        for (const el of this.elevesData) {
+          if (el.dateReunion === null) {
+            el.dateReunion = this.nullDate;
+          }
+        }
         this.mdbTable.setDataSource(this.elevesData);
         this.eleves = this.mdbTable.getDataSource();
         this.previous = this.mdbTable.getDataSource();
@@ -128,6 +143,11 @@ export class ElevesComponent implements OnInit, AfterViewInit, OnDestroy {
     this.eleveServ.getListEleveVus(parseInt(localStorage.getItem('idEnsRef'), 10)).subscribe(
       element => {
         this.elevesData = element;
+        for (const el of this.elevesData) {
+          if (el.dateReunion === null) {
+            el.dateReunion = this.nullDate;
+          }
+        }
         this.mdbTable.setDataSource(this.elevesData);
         this.eleves = this.mdbTable.getDataSource();
         this.previous = this.mdbTable.getDataSource();

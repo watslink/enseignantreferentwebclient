@@ -19,6 +19,7 @@
             <th [mdbTableSort]="eleves" sortBy="nom" scope="col">Nom <mdb-icon fas icon="sort"></mdb-icon></th>
             <th [mdbTableSort]="eleves" sortBy="prenom" scope="col">Prénom <mdb-icon fas icon="sort"></mdb-icon></th>
             <th [mdbTableSort]="eleves" sortBy="dateNaissance" scope="col">Date de naissance <mdb-icon fas icon="sort"></mdb-icon></th>
+            <th [mdbTableSort]="eleves" sortBy="dateReunion" scope="col">Réunion <mdb-icon fas icon="sort"></mdb-icon></th>
             <th  scope="col"></th>
           </tr>
           </thead>
@@ -26,7 +27,15 @@
           <tr *ngFor="let el of eleves; let i = index">
             <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">{{el.nom}}</td>
             <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">{{el.prenom}}</td>
-            <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">{{el.dateNaissance}}</td>
+            <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">{{el.dateNaissance | date:'d MMMM yyyy'}}</td>
+            <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">
+              <div *ngIf="el.dateReunion != nullDate">
+                {{el.dateReunion | date:'d MMMM yyyy'}}
+              </div>
+              <div *ngIf="el.dateReunion == nullDate">
+                A définir
+              </div>
+            </td>
             <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex" >
               <button mdbBtn (click)="openEleveDetails(el)"   size="sm" mdbWavesEffect  class="mh-100 rounded-pill actionBtn details"><fa-icon [icon]="facard"></fa-icon></button>
               <button mdbBtn (click)="openEleveEdit(el)"   size="sm" mdbWavesEffect  class="mh-100 rounded-pill actionBtn update"><fa-icon [icon]="fapencil"></fa-icon></button>
@@ -36,7 +45,7 @@
           </tbody>
           <tfoot class="grey lighten-5 w-100">
           <tr>
-            <td colspan="4">
+            <td colspan="5">
               <mdb-table-pagination [tableEl]="tableEl" paginationAlign="" [searchDataSource]="eleves"></mdb-table-pagination>
             </td>
           </tr>

@@ -10,6 +10,7 @@ import {faPencilAlt, faTimes} from '@fortawesome/free-solid-svg-icons';
 import {faAddressCard} from '@fortawesome/free-solid-svg-icons/faAddressCard';
 import {EtablissementDeleteModalComponent} from './etablissement-delete-modal/etablissement-delete-modal.component';
 import {EtablissementAddModalComponent} from './etablissement-add-modal/etablissement-add-modal.component';
+import {PIAL} from '../../model/PIAL.model';
 
 
 
@@ -91,6 +92,12 @@ export class EtablissementComponent implements OnInit, AfterViewInit {
     this.etablissementServ.getListEtablissement(parseInt(localStorage.getItem('idEnsRef'), 10)).subscribe(
       element => {
         this.etablissementsData = element;
+        for (const et of this.etablissementsData) {
+          if (et.pial === null) {
+            et.pial = new PIAL();
+            et.pial.nom = 'Aucun';
+          }
+        }
         this.mdbTable.setDataSource(this.etablissementsData);
         this.etablissements = this.mdbTable.getDataSource();
         this.previous = this.mdbTable.getDataSource();

@@ -67,7 +67,7 @@ import { DossiersEnCoursComponent } from './dossiers-en-cours/dossiers-en-cours.
 // tslint:disable-next-line:max-line-length
 import { DossiersEnCoursDeleteModalComponent } from './dossiers-en-cours/dossiers-en-cours-delete-modal/dossiers-en-cours-delete-modal.component';
 import localeFr from '@angular/common/locales/fr';
-import {registerLocaleData} from '@angular/common';
+import {DatePipe, registerLocaleData} from '@angular/common';
 // tslint:disable-next-line:max-line-length
 import { DossiersEnCoursValidateModalComponent } from './dossiers-en-cours/dossiers-en-cours-validate-modal/dossiers-en-cours-validate-modal.component';
 registerLocaleData(localeFr);
@@ -239,7 +239,8 @@ const appRoutes: Routes = [
     PIALService,
     DocumentInscriptionRequisService,
     FileService,
-    RepresentantLegalService
+    RepresentantLegalService,
+    DatePipe
   ],
   bootstrap: [AppComponent]
 })
