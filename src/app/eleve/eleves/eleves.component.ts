@@ -46,6 +46,7 @@ export class ElevesComponent implements OnInit, AfterViewInit, OnDestroy {
   navigationSubscription;
 
   nullDate;
+  list;
 
   constructor(private authServ: AuthenticationService,
               private eleveServ: EleveService,
@@ -66,14 +67,14 @@ export class ElevesComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngOnInit() {
     this.nullDate = '1900-01-01';
-    const list = this.route.snapshot.params.select;
-    if ( list === 'tous') {
+    this.list = this.route.snapshot.params.select;
+    if ( this.list === 'tous') {
       this.refreshAll();
     }
-    if ( list === 'nonvus') {
+    if ( this.list === 'nonvus') {
       this.refreshNonVus();
     }
-    if ( list === 'vus') {
+    if ( this.list === 'vus') {
       this.refreshVus();
     }
   }
@@ -99,6 +100,7 @@ export class ElevesComponent implements OnInit, AfterViewInit, OnDestroy {
   openEleveDetails(element: Eleve) {
   }
   openEleveEdit(element: Eleve) {
+    this.router.navigateByUrl('eleveEdit', {state: element});
   }
   openModalDelete(element: Eleve) {
     this.modalRef = this.modalService.show(EleveDeleteModalComponent, {data: {eleve: element}});

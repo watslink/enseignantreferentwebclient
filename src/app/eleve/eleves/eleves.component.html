@@ -10,7 +10,15 @@
 
     <mdb-card class="font-tableau"  >
       <mdb-card-header class="tableHeader cardheaderChalk">
-        Eleves
+        <div *ngIf="list==='vus'">
+        Eleves vus
+        </div>
+        <div *ngIf="list==='nonvus'">
+          Eleves non vus
+        </div>
+        <div *ngIf="list==='tous'">
+          Eleves
+        </div>
       </mdb-card-header>
       <mdb-card-body>
         <table mdbTable small="true" #tableEl="mdbTable" hover="true" striped="true" class="z-depth-1 listTable">
