@@ -91,6 +91,10 @@ export class EleveEditComponent implements OnInit {
     this.location.back();
   }
 
+  back() {
+    this.location.back();
+  }
+
   openModalAddEtablissement() {
     this.modalRef = this.modalService.show(EtablissementAddModalComponent);
     this.modalService.close.subscribe(res => {
