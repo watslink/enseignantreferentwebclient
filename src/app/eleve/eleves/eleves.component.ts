@@ -98,6 +98,7 @@ export class ElevesComponent implements OnInit, AfterViewInit, OnDestroy {
     }
   }
   openEleveDetails(element: Eleve) {
+    this.router.navigateByUrl('eleveDetails', {state: element});
   }
   openEleveEdit(element: Eleve) {
     this.router.navigateByUrl('eleveEdit', {state: element});

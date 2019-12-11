@@ -1,0 +1,248 @@
+<span class="d-flex justify-content-center eleveTitle">
+    {{eleve.nom}} {{eleve.prenom}}     -    {{eleve.dateNaissance | date:'dd/MM/yy'}}
+  </span>
+<div class="row  col-sm-12">
+  <div class="col-12 col-xl-8">
+    <div class="row  col-sm-12">
+      <div class="col-12 col-md-6">
+        <mdb-card class="eleveEditCard">
+          <mdb-card-header class="eleveEditCardHeader">
+            Etablissement
+          </mdb-card-header>
+          <mdb-card-body>
+            <table mdbTable small="true">
+              <tbody>
+                <tr>
+                  <td>Nom:</td>
+                  <td  class="typeWriter">{{eleve.etablissement.nom}}</td>
+                </tr>
+                <tr>
+                  <td>RNE:</td>
+                  <td class="typeWriter">{{eleve.etablissement.rne}}</td>
+                </tr>
+                <tr>
+                  <td>PIAL:</td>
+                  <td class="typeWriter">{{eleve.etablissement.pial.nom}}</td>
+                </tr>
+                <tr>
+                  <td>Adresse:</td>
+                  <td class="typeWriter">{{eleve.etablissement.adresse.numero}},
+                    {{eleve.etablissement.adresse.voie}}
+                    {{eleve.etablissement.adresse.codePostal}}
+                    {{eleve.etablissement.adresse.ville}}
+                  </td>
+                </tr>
+                <tr>
+                  <td>Téléphone:</td>
+                  <td class="typeWriter">{{eleve.etablissement.telephone}}</td>
+                </tr>
+                <tr>
+                  <td>Mail:</td>
+                  <td class="typeWriter">{{eleve.etablissement.mail}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </mdb-card-body>
+        </mdb-card>
+      </div>
+      <div class="col-12 col-md-6">
+        <mdb-card  class="eleveEditCard">
+          <mdb-card-header class="eleveEditCardHeader">
+            AESH
+          </mdb-card-header>
+          <mdb-card-body>
+            <table mdbTable *ngIf="eleve.aesh!=null" small="true">
+              <tbody>
+              <tr>
+                <td>Nom:</td>
+                <td class="typeWriter">{{eleve.aesh.nom}}</td>
+              </tr>
+              <tr>
+                <td>Prénom</td>
+                <td class="typeWriter">{{eleve.aesh.prenom}}</td>
+              </tr>
+              <tr>
+                <td>Notification:</td>
+                <td class="typeWriter">{{eleve.dateNotificationAesh | date:('dd/MM/yy')}}</td>
+              </tr>
+              <tr>
+                <td>PIAL:</td>
+                <td class="typeWriter">{{eleve.aesh.pial.nom}}</td>
+              </tr>
+              <tr>
+                <td>Téléphone:</td>
+                <td class="typeWriter">{{eleve.aesh.telephone}}</td>
+              </tr>
+              <tr>
+                <td>Mail:</td>
+                <td class="typeWriter">{{eleve.aesh.mail}}</td>
+              </tr>
+              </tbody>
+            </table>
+          </mdb-card-body>
+        </mdb-card>
+      </div>
+    </div>
+    <div class="row  col-sm-12">
+      <div class="col-12 col-md-6">
+        <mdb-card class="eleveEditCard">
+          <mdb-card-header class="eleveEditCardHeader">
+            Niveau
+          </mdb-card-header>
+          <mdb-card-body>
+            <table mdbTable small="true">
+              <tbody>
+              <tr>
+                <td>Libéllé:</td>
+                <td class="typeWriter">{{eleve.niveau.libelle}}</td>
+              </tr>
+              <tr>
+                <td>Degré:</td>
+                <td class="typeWriter">{{eleve.niveau.degre}}</td>
+              </tr>
+              <tr>
+                <td>Spécialisé</td>
+                <td *ngIf="eleve.niveau.specialise"  class="typeWriter">
+                  Oui
+                </td>
+                <td *ngIf="!eleve.niveau.specialise"  class="typeWriter">
+                  Non
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </mdb-card-body>
+        </mdb-card>
+      </div>
+      <div class="col-12 col-md-6">
+        <mdb-card class="eleveEditCard">
+          <mdb-card-header class="eleveEditCardHeader">
+            Matériels pédagogiques
+          </mdb-card-header>
+          <mdb-card-body>
+            <table mdbTable small="true">
+              <tbody>
+              <tr *ngFor="let mat of eleve.listMaterielsPedagoAdaptes">
+                <td class="typeWriter">{{mat.nom}}</td>
+              </tr>
+              </tbody>
+            </table>
+          </mdb-card-body>
+        </mdb-card>
+      </div>
+    </div>
+    <div class="row  col-sm-12">
+      <div class="col-12 col-md-6">
+        <mdb-card class="eleveEditCard">
+          <mdb-card-header class="eleveEditCardHeader">
+            Représentants Légaux
+          </mdb-card-header>
+          <mdb-card-body>
+            <table *ngFor="let rep of eleve.listRepresentantsLegaux" mdbTable small="true">
+              <td colspan="2"  bgcolor="#a9a9a9" class="text-center font-weight-bold typeWriter">{{rep.identite}}</td>
+              <tbody>
+              <tr>
+                <td>Adresse:</td>
+                <td class="typeWriter">{{rep.adresse.numero}},
+                  {{rep.adresse.voie}}
+                  {{rep.adresse.codePostal}}
+                  {{rep.adresse.ville}}
+                </td>
+              </tr>
+              <tr>
+                <td>Téléphone:</td>
+                <td class="typeWriter">{{rep.telephone}}</td>
+              </tr>
+              <tr>
+                <td>Mail:</td>
+                <td class="typeWriter">{{rep.mail}}</td>
+              </tr>
+              </tbody>
+            </table>
+          </mdb-card-body>
+        </mdb-card>
+      </div>
+      <div class="col-12 col-md-6">
+        <mdb-card class="eleveEditCard">
+          <mdb-card-header class="eleveEditCardHeader">
+            Structures professionnelles
+          </mdb-card-header>
+          <mdb-card-body>
+            <table *ngFor="let st of eleve.listEleveStructurePros" mdbTable small="true">
+              <td colspan="2"  bgcolor="#a9a9a9" class="text-center font-weight-bold typeWriter">{{st.structurePro.nom}}</td>
+              <tbody>
+              <tr>
+                <td>Spécialité:</td>
+                <td class="typeWriter">{{st.structurePro.specialite}}</td>
+              </tr>
+              <tr>
+                <td>Notification:</td>
+                <td class="typeWriter">{{st.dateNotification | date:('dd/MM/yy')}}</td>
+              </tr>
+              <tr>
+                <td>Adresse:</td>
+                <td class="typeWriter">{{st.structurePro.adresse.numero}},
+                  {{st.structurePro.adresse.voie}}
+                  {{st.structurePro.adresse.codePostal}}
+                  {{st.structurePro.adresse.ville}}
+                </td>
+              </tr>
+              <tr>
+                <td>Téléphone:</td>
+                <td class="typeWriter">{{st.structurePro.telephone}}</td>
+              </tr>
+              <tr>
+                <td>Mail:</td>
+                <td class="typeWriter">{{st.structurePro.mail}}</td>
+              </tr>
+              </tbody>
+            </table>
+          </mdb-card-body>
+        </mdb-card>
+      </div>
+    </div>
+  </div>
+  <div class="col-12 col-xl-4">
+    <mdb-card class="eleveEditCard">
+      <mdb-card-header class="eleveEditCardHeader">
+        Documents
+      </mdb-card-header>
+      <mdb-card-body>
+        <div class="row justify-content-around">
+        <button mdbBtn   (click)="openFileModalAdd()" size="sm" mdbWavesEffect  color="green" class="h-75 rounded-pill actionBtn">+</button>
+        </div>
+        <table>
+          <tr *ngFor="let el of eleve.listDocuments">
+            <td><span>{{el.nom}}</span></td>
+            <td>
+              <button type="button" mdbBtn  size="sm" rounded="true" mdbWavesEffect class="btn"  color="green" aria-label="File" (click)="openFileModalUpdate(el)">Modifier</button>
+            </td>
+            <td>
+              <button type="button" mdbBtn  size="sm" rounded="true" mdbWavesEffect class="btn"  color="red" aria-label="File" (click)="deleteFile(el)">X</button>
+            </td>
+            <td>
+              <button type="button" mdbBtn  size="sm" rounded="true" mdbWavesEffect class="btn"  color="blue" aria-label="File" (click)="viewFile(el)"><fa-icon [icon]="faView"></fa-icon></button>
+            </td>
+            <td>
+              <button type="button" mdbBtn  size="sm" rounded="true" mdbWavesEffect class="btn"  color="blue" aria-label="File" (click)="openFile(el)"><fa-icon [icon]="faDown"></fa-icon></button>
+            </td>
+          </tr>
+        </table>
+      </mdb-card-body>
+    </mdb-card>
+  </div>
+</div>
+
+<div class="row  col-sm-12">
+  <div class="col-12 col-xl-4">
+  </div>
+  <div class="col-12 col-xl-8">
+  </div>
+</div>
+<div class="row justify-content-around col-sm-12">
+  <button type="button" mdbBtn  rounded="true" mdbWavesEffect class="btn btn-info"  aria-label="back" (click)="back()">Retour</button>
+</div>
+
+
+
+
