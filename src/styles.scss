@@ -23,6 +23,13 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'typewriter';
+  src: url('assets/fonts/Kingthings_Trypewriter_2.ttf')format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 .container-fluid{
   padding:0px;
 }
@@ -117,6 +124,9 @@ mdb-card-body.card-body{
   font-size: 1em;
   padding: 10px;
   margin: 10px;
+  color: white;
+  text-align:  center;
+  font-size: 1.5em;
   background-color: #214c4e;
 }
 
@@ -131,5 +141,10 @@ mdb-card-body.card-body{
 .eleveEditCard{
   padding: 0;
   margin: 10px;
+}
+
+.typeWriter{
+  text-align: center;
+  font-family: typewriter, Tahoma, sans-serif;
 }
 

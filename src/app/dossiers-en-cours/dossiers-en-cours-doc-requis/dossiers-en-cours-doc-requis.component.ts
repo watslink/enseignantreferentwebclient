@@ -37,7 +37,8 @@ export class DossiersEnCoursDocRequisComponent implements OnInit {
     this.location.back();
   }
   openFileModal(element: EleveDocumentInscriptionRequis) {
-    this.modalRef = this.modalService.show(FileAddModalComponent, {data: {eleve: this.eleve, eleveDocRequis: element}});
+    this.modalRef = this.modalService.show(FileAddModalComponent,
+      {data: {eleve: this.eleve, eleveDocRequis: element, type: 'eleveDocRequis'}});
     this.modalService.close.subscribe( res => {
       this.ngOnInit();
     });

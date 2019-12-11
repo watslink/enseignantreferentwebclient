@@ -1,4 +1,4 @@
-<span class="d-flex justify-content-center eleveTitle cardheaderChalk">
+<span class="d-flex justify-content-center eleveTitle">
     Ajouter un eleve
   </span>
 <div class="row  col-sm-12">
@@ -82,6 +82,34 @@
       </div>
     </mdb-card-body>
   </mdb-card>
+  </div>
+  <div class="col-12 col-md-6">
+  <mdb-card class="eleveEditCard">
+    <mdb-card-header class="eleveEditCardHeader">
+      Représentants Legaux
+    </mdb-card-header>
+    <mdb-card-body>
+      <div class="row justify-content-around">
+        <button mdbBtn (click)="openModalRLAdd()"   size="sm" mdbWavesEffect  color="green" class="rounded-pill actionBtn">+</button>
+      </div>
+      <div class="row justify-content-around">
+        <table>
+          <tr *ngFor="let el of eleve.listRepresentantsLegaux">
+            <td><span>{{el.identite}}</span></td>
+            <td>
+              <button mdbBtn (click)="openModalRLDetails(el)"   size="sm" mdbWavesEffect  class="mh-100 rounded-pill actionBtn details"><fa-icon [icon]="facard"></fa-icon></button>
+              <button mdbBtn (click)="openModalRLEdit(el)"   size="sm" mdbWavesEffect  class="mh-100 rounded-pill actionBtn update"><fa-icon [icon]="fapencil"></fa-icon></button>
+              <button mdbBtn (click)="openModalRLDelete(el)"  size="sm" mdbWavesEffect  class="mh-100 rounded-pill actionBtn delete"><fa-icon [icon]="fadelete"></fa-icon></button>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </mdb-card-body>
+  </mdb-card>
+  </div>
+</div>
+<div class="row  col-sm-12">
+  <div class="col-12 col-md-6">
     <mdb-card class="eleveEditCard">
       <mdb-card-header class="eleveEditCardHeader">
         Structures professionnelles
@@ -133,28 +161,6 @@
     </mdb-card>
   </div>
   <div class="col-12 col-md-6">
-  <mdb-card class="eleveEditCard">
-    <mdb-card-header class="eleveEditCardHeader">
-      Représentants Legaux
-    </mdb-card-header>
-    <mdb-card-body>
-      <div class="row justify-content-around">
-        <button mdbBtn (click)="openModalRLAdd()"   size="sm" mdbWavesEffect  color="green" class="rounded-pill actionBtn">+</button>
-      </div>
-      <div class="row justify-content-around">
-        <table>
-          <tr *ngFor="let el of eleve.listRepresentantsLegaux">
-            <td><span>{{el.identite}}</span></td>
-            <td>
-              <button mdbBtn (click)="openModalRLDetails(el)"   size="sm" mdbWavesEffect  class="mh-100 rounded-pill actionBtn details"><fa-icon [icon]="facard"></fa-icon></button>
-              <button mdbBtn (click)="openModalRLEdit(el)"   size="sm" mdbWavesEffect  class="mh-100 rounded-pill actionBtn update"><fa-icon [icon]="fapencil"></fa-icon></button>
-              <button mdbBtn (click)="openModalRLDelete(el)"  size="sm" mdbWavesEffect  class="mh-100 rounded-pill actionBtn delete"><fa-icon [icon]="fadelete"></fa-icon></button>
-            </td>
-          </tr>
-        </table>
-      </div>
-    </mdb-card-body>
-  </mdb-card>
     <mdb-card class="eleveEditCard">
       <mdb-card-header class="eleveEditCardHeader">
         Materiels adaptés

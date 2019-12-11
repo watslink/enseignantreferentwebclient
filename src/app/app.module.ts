@@ -91,6 +91,7 @@ import { EleveAddComponent } from './eleve/eleve-add/eleve-add.component';
 import { ElevesComponent } from './eleve/eleves/eleves.component';
 import { EleveDeleteModalComponent } from './eleve/eleve-delete-modal/eleve-delete-modal.component';
 import { EleveDetailsComponent } from './eleve/eleve-details/eleve-details.component';
+import { FileDeleteModalComponent } from './file/file-delete-modal/file-delete-modal.component';
 
 
 const appRoutes: Routes = [
@@ -105,6 +106,7 @@ const appRoutes: Routes = [
   // PATH for "Eleve"
   {path: 'eleveEdit', component: EleveEditComponent},
   {path: 'eleveAdd', component: EleveAddComponent},
+  {path: 'eleveDetails', component: EleveDetailsComponent},
   {path: 'eleves/:select', component: ElevesComponent, runGuardsAndResolvers: 'always'},
   // PATH for "Inscription"
   {path: 'docRequis', component: DocumentInscriptionRequisComponent},
@@ -172,7 +174,8 @@ const appRoutes: Routes = [
     EleveAddComponent,
     ElevesComponent,
     EleveDeleteModalComponent,
-    EleveDetailsComponent
+    EleveDetailsComponent,
+    FileDeleteModalComponent
   ],
   entryComponents: [
     StructureDetailsModalComponent,
@@ -210,7 +213,8 @@ const appRoutes: Routes = [
     RepresentantLegalDetailsModalComponent,
     RepresentantLegalEditModalComponent,
     RepresentantLegalDeleteModalComponent,
-    EleveDeleteModalComponent
+    EleveDeleteModalComponent,
+    FileDeleteModalComponent
   ],
   imports: [
     BrowserModule,
