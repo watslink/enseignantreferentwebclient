@@ -34,4 +34,11 @@ export class FileService {
     formdata.append('eleveDirectory', eleveDirectory);
     return this.http.post(this.host + '/filesDownload', formdata, { responseType: 'blob' });
   }
+  deleteFile(nomFichier: string, eleveDirectory: string) {
+    const formdata: FormData = new FormData();
+
+    formdata.append('nomFichier', nomFichier);
+    formdata.append('eleveDirectory', eleveDirectory);
+    return this.http.post(this.host + '/filesDelete', formdata, {observe: 'response'});
+  }
 }
