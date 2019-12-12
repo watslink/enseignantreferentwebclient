@@ -5,6 +5,9 @@ import {Eleve} from '../../../model/Eleve.model';
 import {EleveDocumentInscriptionRequis} from '../../../model/EleveDocumentInscriptionRequis.model';
 import {EleveService} from '../../../service/eleve.service';
 import {Document} from '../../../model/Document.model';
+import {Categorie} from '../../../model/Categorie.model';
+import {CategorieService} from '../../../service/categorie.service';
+import {PIAL} from '../../../model/PIAL.model';
 
 
 @Component({
@@ -19,15 +22,24 @@ export class FileAddModalComponent implements OnInit {
   doc: Document;
   newDoc: Document;
   type;
+  categories: Categorie[];
   constructor(public modalRef: MDBModalRef,
               private fileService: FileService,
-              private eleveService: EleveService
+              private eleveService: EleveService,
+              private categoieService: CategorieService
               ) { }
 
   ngOnInit() {
     if (this.type === 'addDoc') {
       this.newDoc = new Document();
     }
+    this.categoieService.getListCategorie(parseInt(localStorage.getItem('idEnsRef'), 10)).subscribe( res => {
+      this.categories = res;
+    });
+  }
+
+  compareFnCategorie(c1: Categorie, c2: Categorie): boolean {
+    return c1 && c2 ? c1.categorieId === c2.categorieId : c1 === c2;
   }
 
   save() {
@@ -39,17 +51,6 @@ export class FileAddModalComponent implements OnInit {
           if (eleveDocReq.documentInscriptionRequis === this.eleveDocRequis.documentInscriptionRequis) {
             eleveDocReq.extension = this.fileToUpload.name.substr(this.fileToUpload.name.lastIndexOf('.') + 1);
             eleveDocReq.ok = true;
-            this.eleveService.updateEleve(this.eleve).subscribe();
-          }
-        }
-      });
-    }
-    if (this.type === 'updateDoc') {
-      this.fileService.addFile(this.fileToUpload,
-        eleveDirectory, this.doc.nom).subscribe(res => {
-        for (const doc of this.eleve.listDocuments) {
-          if (doc === this.doc) {
-            doc.extension = this.fileToUpload.name.substr(this.fileToUpload.name.lastIndexOf('.') + 1);
             this.eleveService.updateEleve(this.eleve).subscribe();
           }
         }

@@ -121,13 +121,21 @@ mdb-card-body.card-body{
 }
 
 .eleveTitle{
-  font-size: 1em;
   padding: 10px;
   margin: 10px;
   color: white;
   text-align:  center;
   font-size: 1.5em;
   background-color: #214c4e;
+}
+
+.eleveTitleVu{
+  padding: 10px;
+  margin: 10px;
+  color: #000000;
+  text-align:  center;
+  font-size: 1.5em;
+  background-color: #188025;
 }
 
 .eleveEditCardHeader{
@@ -148,3 +156,28 @@ mdb-card-body.card-body{
   font-family: typewriter, Tahoma, sans-serif;
 }
 
+.noPaddingLeft{
+  padding-left: 0;
+}
+
+.noPaddingRight{
+  padding-right: 0;
+}
+
+
+.w100{
+  min-width: 100%;
+}
+
+mdb-card.eleveEditCard.card{
+  min-height: 100%;
+  background-color: #e2e2e2;
+}
+
+.divCard{
+  padding-bottom: 10px;
+}
+
+div.card-body{
+  padding: 5px;
+}

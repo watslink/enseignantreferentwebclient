@@ -13,6 +13,14 @@
     </div>
     <input [(ngModel)]="newDoc.nom" type="text" class="form-control" aria-label="Nom" aria-describedby="inputGroup-sizing-default" required>
   </div>
+  <div *ngIf="type=='addDoc'" class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text" >Categorie</span>
+    </div>
+    <select [compareWith]="compareFnCategorie" [(ngModel)]="newDoc.categorie"  name="cat" class="browser-default custom-select form-control">
+      <option  *ngFor="let el of categories" [ngValue]="el" >{{el.nom}}</option>
+    </select>
+  </div>
   <div class="form-group">
     <input type="file"
            id="file"

@@ -16,18 +16,17 @@ export class FileDeleteModalComponent implements OnInit {
 
   doc: Document;
   eleve: Eleve;
-  constructor(public modalRef: MDBModalRef, private fileServ: FileService, eleveServ: EleveService) { }
+  constructor(public modalRef: MDBModalRef, private fileServ: FileService, private eleveServ: EleveService) { }
   ngOnInit() {
   }
 
   delete() {
     this.fileServ.deleteFile(this.doc.nom + '.' + this.doc.extension, this.eleve.nom +
       '-' + this.eleve.prenom).subscribe( res => {
-        if (res) {
           for (const doc of this.eleve.listDocuments) {
             if (doc.documentId === this.doc.documentId) {
-              this.eleve.listDocuments.splice(this.eleve.listDocuments.indexOf(doc));
-            }
+              this.eleve.listDocuments.splice(this.eleve.listDocuments.indexOf(doc, 1));
+              this.eleveServ.updateEleve(this.eleve).subscribe();
           }
         }
     });
