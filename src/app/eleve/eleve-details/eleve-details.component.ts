@@ -15,6 +15,7 @@ import {Categorie} from '../../../model/Categorie.model';
 import {CategorieService} from '../../../service/categorie.service';
 import {NgbAccordionConfig} from '@ng-bootstrap/ng-bootstrap';
 import {ReunionModalComponent} from '../../reunion-modal/reunion-modal.component';
+import {MailListModalComponent} from '../../mail-list-modal/mail-list-modal.component';
 
 
 @Component({
@@ -89,5 +90,11 @@ export class EleveDetailsComponent implements OnInit {
   nonvuEleve() {
     this.eleve.vu = false;
     this.eleveServ.updateEleve(this.eleve).subscribe();
+  }
+  listMails() {
+    this.modalRef = this.modalService.show(MailListModalComponent, {data: {eleve: this.eleve}});
+    this.modalService.close.subscribe( res => {
+      this.ngOnInit();
+    });
   }
 }

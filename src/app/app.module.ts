@@ -93,6 +93,7 @@ import { EleveDeleteModalComponent } from './eleve/eleve-delete-modal/eleve-dele
 import { EleveDetailsComponent } from './eleve/eleve-details/eleve-details.component';
 import { FileDeleteModalComponent } from './file/file-delete-modal/file-delete-modal.component';
 import { ReunionModalComponent } from './reunion-modal/reunion-modal.component';
+import { MailListModalComponent } from './mail-list-modal/mail-list-modal.component';
 
 
 const appRoutes: Routes = [
@@ -177,7 +178,8 @@ const appRoutes: Routes = [
     EleveDeleteModalComponent,
     EleveDetailsComponent,
     FileDeleteModalComponent,
-    ReunionModalComponent
+    ReunionModalComponent,
+    MailListModalComponent
   ],
   entryComponents: [
     StructureDetailsModalComponent,
@@ -217,7 +219,8 @@ const appRoutes: Routes = [
     RepresentantLegalDeleteModalComponent,
     EleveDeleteModalComponent,
     FileDeleteModalComponent,
-    ReunionModalComponent
+    ReunionModalComponent,
+    MailListModalComponent
   ],
   imports: [
     BrowserModule,

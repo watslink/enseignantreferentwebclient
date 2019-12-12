@@ -1,0 +1,22 @@
+<div class="modal-header mailListHeader" >
+  <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+    <span aria-hidden="true">×</span>
+  </button>
+  <h4 class="modal-title w-100" id="myModalLabel3">Listes des mails pour {{eleve.nom}} {{eleve.prenom}}</h4>
+</div>
+<div class="modal-body -align-center">
+  <span *ngIf="eleve.aesh!=null">
+    {{eleve.aesh.mail}},
+  </span>
+  <span *ngFor="let st of eleve.listEleveStructurePros">
+    {{st.structurePro.mail}},
+  </span>
+  <span *ngFor="let rl of eleve.listRepresentantsLegaux">
+    {{rl.mail}},
+  </span>
+  {{eleve.etablissement.mail}}
+</div>
+<div class="modal-footer justify-content-around">
+  <button type="button" mdbBtn  rounded="true" mdbWavesEffect class="btn btn-info"  aria-label="Close" (click)="modalRef.hide()">Retour</button>
+</div>
+
