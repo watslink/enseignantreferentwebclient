@@ -1,10 +1,13 @@
-<span class="d-flex justify-content-center eleveTitle">
-    {{eleve.nom}} {{eleve.prenom}}     -    {{eleve.dateNaissance | date:'dd/MM/yy'}}
+<span *ngIf="!eleve.vu" class="d-flex justify-content-center eleveTitle">
+    {{eleve.nom}} {{eleve.prenom}}     - Né(e) le   {{eleve.dateNaissance | date:'dd/MM/yy'}}
+  </span>
+<span *ngIf="eleve.vu" class="d-flex justify-content-center eleveTitleVu">
+    {{eleve.nom}} {{eleve.prenom}}     - Né(e) le    {{eleve.dateNaissance | date:'dd/MM/yy'}}
   </span>
 <div class="row  col-sm-12">
-  <div class="col-12 col-xl-8">
-    <div class="row  col-sm-12">
-      <div class="col-12 col-md-6">
+  <div class="col-12 col-xl-8 noPaddingRight">
+    <div class="row  col-sm-12 noPaddingRight">
+      <div class="col-12 col-md-6 divCard">
         <mdb-card class="eleveEditCard">
           <mdb-card-header class="eleveEditCardHeader">
             Etablissement
@@ -45,7 +48,7 @@
           </mdb-card-body>
         </mdb-card>
       </div>
-      <div class="col-12 col-md-6">
+      <div class="col-12 col-md-6 divCard">
         <mdb-card  class="eleveEditCard">
           <mdb-card-header class="eleveEditCardHeader">
             AESH
@@ -83,8 +86,8 @@
         </mdb-card>
       </div>
     </div>
-    <div class="row  col-sm-12">
-      <div class="col-12 col-md-6">
+    <div class="row  col-sm-12 noPaddingRight">
+      <div class="col-12 col-md-6 divCard">
         <mdb-card class="eleveEditCard">
           <mdb-card-header class="eleveEditCardHeader">
             Niveau
@@ -114,7 +117,7 @@
           </mdb-card-body>
         </mdb-card>
       </div>
-      <div class="col-12 col-md-6">
+      <div class="col-12 col-md-6 divCard">
         <mdb-card class="eleveEditCard">
           <mdb-card-header class="eleveEditCardHeader">
             Matériels pédagogiques
@@ -131,16 +134,24 @@
         </mdb-card>
       </div>
     </div>
-    <div class="row  col-sm-12">
-      <div class="col-12 col-md-6">
+    <div class="row  col-sm-12 noPaddingRight">
+      <div class="col-12 col-md-6 divCard">
         <mdb-card class="eleveEditCard">
           <mdb-card-header class="eleveEditCardHeader">
             Représentants Légaux
           </mdb-card-header>
           <mdb-card-body>
-            <table *ngFor="let rep of eleve.listRepresentantsLegaux" mdbTable small="true">
-              <td colspan="2"  bgcolor="#a9a9a9" class="text-center font-weight-bold typeWriter">{{rep.identite}}</td>
-              <tbody>
+            <ngb-accordion>
+              <div *ngFor="let rep of eleve.listRepresentantsLegaux">
+                <ngb-panel>
+                  <ng-template ngbPanelHeader>
+                    <div class="text-center">
+                      <button ngbPanelToggle class="btn btn-link p-0">{{rep.identite}}</button>
+                    </div>
+                  </ng-template>
+                  <ng-template ngbPanelContent>
+                    <table mdbTable small="true">
+                     <tbody>
               <tr>
                 <td>Adresse:</td>
                 <td class="typeWriter">{{rep.adresse.numero}},
@@ -158,85 +169,135 @@
                 <td class="typeWriter">{{rep.mail}}</td>
               </tr>
               </tbody>
-            </table>
+                    </table>
+                  </ng-template>
+                </ngb-panel>
+              </div>
+            </ngb-accordion>
           </mdb-card-body>
         </mdb-card>
       </div>
-      <div class="col-12 col-md-6">
+      <div class="col-12 col-md-6 divCard">
         <mdb-card class="eleveEditCard">
           <mdb-card-header class="eleveEditCardHeader">
             Structures professionnelles
           </mdb-card-header>
           <mdb-card-body>
-            <table *ngFor="let st of eleve.listEleveStructurePros" mdbTable small="true">
-              <td colspan="2"  bgcolor="#a9a9a9" class="text-center font-weight-bold typeWriter">{{st.structurePro.nom}}</td>
-              <tbody>
-              <tr>
-                <td>Spécialité:</td>
-                <td class="typeWriter">{{st.structurePro.specialite}}</td>
-              </tr>
-              <tr>
-                <td>Notification:</td>
-                <td class="typeWriter">{{st.dateNotification | date:('dd/MM/yy')}}</td>
-              </tr>
-              <tr>
-                <td>Adresse:</td>
-                <td class="typeWriter">{{st.structurePro.adresse.numero}},
-                  {{st.structurePro.adresse.voie}}
-                  {{st.structurePro.adresse.codePostal}}
-                  {{st.structurePro.adresse.ville}}
-                </td>
-              </tr>
-              <tr>
-                <td>Téléphone:</td>
-                <td class="typeWriter">{{st.structurePro.telephone}}</td>
-              </tr>
-              <tr>
-                <td>Mail:</td>
-                <td class="typeWriter">{{st.structurePro.mail}}</td>
-              </tr>
-              </tbody>
-            </table>
+            <ngb-accordion>
+              <div *ngFor="let st of eleve.listEleveStructurePros">
+                <ngb-panel>
+                  <ng-template ngbPanelHeader>
+                    <div class="text-center">
+                      <button ngbPanelToggle class="btn btn-link p-0">{{st.structurePro.nom}} / {{st.structurePro.specialite}}</button>
+                    </div>
+                  </ng-template>
+                  <ng-template ngbPanelContent>
+                    <table mdbTable small="true">
+                      <tbody>
+                      <tr>
+                        <td>Notification:</td>
+                        <td class="typeWriter">{{st.dateNotification | date:('dd/MM/yy')}}</td>
+                      </tr>
+                      <tr>
+                        <td>Adresse:</td>
+                        <td class="typeWriter">{{st.structurePro.adresse.numero}},
+                          {{st.structurePro.adresse.voie}}
+                          {{st.structurePro.adresse.codePostal}}
+                          {{st.structurePro.adresse.ville}}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Téléphone:</td>
+                        <td class="typeWriter">{{st.structurePro.telephone}}</td>
+                      </tr>
+                      <tr>
+                        <td>Mail:</td>
+                        <td class="typeWriter">{{st.structurePro.mail}}</td>
+                      </tr>
+                      </tbody>
+                    </table>
+                  </ng-template>
+                </ngb-panel>
+              </div>
+            </ngb-accordion>
           </mdb-card-body>
         </mdb-card>
       </div>
     </div>
   </div>
-  <div class="col-12 col-xl-4">
+  <div class="col-12 col-xl-4 divCard">
     <mdb-card class="eleveEditCard">
       <mdb-card-header class="eleveEditCardHeader">
-        Documents
+        Documents          <button mdbBtn   (click)="openFileModalAdd()" size="sm" mdbWavesEffect  color="green" class="h-75 rounded-pill actionBtn">+</button>
       </mdb-card-header>
       <mdb-card-body>
         <div class="row justify-content-around">
-        <button mdbBtn   (click)="openFileModalAdd()" size="sm" mdbWavesEffect  color="green" class="h-75 rounded-pill actionBtn">+</button>
         </div>
-        <table>
-          <tr *ngFor="let el of eleve.listDocuments">
-            <td><span>{{el.nom}}</span></td>
-            <td>
-              <button type="button" mdbBtn  size="sm" rounded="true" mdbWavesEffect class="btn"  color="green" aria-label="File" (click)="openFileModalUpdate(el)">Modifier</button>
-            </td>
-            <td>
-              <button type="button" mdbBtn  size="sm" rounded="true" mdbWavesEffect class="btn"  color="red" aria-label="File" (click)="deleteFile(el)">X</button>
-            </td>
-            <td>
-              <button type="button" mdbBtn  size="sm" rounded="true" mdbWavesEffect class="btn"  color="blue" aria-label="File" (click)="viewFile(el)"><fa-icon [icon]="faView"></fa-icon></button>
-            </td>
-            <td>
-              <button type="button" mdbBtn  size="sm" rounded="true" mdbWavesEffect class="btn"  color="blue" aria-label="File" (click)="openFile(el)"><fa-icon [icon]="faDown"></fa-icon></button>
-            </td>
-          </tr>
-        </table>
+        <ngb-accordion>
+          <div *ngFor="let cat of categories">
+          <ngb-panel>
+            <ng-template ngbPanelHeader>
+              <div class="text-center">
+                <button ngbPanelToggle class="btn btn-link p-0">{{cat.nom}}</button>
+              </div>
+            </ng-template>
+            <ng-template ngbPanelContent>
+              <table  mdbTable small="true">
+                <tr *ngFor="let el of eleve.listDocuments">
+                  <td *ngIf="el.categorie.nom == cat.nom" class="typeWriter col-6"><span>{{el.nom}}</span></td>
+                  <div class="col-6">
+                  <td *ngIf="el.categorie.nom == cat.nom" class="noPaddingRight noPaddingLeft">
+                    <button type="button" mdbBtn  size="sm" rounded="true" mdbWavesEffect class="h-75 rounded-pill docBtn actionBtn"  color="red" aria-label="File" (click)="deleteFile(el)"><fa-icon [icon]="fadelete"></fa-icon></button>
+                  </td>
+                  <td *ngIf="el.categorie.nom == cat.nom" class="noPaddingRight noPaddingLeft">
+                    <button type="button" mdbBtn  size="sm" rounded="true" mdbWavesEffect class="h-75 rounded-pill docBtn actionBtn"  color="blue" aria-label="File" (click)="viewFile(el)"><fa-icon [icon]="faView"></fa-icon></button>
+                  </td>
+                  <td *ngIf="el.categorie.nom == cat.nom" class="noPaddingRight noPaddingLeft">
+                    <button type="button" mdbBtn  size="sm" rounded="true" mdbWavesEffect class="h-75 rounded-pill docBtn actionBtn"  color="blue" aria-label="File" (click)="openFile(el)"><fa-icon [icon]="faDown"></fa-icon></button>
+                  </td>
+                  </div>
+                </tr>
+              </table>
+            </ng-template>
+          </ngb-panel>
+          </div>
+        </ngb-accordion>
       </mdb-card-body>
     </mdb-card>
   </div>
 </div>
 
 <div class="row  col-sm-12">
-  <div class="col-12 col-xl-4">
+  <div class="col-12 col-xl-4 noPaddingRight divCard">
+    <mdb-card class="eleveEditCard">
+      <mdb-card-header class="eleveEditCardHeader">
+        Réunion
+      </mdb-card-header>
+      <mdb-card-body class="w100">
+          <span class="row justify-content-center" *ngIf="eleve.dateReunion!=null">
+            Date: {{eleve.dateReunion | date:('dd/MM/yy')}}
+          </span>
+          <span class="row justify-content-center" *ngIf="eleve.dateReunion==null">
+            Date à définir
+          </span>
+        <span class="row justify-content-center">
+        <button type="button" mdbBtn  size="sm" rounded="true" mdbWavesEffect class="h-75 update rounded-pill actionBtn" aria-label="comment" (click)="newReunion()">Date...</button>
+        <button *ngIf="!eleve.vu" type="button" mdbBtn  size="sm" rounded="true" mdbWavesEffect class="h-75 rounded-pill actionBtn"  color="green" aria-label="comment" (click)="vuEleve()">Vu</button>
+        <button *ngIf="eleve.vu" type="button" mdbBtn  size="sm" rounded="true" mdbWavesEffect class="h-75 rounded-pill actionBtn delete" aria-label="comment" (click)="nonvuEleve()"> Non Vu</button>
+      </span>
+      </mdb-card-body>
+    </mdb-card>
   </div>
-  <div class="col-12 col-xl-8">
+  <div class="col-12 col-xl-8 divCard">
+    <mdb-card class="eleveEditCard">
+      <mdb-card-header class="eleveEditCardHeader">
+        Commentaire
+      </mdb-card-header>
+      <mdb-card-body class="w100">
+          <textarea type="text" [(ngModel)]="eleve.commentaire" id="formtext" class="md-textarea md-textarea-auto form-control" mdbInput></textarea>
+          <button type="button" mdbBtn  size="sm" rounded="true" mdbWavesEffect class="h-75 rounded-pill docBtn actionBtn"  color="green" aria-label="comment" (click)="updateEleve()">Enregistrer</button>
+      </mdb-card-body>
+    </mdb-card>
   </div>
 </div>
 <div class="row justify-content-around col-sm-12">
