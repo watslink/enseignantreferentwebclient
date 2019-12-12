@@ -281,9 +281,11 @@
             Date à définir
           </span>
         <span class="row justify-content-center">
-        <button type="button" mdbBtn  size="sm" rounded="true" mdbWavesEffect class="h-75 update rounded-pill actionBtn" aria-label="comment" (click)="newReunion()">Date...</button>
-        <button *ngIf="!eleve.vu" type="button" mdbBtn  size="sm" rounded="true" mdbWavesEffect class="h-75 rounded-pill actionBtn"  color="green" aria-label="comment" (click)="vuEleve()">Vu</button>
-        <button *ngIf="eleve.vu" type="button" mdbBtn  size="sm" rounded="true" mdbWavesEffect class="h-75 rounded-pill actionBtn delete" aria-label="comment" (click)="nonvuEleve()"> Non Vu</button>
+        <button type="button" mdbBtn  size="sm" rounded="true" mdbWavesEffect class="h-75 update rounded-pill actionBtn" aria-label="comment" (click)="reunionEleve()">Changer...</button>
+         </span>
+        <span class="row justify-content-center">
+          <button *ngIf="!eleve.vu" type="button" mdbBtn  size="sm" rounded="true" mdbWavesEffect class="h-75 rounded-pill actionBtn"  color="green" aria-label="comment" (click)="vuEleve()">Vu</button>
+          <button *ngIf="eleve.vu" type="button" mdbBtn  size="sm" rounded="true" mdbWavesEffect class="h-75 rounded-pill actionBtn delete" aria-label="comment" (click)="nonvuEleve()"> Non Vu</button>
       </span>
       </mdb-card-body>
     </mdb-card>

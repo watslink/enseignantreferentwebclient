@@ -14,6 +14,7 @@ import {FileDeleteModalComponent} from '../../file/file-delete-modal/file-delete
 import {Categorie} from '../../../model/Categorie.model';
 import {CategorieService} from '../../../service/categorie.service';
 import {NgbAccordionConfig} from '@ng-bootstrap/ng-bootstrap';
+import {ReunionModalComponent} from '../../reunion-modal/reunion-modal.component';
 
 
 @Component({
@@ -75,7 +76,11 @@ export class EleveDetailsComponent implements OnInit {
   updateEleve() {
     this.eleveServ.updateEleve(this.eleve).subscribe();
   }
-  newReunion() {
+  reunionEleve() {
+    this.modalRef = this.modalService.show(ReunionModalComponent, {data: {eleve: this.eleve}});
+    this.modalService.close.subscribe( res => {
+      this.ngOnInit();
+    });
   }
   vuEleve() {
     this.eleve.vu = true;
