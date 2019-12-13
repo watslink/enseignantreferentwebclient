@@ -1,0 +1,25 @@
+<div class="container">
+<div class="row justify-content-center">
+<mdb-card class="eleveEditCard col-6">
+  <mdb-card-header class="eleveEditCardHeader">
+    {{ensRef.nom}} {{ensRef.prenom}}
+  </mdb-card-header>
+  <mdb-card-body>
+
+      <span class="row justify-content-between">
+        <span class="typeWriter">{{ensRef.mail}}</span>
+         <button type="button" mdbBtn  size="sm" rounded="true" mdbWavesEffect class="h-75 rounded-pill actionBtn update"  aria-label="mail" (click)="changeMail()">Modifier</button>
+      </span>
+      <span class="row justify-content-between">
+        <span>Mot de passe:</span>
+        <button type="button" mdbBtn  size="sm" rounded="true" mdbWavesEffect class="h-75 rounded-pill actionBtn update"  aria-label="mdp" (click)="changePassword()">Modifier</button>
+      </span>
+      <span class="row justify-content-between">
+        <span>Réinitialiser les rendez vous pour l'année:</span>
+        <button type="button" mdbBtn  size="sm" rounded="true" mdbWavesEffect class="h-75 rounded-pill actionBtn delete"  aria-label="rdv" (click)="reinitRDV()">Réinitialiser</button>
+      </span>
+
+  </mdb-card-body>
+</mdb-card>
+</div>
+</div>

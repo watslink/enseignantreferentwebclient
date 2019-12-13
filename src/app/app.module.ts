@@ -94,6 +94,7 @@ import { EleveDetailsComponent } from './eleve/eleve-details/eleve-details.compo
 import { FileDeleteModalComponent } from './file/file-delete-modal/file-delete-modal.component';
 import { ReunionModalComponent } from './reunion-modal/reunion-modal.component';
 import { MailListModalComponent } from './mail-list-modal/mail-list-modal.component';
+import { MonCompteComponent } from './mon-compte/mon-compte.component';
 
 
 const appRoutes: Routes = [
@@ -115,6 +116,7 @@ const appRoutes: Routes = [
   {path: 'dossierEnCours', component: DossiersEnCoursComponent, runGuardsAndResolvers: 'always'},
   {path: 'eleveDocRequisEdit', component: DossiersEnCoursDocRequisComponent},
   // Other PATH
+  {path: 'monCompte', component: MonCompteComponent},
   {path: 'login', component: LoginComponent},
   {path: 'inscription', component: InscriptionComponent},
   {path: 'accueil', component: AccueilComponent},
@@ -179,7 +181,8 @@ const appRoutes: Routes = [
     EleveDetailsComponent,
     FileDeleteModalComponent,
     ReunionModalComponent,
-    MailListModalComponent
+    MailListModalComponent,
+    MonCompteComponent
   ],
   entryComponents: [
     StructureDetailsModalComponent,
