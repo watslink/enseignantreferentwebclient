@@ -96,6 +96,7 @@ import { ReunionModalComponent } from './reunion-modal/reunion-modal.component';
 import { MailListModalComponent } from './mail-list-modal/mail-list-modal.component';
 import { MonCompteComponent } from './mon-compte/mon-compte.component';
 import { NewMailModalComponent } from './mon-compte/new-mail-modal/new-mail-modal.component';
+import { NewPasswordModalComponent } from './mon-compte/new-password-modal/new-password-modal.component';
 
 
 const appRoutes: Routes = [
@@ -184,7 +185,8 @@ const appRoutes: Routes = [
     ReunionModalComponent,
     MailListModalComponent,
     MonCompteComponent,
-    NewMailModalComponent
+    NewMailModalComponent,
+    NewPasswordModalComponent
   ],
   entryComponents: [
     StructureDetailsModalComponent,
@@ -226,7 +228,8 @@ const appRoutes: Routes = [
     FileDeleteModalComponent,
     ReunionModalComponent,
     MailListModalComponent,
-    NewMailModalComponent
+    NewMailModalComponent,
+    NewPasswordModalComponent
   ],
   imports: [
     BrowserModule,

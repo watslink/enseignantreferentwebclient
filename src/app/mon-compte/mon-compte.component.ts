@@ -3,6 +3,7 @@ import {EnseignantReferent} from '../../model/EnseignantReferent.model';
 import {AuthenticationService} from '../../service/authentication.service';
 import {NewMailModalComponent} from './new-mail-modal/new-mail-modal.component';
 import {MDBModalRef, MDBModalService} from 'angular-bootstrap-md';
+import {NewPasswordModalComponent} from './new-password-modal/new-password-modal.component';
 
 @Component({
   selector: 'app-mon-compte',
@@ -30,7 +31,10 @@ export class MonCompteComponent implements OnInit {
   }
 
   changePassword() {
-
+    this.modalRef = this.modalService.show(NewPasswordModalComponent, {data: {ensRef: this.ensRef}});
+    this.modalService.close.subscribe(res => {
+      this.ngOnInit();
+    });
   }
 
   reinitRDV() {

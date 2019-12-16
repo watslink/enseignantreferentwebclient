@@ -98,4 +98,13 @@ export class AuthenticationService {
     formdata.append('newMail', newMail);
     return this.http.put(this.host + '/enseignantReferentMail', formdata, {observe: 'response'});
   }
+
+  updateEnsRefPassword(ensRefId, oldPass, mpd) {
+    const formdata: FormData = new FormData();
+
+    formdata.append('id', ensRefId);
+    formdata.append('oldPass', oldPass);
+    formdata.append('newPass', mpd);
+    return this.http.put(this.host + '/enseignantReferentPassword', formdata, {observe: 'response'});
+  }
 }
