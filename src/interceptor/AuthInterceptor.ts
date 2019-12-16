@@ -8,6 +8,9 @@ export class AuthInterceptor implements HttpInterceptor {
   constructor(private authServ: AuthenticationService) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    if (this.authServ.isTokenExpired()) {
+      localStorage.clear();
+    }
     if (this.authServ.loadToken() != null) {
       // Clone the request to add the new header.
       const authReq = req.clone({headers: req.headers.set('Authorization', this.authServ.loadToken())});

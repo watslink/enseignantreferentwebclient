@@ -46,7 +46,9 @@ export class DossiersEnCoursDocRequisComponent implements OnInit {
   viewFile(edir: EleveDocumentInscriptionRequis) {
     this.fileService.getFile(edir.documentInscriptionRequis.nom + '.' +
       edir.extension, this.eleve.nom + '-' + this.eleve.prenom).subscribe( res => {
-      this.modalRef = this.modalService.show(FileViewerModalComponent, {data: {fileUrl: res}});
+      // const file = new File([res], (edir.documentInscriptionRequis.nom + '.' + edir.extension));
+      const blob1 = new Blob([res]);
+      this.modalRef = this.modalService.show(FileViewerModalComponent, {data: {blob: blob1}});
     });
   }
   openFile(edir: EleveDocumentInscriptionRequis) {

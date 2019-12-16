@@ -4,6 +4,7 @@ import {Router} from '@angular/router';
 import {LoginComponent} from '../app/login/login.component';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {EnseignantReferent} from '../model/EnseignantReferent.model';
+import * as jwt_decode from 'jwt-decode';
 
 
 @Injectable()
@@ -54,6 +55,32 @@ export class AuthenticationService {
       this.jwtToken = localStorage.getItem('token');
     }
     return this.jwtToken;
+  }
+
+  getTokenExpirationDate(token: string): Date {
+    const decoded = jwt_decode(token);
+
+    if (decoded.exp === undefined) {
+      return null;
+    }
+    const date = new Date(0);
+    date.setUTCSeconds(decoded.exp);
+    return date;
+  }
+
+  isTokenExpired(token?: string): boolean {
+    if (!token) {
+      token = this.loadToken();
+    }
+    if (!token) {
+      return true;
+    }
+
+    const date = this.getTokenExpirationDate(token);
+    if (date === undefined) {
+      return false;
+    }
+    return !(date.valueOf() > new Date().valueOf());
   }
 
   getEnsRefByMail(ensRef): Observable<EnseignantReferent> {
