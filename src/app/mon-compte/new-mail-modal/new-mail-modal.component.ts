@@ -18,7 +18,6 @@ export class NewMailModalComponent implements OnInit {
   }
 
   save() {
-    console.log();
     this.authServ.updateEnsRefMail(this.ensRef.enseignantReferentId, this.ensRef.mail).subscribe();
     this.modalRef.hide();
   }

@@ -4,6 +4,7 @@ import {AuthenticationService} from '../../service/authentication.service';
 import {NewMailModalComponent} from './new-mail-modal/new-mail-modal.component';
 import {MDBModalRef, MDBModalService} from 'angular-bootstrap-md';
 import {NewPasswordModalComponent} from './new-password-modal/new-password-modal.component';
+import {ReinitializeRdvModalComponent} from './reinitialize-rdv-modal/reinitialize-rdv-modal.component';
 
 @Component({
   selector: 'app-mon-compte',
@@ -38,5 +39,9 @@ export class MonCompteComponent implements OnInit {
   }
 
   reinitRDV() {
+    this.modalRef = this.modalService.show(ReinitializeRdvModalComponent, {data: {ensRef: this.ensRef}});
+    this.modalService.close.subscribe(res => {
+      this.ngOnInit();
+    });
   }
 }

@@ -107,4 +107,8 @@ export class AuthenticationService {
     formdata.append('newPass', mpd);
     return this.http.put(this.host + '/enseignantReferentPassword', formdata, {observe: 'response'});
   }
+
+  reinitRDV(ensRefId) {
+    return this.http.get(this.host + '/enseignantReferentReinitRDV/' + ensRefId);
+  }
 }
