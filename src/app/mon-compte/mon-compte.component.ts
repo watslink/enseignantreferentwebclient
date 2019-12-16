@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {EnseignantReferent} from '../../model/EnseignantReferent.model';
 import {AuthenticationService} from '../../service/authentication.service';
+import {NewMailModalComponent} from './new-mail-modal/new-mail-modal.component';
+import {MDBModalRef, MDBModalService} from 'angular-bootstrap-md';
 
 @Component({
   selector: 'app-mon-compte',
@@ -10,7 +12,9 @@ import {AuthenticationService} from '../../service/authentication.service';
 export class MonCompteComponent implements OnInit {
 
   ensRef: EnseignantReferent;
-  constructor(private authServ: AuthenticationService) { }
+  modalRef: MDBModalRef;
+  constructor(private authServ: AuthenticationService,
+              private modalService: MDBModalService) { }
 
   ngOnInit() {
     this.authServ.getEnsRefById(parseInt(localStorage.getItem('idEnsRef'), 10)).subscribe( res => {
@@ -19,7 +23,10 @@ export class MonCompteComponent implements OnInit {
   }
 
   changeMail() {
-
+    this.modalRef = this.modalService.show(NewMailModalComponent, {data: {ensRef: this.ensRef}});
+    this.modalService.close.subscribe(res => {
+      this.ngOnInit();
+    });
   }
 
   changePassword() {
@@ -27,6 +34,5 @@ export class MonCompteComponent implements OnInit {
   }
 
   reinitRDV() {
-
   }
 }

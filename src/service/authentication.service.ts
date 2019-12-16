@@ -90,4 +90,12 @@ export class AuthenticationService {
   getEnsRefById(ensRefId): Observable<EnseignantReferent> {
     return this.http.get<EnseignantReferent>(this.host + '/enseignantReferent/' + ensRefId);
   }
+
+  updateEnsRefMail(ensRefId, newMail) {
+    const formdata: FormData = new FormData();
+
+    formdata.append('id', ensRefId);
+    formdata.append('newMail', newMail);
+    return this.http.put(this.host + '/enseignantReferentMail', formdata, {observe: 'response'});
+  }
 }

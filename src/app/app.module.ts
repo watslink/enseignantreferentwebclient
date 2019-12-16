@@ -95,6 +95,7 @@ import { FileDeleteModalComponent } from './file/file-delete-modal/file-delete-m
 import { ReunionModalComponent } from './reunion-modal/reunion-modal.component';
 import { MailListModalComponent } from './mail-list-modal/mail-list-modal.component';
 import { MonCompteComponent } from './mon-compte/mon-compte.component';
+import { NewMailModalComponent } from './mon-compte/new-mail-modal/new-mail-modal.component';
 
 
 const appRoutes: Routes = [
@@ -182,7 +183,8 @@ const appRoutes: Routes = [
     FileDeleteModalComponent,
     ReunionModalComponent,
     MailListModalComponent,
-    MonCompteComponent
+    MonCompteComponent,
+    NewMailModalComponent
   ],
   entryComponents: [
     StructureDetailsModalComponent,
@@ -223,7 +225,8 @@ const appRoutes: Routes = [
     EleveDeleteModalComponent,
     FileDeleteModalComponent,
     ReunionModalComponent,
-    MailListModalComponent
+    MailListModalComponent,
+    NewMailModalComponent
   ],
   imports: [
     BrowserModule,
