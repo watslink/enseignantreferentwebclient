@@ -31,6 +31,7 @@ export class EleveDetailsComponent implements OnInit {
   faView = faSearch;
   fadelete = faTimes;
   categories: Categorie[];
+  nullDate;
   constructor(private eleveServ: EleveService,
               private modalService: MDBModalService,
               private fileService: FileService,
@@ -38,6 +39,7 @@ export class EleveDetailsComponent implements OnInit {
               private location: Location) { }
 
   ngOnInit() {
+    this.nullDate = '1900-01-01';
     this.eleve = history.state;
     this.categorieService.getListCategorie(parseInt(localStorage.getItem('idEnsRef'), 10)).subscribe( res => {
       this.categories = res;
