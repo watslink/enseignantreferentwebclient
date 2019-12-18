@@ -5,7 +5,9 @@
   <h4 class="modal-title w-100" id="myModalLabel3">Date réunion</h4>
 </div>
 <div class="modal-body -align-center">
-  <input type="date" [(ngModel)]="eleve.dateReunion" class="form-control" aria-label="DateNotificationStruct" aria-describedby="inputGroup-sizing-default" required />
+  <div class="row justify-content-center">
+  <owl-date-time-inline [(ngModel)]="newDate"></owl-date-time-inline>
+  </div>
 </div>
 <div class="modal-footer justify-content-around">
   <button type="button" mdbBtn  rounded="true" mdbWavesEffect class="btn btn-success"  aria-label="Save" (click)="save()">Enregistrer</button>

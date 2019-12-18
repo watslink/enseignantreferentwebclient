@@ -57,8 +57,9 @@ export class DossiersEnCoursDocRequisComponent implements OnInit {
       const blob = new Blob([res]);
       const link = document.createElement('a');
       link.href = URL.createObjectURL(blob);
-      link.download = edir.documentInscriptionRequis.nom + '.' + edir.extension;
-      link.click();
+      window.open(link.href);
+      // link.download = edir.documentInscriptionRequis.nom + '.' + edir.extension;
+      // link.click();
     });
   }
 }

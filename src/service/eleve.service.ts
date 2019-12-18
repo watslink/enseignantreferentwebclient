@@ -29,6 +29,9 @@ export class EleveService {
   getListEleveNonVus(ensRefId: number): Observable<Eleve[]> {
     return this.http.get<Eleve[]>(this.host + '/eleves/nonvus/' + ensRefId);
   }
+  getListEleveNext10RDV(ensRefId: number): Observable<Eleve[]> {
+    return this.http.get<Eleve[]>(this.host + '/eleves/nextRDV/' + ensRefId);
+  }
   getEleve(id: number): Observable<Eleve> {
     return this.http.get<Eleve>(this.host + '/eleve/' + id);
   }

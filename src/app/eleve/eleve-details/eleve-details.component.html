@@ -275,7 +275,7 @@
       </mdb-card-header>
       <mdb-card-body class="w100">
           <span class="row justify-content-center" *ngIf="eleve.dateReunion!=nullDate">
-            Date: {{eleve.dateReunion | date:('dd/MM/yy')}}
+            Date: {{eleve.dateReunion | date:('dd/MM/yy  HH:mm')}}
           </span>
           <span class="row justify-content-center" *ngIf="eleve.dateReunion===nullDate">
             Date à définir

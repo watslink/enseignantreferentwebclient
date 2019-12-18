@@ -98,6 +98,10 @@ import { MonCompteComponent } from './mon-compte/mon-compte.component';
 import { NewMailModalComponent } from './mon-compte/new-mail-modal/new-mail-modal.component';
 import { NewPasswordModalComponent } from './mon-compte/new-password-modal/new-password-modal.component';
 import { ReinitializeRdvModalComponent } from './mon-compte/reinitialize-rdv-modal/reinitialize-rdv-modal.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {OwlMomentDateTimeAdapterOptions} from 'ng-pick-datetime/date-time/adapter/moment-adapter/moment-date-time-adapter.class';
+import {OwlDateTimeModule} from 'ng-pick-datetime';
+import {OwlMomentDateTimeModule} from 'ng-pick-datetime/date-time/adapter/moment-adapter/moment-date-time.module';
 
 
 const appRoutes: Routes = [
@@ -236,6 +240,7 @@ const appRoutes: Routes = [
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     RouterModule.forRoot(appRoutes, {onSameUrlNavigation: 'reload'}),
     HttpClientModule,
     NgbModule,
@@ -244,7 +249,9 @@ const appRoutes: Routes = [
     FontAwesomeModule,
     MDBBootstrapModule.forRoot(),
     FileUploadModule,
-    NgxDocViewerModule
+    NgxDocViewerModule,
+    OwlDateTimeModule,
+    OwlMomentDateTimeModule
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'fr-FR' },
