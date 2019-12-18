@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Eleve} from '../../../model/Eleve.model';
 import {Location} from '@angular/common';
-import {EleveDocumentInscriptionRequis} from '../../../model/EleveDocumentInscriptionRequis.model';
 import {FileAddModalComponent} from '../../file/file-add-modal/file-add-modal.component';
-import {FileViewerModalComponent} from '../../file/file-viewer-modal/file-viewer-modal.component';
 import {MDBModalRef, MDBModalService} from 'angular-bootstrap-md';
 import {faDownload, faTimes} from '@fortawesome/free-solid-svg-icons';
 import {faSearch} from '@fortawesome/free-solid-svg-icons/faSearch';
@@ -13,7 +11,6 @@ import {Document} from '../../../model/Document.model';
 import {FileDeleteModalComponent} from '../../file/file-delete-modal/file-delete-modal.component';
 import {Categorie} from '../../../model/Categorie.model';
 import {CategorieService} from '../../../service/categorie.service';
-import {NgbAccordionConfig} from '@ng-bootstrap/ng-bootstrap';
 import {ReunionModalComponent} from '../../reunion-modal/reunion-modal.component';
 import {MailListModalComponent} from '../../mail-list-modal/mail-list-modal.component';
 
@@ -32,6 +29,8 @@ export class EleveDetailsComponent implements OnInit {
   fadelete = faTimes;
   categories: Categorie[];
   nullDate;
+  blob;
+  urlFile;
   constructor(private eleveServ: EleveService,
               private modalService: MDBModalService,
               private fileService: FileService,
@@ -57,15 +56,38 @@ export class EleveDetailsComponent implements OnInit {
   viewFile(element: Document) {
     this.fileService.getFile(element.nom + '.' +
       element.extension, this.eleve.nom + '-' + this.eleve.prenom).subscribe( res => {
-      this.modalRef = this.modalService.show(FileViewerModalComponent, {data: {fileUrl: res}});
+      switch (element.extension) {
+        case 'pdf':
+          this.blob = new Blob([res], {type: 'application/pdf'});
+          this.urlFile = URL.createObjectURL(this.blob);
+          window.open(this.urlFile);
+          break;
+        case 'jpg':
+          this.blob = new Blob([res], {type: 'image/jpeg'});
+          this.urlFile = URL.createObjectURL(this.blob);
+          window.open(this.urlFile);
+          break;
+        case 'jpeg':
+          this.blob = new Blob([res], {type: 'image/jpeg'});
+          this.urlFile = URL.createObjectURL(this.blob);
+          window.open(this.urlFile);
+          break;
+        case 'png':
+          this.blob = new Blob([res], {type: 'image/png'});
+          this.urlFile = URL.createObjectURL(this.blob);
+          window.open(this.urlFile);
+          break;
+        default:
+          this.openFile(element);
+      }
     });
   }
   openFile(element: Document) {
     this.fileService.getFile(element.nom + '.' +
       element.extension, this.eleve.nom + '-' + this.eleve.prenom).subscribe( res => {
-      const blob = new Blob([res]);
+      this.blob = new Blob([res]);
       const link = document.createElement('a');
-      link.href = URL.createObjectURL(blob);
+      link.href = URL.createObjectURL(this.blob);
       link.download = element.nom + '.' + element.extension;
       link.click();
     });

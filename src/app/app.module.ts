@@ -76,7 +76,6 @@ import {FileService} from '../service/file.service';
 import { FileAddModalComponent } from './file/file-add-modal/file-add-modal.component';
 import { EleveEditComponent } from './eleve/eleve-edit/eleve-edit.component';
 import {NgxDocViewerModule} from 'ngx-doc-viewer';
-import { FileViewerModalComponent } from './file/file-viewer-modal/file-viewer-modal.component';
 import { DossiersEnCoursDocRequisComponent } from './dossiers-en-cours/dossiers-en-cours-doc-requis/dossiers-en-cours-doc-requis.component';
 // tslint:disable-next-line:max-line-length
 import { RepresentantLegalAddModalComponent } from './representant-legal/representant-legal-add-modal/representant-legal-add-modal.component';
@@ -99,7 +98,6 @@ import { NewMailModalComponent } from './mon-compte/new-mail-modal/new-mail-moda
 import { NewPasswordModalComponent } from './mon-compte/new-password-modal/new-password-modal.component';
 import { ReinitializeRdvModalComponent } from './mon-compte/reinitialize-rdv-modal/reinitialize-rdv-modal.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {OwlMomentDateTimeAdapterOptions} from 'ng-pick-datetime/date-time/adapter/moment-adapter/moment-date-time-adapter.class';
 import {OwlDateTimeModule} from 'ng-pick-datetime';
 import {OwlMomentDateTimeModule} from 'ng-pick-datetime/date-time/adapter/moment-adapter/moment-date-time.module';
 
@@ -176,7 +174,6 @@ const appRoutes: Routes = [
     DossiersEnCoursValidateModalComponent,
     FileAddModalComponent,
     EleveEditComponent,
-    FileViewerModalComponent,
     DossiersEnCoursDocRequisComponent,
     RepresentantLegalAddModalComponent,
     RepresentantLegalDetailsModalComponent,
@@ -225,7 +222,6 @@ const appRoutes: Routes = [
     DossiersEnCoursDeleteModalComponent,
     DossiersEnCoursValidateModalComponent,
     FileAddModalComponent,
-    FileViewerModalComponent,
     RepresentantLegalAddModalComponent,
     RepresentantLegalDetailsModalComponent,
     RepresentantLegalEditModalComponent,

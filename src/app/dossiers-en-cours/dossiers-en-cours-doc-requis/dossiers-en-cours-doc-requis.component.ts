@@ -10,7 +10,6 @@ import {FileService} from '../../../service/file.service';
 
 import {EleveDocumentInscriptionRequis} from '../../../model/EleveDocumentInscriptionRequis.model';
 import {FileAddModalComponent} from '../../file/file-add-modal/file-add-modal.component';
-import {FileViewerModalComponent} from '../../file/file-viewer-modal/file-viewer-modal.component';
 import {Location} from '@angular/common';
 
 @Component({
@@ -24,6 +23,8 @@ export class DossiersEnCoursDocRequisComponent implements OnInit {
   modalRef: MDBModalRef;
   faDown = faDownload;
   faView = faSearch;
+  blob;
+  urlFile;
   constructor(private eleveServ: EleveService,
               private modalService: MDBModalService,
               private fileService: FileService,
@@ -46,20 +47,40 @@ export class DossiersEnCoursDocRequisComponent implements OnInit {
   viewFile(edir: EleveDocumentInscriptionRequis) {
     this.fileService.getFile(edir.documentInscriptionRequis.nom + '.' +
       edir.extension, this.eleve.nom + '-' + this.eleve.prenom).subscribe( res => {
-      // const file = new File([res], (edir.documentInscriptionRequis.nom + '.' + edir.extension));
-      const blob1 = new Blob([res]);
-      this.modalRef = this.modalService.show(FileViewerModalComponent, {data: {blob: blob1}});
-    });
+      switch (edir.extension) {
+        case 'pdf':
+          this.blob = new Blob([res], {type: 'application/pdf'});
+          this.urlFile = URL.createObjectURL(this.blob);
+          window.open(this.urlFile);
+          break;
+        case 'jpg':
+          this.blob = new Blob([res], {type: 'image/jpeg'});
+          this.urlFile = URL.createObjectURL(this.blob);
+          window.open(this.urlFile);
+          break;
+        case 'jpeg':
+          this.blob = new Blob([res], {type: 'image/jpeg'});
+          this.urlFile = URL.createObjectURL(this.blob);
+          window.open(this.urlFile);
+          break;
+        case 'png':
+          this.blob = new Blob([res], {type: 'image/png'});
+          this.urlFile = URL.createObjectURL(this.blob);
+          window.open(this.urlFile);
+          break;
+        default:
+          this.openFile(edir);
+      }
+  });
   }
   openFile(edir: EleveDocumentInscriptionRequis) {
     this.fileService.getFile(edir.documentInscriptionRequis.nom + '.' +
       edir.extension, this.eleve.nom + '-' + this.eleve.prenom).subscribe( res => {
-      const blob = new Blob([res]);
+      this.blob = new Blob([res]);
       const link = document.createElement('a');
-      link.href = URL.createObjectURL(blob);
-      window.open(link.href);
-      // link.download = edir.documentInscriptionRequis.nom + '.' + edir.extension;
-      // link.click();
+      link.href = URL.createObjectURL(this.blob);
+      link.download = edir.documentInscriptionRequis.nom + '.' + edir.extension;
+      link.click();
     });
   }
 }
