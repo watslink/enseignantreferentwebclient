@@ -5,14 +5,26 @@
   <h4 class="modal-title w-100" id="myModalLabel">Modifier le mail</h4>
 </div>
 <div class="modal-body -align-center">
-  <div class="input-group mb-3">
-    <div class="input-group-prepend">
-      <span class="input-group-text" >Nom</span>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" >Mail</span>
+      </div>
+      <input [(ngModel)]="ensRef.mail"  #mail=ngModel
+             pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-z]{2,3}$" type="text" class="form-control" aria-label="Mail" aria-describedby="inputGroup-sizing-default" required>
     </div>
-    <input [(ngModel)]="ensRef.mail" type="text" class="form-control" aria-label="Mail" aria-describedby="inputGroup-sizing-default" required>
-  </div>
+    <div *ngIf="mail.invalid && (mail.touched)"
+         class="alert alert-danger">
+      <div *ngIf = "mail.errors?.required">
+        Veuillez entrer un mail.
+      </div>
+      <div *ngIf = "mail.errors?.pattern && mail.touched">
+        Format incorrect.
+      </div>
+    </div>
   <div class="modal-footer justify-content-around">
-    <button type="button" mdbBtn  rounded="true" mdbWavesEffect class="btn btn-success"  aria-label="Save" (click)="save()">Enregistrer</button>
-    <button type="button" mdbBtn  rounded="true" mdbWavesEffect class="btn btn-info"  aria-label="Close" (click)="modalRef.hide()">Retour</button>
+    <button type="button" mdbBtn  rounded="true" mdbWavesEffect class="btn btn-success"  aria-label="Save"
+            [disabled]="mail.invalid"(click)="save()">Enregistrer</button>
+    <button type="button" mdbBtn  rounded="true" mdbWavesEffect class="btn btn-info" aria-label="Close"
+             (click)="modalRef.hide()">Retour</button>
   </div>
 </div>
