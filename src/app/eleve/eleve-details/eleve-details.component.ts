@@ -38,7 +38,7 @@ export class EleveDetailsComponent implements OnInit {
               private location: Location) { }
 
   ngOnInit() {
-    this.nullDate = '1900-01-01';
+    this.nullDate = '2019-01-01';
     this.eleve = history.state;
     this.categorieService.getListCategorie(parseInt(localStorage.getItem('idEnsRef'), 10)).subscribe( res => {
       this.categories = res;

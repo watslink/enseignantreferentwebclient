@@ -66,7 +66,7 @@ export class ElevesComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.nullDate = '1900-01-01';
+    this.nullDate = '2019-01-01';
     this.list = this.route.snapshot.params.select;
     if ( this.list === 'tous') {
       this.refreshAll();
