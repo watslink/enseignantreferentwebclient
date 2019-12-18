@@ -22,7 +22,7 @@ export class AeshAddModalComponent implements OnInit {
   ngOnInit() {
     this.aesh = new AESH();
     this.aesh.enseignantReferent = new EnseignantReferent();
-    this.aesh.pial = new PIAL();
+    this.aesh.pial = null;
     this.pialServ.getListPIAL(parseInt(localStorage.getItem('idEnsRef'), 10)).subscribe( res => {
       this.pials = res;
     });

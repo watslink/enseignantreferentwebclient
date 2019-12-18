@@ -9,38 +9,74 @@
     <div class="input-group-prepend">
       <span class="input-group-text" >Nom</span>
     </div>
-    <input [(ngModel)]="aesh.nom" type="text" class="form-control" aria-label="Nom" aria-describedby="inputGroup-sizing-default" required>
+    <input [(ngModel)]="aesh.nom" #nom=ngModel type="text" class="form-control" aria-label="Nom" aria-describedby="inputGroup-sizing-default" required>
+  </div>
+  <div *ngIf="nom.invalid && (nom.touched)"
+       class="alert alert-danger">
+    <div *ngIf = "nom.errors?.required">
+      Veuillez entrer un nom
+    </div>
   </div>
   <div class="input-group mb-3">
-  <div class="input-group-prepend">
-    <span class="input-group-text" >Prénom</span>
+    <div class="input-group-prepend">
+      <span class="input-group-text" >Prénom</span>
+    </div>
+    <input [(ngModel)]="aesh.prenom" type="text" #prenom=ngModel class="form-control" aria-label="Prénom" aria-describedby="inputGroup-sizing-default" required>
   </div>
-  <input [(ngModel)]="aesh.prenom" type="text" class="form-control" aria-label="Prénom" aria-describedby="inputGroup-sizing-default" required>
+  <div *ngIf="prenom.invalid && (prenom.touched)"
+       class="alert alert-danger">
+    <div *ngIf = "prenom.errors?.required">
+      Veuillez entrer un prénom
+    </div>
   </div>
   <div class="input-group mb-3">
     <div class="input-group-prepend">
       <span class="input-group-text" >Téléphone</span>
     </div>
-    <input [(ngModel)]="aesh.telephone" type="text" class="form-control" aria-label="Telephone" aria-describedby="inputGroup-sizing-default" required>
+    <input [(ngModel)]="aesh.telephone" type="text" #tel=ngModel class="form-control" aria-label="Telephone" aria-describedby="inputGroup-sizing-default" required>
+  </div>
+  <div *ngIf="tel.invalid && (tel.touched)"
+       class="alert alert-danger">
+    <div *ngIf = "tel.errors?.required">
+      Veuillez entrer un numéro de téléphone
+    </div>
   </div>
   <div class="input-group mb-3">
     <div class="input-group-prepend">
       <span class="input-group-text" >Mail</span>
     </div>
-    <input [(ngModel)]="aesh.mail" type="text" class="form-control" aria-label="Mail" aria-describedby="inputGroup-sizing-default" required>
+    <input [(ngModel)]="aesh.mail"  #mail=ngModel
+           pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-z]{2,3}$" type="text" class="form-control" aria-label="Mail" aria-describedby="inputGroup-sizing-default" required>
+  </div>
+  <div *ngIf="mail.invalid && (mail.touched)"
+       class="alert alert-danger">
+    <div *ngIf = "mail.errors?.required">
+      Veuillez entrer un mail.
+    </div>
+    <div *ngIf = "mail.errors?.pattern && mail.touched">
+      Format incorrect.
+    </div>
   </div>
   <div class="input-group mb-3">
     <div class="input-group-prepend">
       <span class="input-group-text" >PIAL</span>
     </div>
-    <select [compareWith]="compareFnPial" [(ngModel)]="aesh.pial"  name="pial" class="browser-default custom-select form-control">
+    <select [compareWith]="compareFnPial" [(ngModel)]="aesh.pial"  #pial=ngModel name="pial" class="browser-default custom-select form-control">
       <option  [ngValue]="null">Aucun</option>
-      <option  *ngFor="let el of pials" [ngValue]="el" >{{el.nom}}</option>
+      <option  *ngFor="let el of pials" [ngValue]="el">{{el.nom}}</option>
     </select>
+  </div>
+  <div *ngIf="pial.invalid && (pial.touched)"
+       class="alert alert-danger">
+    <div *ngIf = "pial.errors?.required">
+      Veuillez séléctionner un PIAL.
+    </div>
   </div>
 </div>
 <div class="modal-footer justify-content-around">
-  <button type="button" mdbBtn  rounded="true" mdbWavesEffect class="btn btn-success"  aria-label="Save" (click)="save()">Enregistrer</button>
+  <button type="button" mdbBtn  rounded="true" mdbWavesEffect class="btn btn-success"
+          [disabled]="nom.invalid || prenom.invalid || tel.invalid || mail.invalid || pial.invalid"
+          aria-label="Save" (click)="save()">Enregistrer</button>
   <button type="button" mdbBtn  rounded="true" mdbWavesEffect class="btn btn-info"  aria-label="Close" (click)="modalRef.hide()">Retour</button>
 </div>
 
