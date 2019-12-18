@@ -14,35 +14,72 @@
     <div class="input-group-prepend">
       <span class="input-group-text" >Nom</span>
     </div>
-    <input [(ngModel)]="etablissement.nom" type="text" class="form-control" aria-label="Nom" aria-describedby="inputGroup-sizing-default" required>
+    <input [(ngModel)]="etablissement.nom" #nom=ngModel type="text" class="form-control" aria-label="Nom" aria-describedby="inputGroup-sizing-default" required>
   </div>
+    <div *ngIf="nom.invalid && (nom.touched)"
+         class="alert alert-danger">
+      <div *ngIf = "nom.errors?.required">
+        Veuillez entrer un nom
+      </div>
+    </div>
   <div class="input-group mb-3">
     <div class="input-group-prepend">
       <span class="input-group-text" >RNE</span>
     </div>
-    <input [(ngModel)]="etablissement.rne" type="text" class="form-control" aria-label="RNE" aria-describedby="inputGroup-sizing-default" required>
+    <input [(ngModel)]="etablissement.rne" #rne=ngModel pattern="[0-9]{7}[a-zA-Z]" type="text" class="form-control" aria-label="RNE" aria-describedby="inputGroup-sizing-default" required>
   </div>
+    <div *ngIf="rne.invalid && (rne.touched)"
+         class="alert alert-danger">
+      <div *ngIf = "rne.errors?.required">
+        Veuillez entrer un RNE.
+      </div>
+      <div *ngIf = "rne.errors?.pattern && rne.touched">
+        Format incorrect.
+      </div>
+    </div>
   <div class="input-group mb-3">
     <div class="input-group-prepend">
       <span class="input-group-text" >PIAL</span>
     </div>
-    <select [compareWith]="compareFnPial" [(ngModel)]="etablissement.pial"  name="pial" class="browser-default custom-select form-control">
+    <select [compareWith]="compareFnPial" [(ngModel)]="etablissement.pial"  name="pial" #pial=ngModel class="browser-default custom-select form-control">
       <option  [ngValue]="null">Aucun</option>
       <option  *ngFor="let el of pials" [ngValue]="el" >{{el.nom}}</option>
     </select>
   </div>
+    <div *ngIf="pial.invalid && (pial.touched)"
+         class="alert alert-danger">
+      <div *ngIf = "pial.errors?.required">
+        Veuillez séléctionner un PIAL.
+      </div>
+    </div>
   <div class="input-group mb-3">
     <div class="input-group-prepend">
       <span class="input-group-text" >Téléphone</span>
     </div>
-    <input [(ngModel)]="etablissement.telephone" type="text" class="form-control" aria-label="Telephone" aria-describedby="inputGroup-sizing-default" required>
+    <input [(ngModel)]="etablissement.telephone" #tel=ngModel type="text" class="form-control" aria-label="Telephone" aria-describedby="inputGroup-sizing-default" required>
   </div>
-  <div class="input-group mb-3">
-    <div class="input-group-prepend">
-      <span class="input-group-text" >Mail</span>
+    <div *ngIf="tel.invalid && (tel.touched)"
+         class="alert alert-danger">
+      <div *ngIf = "tel.errors?.required">
+        Veuillez entrer un numéro de téléphone
+      </div>
     </div>
-    <input [(ngModel)]="etablissement.mail" type="text" class="form-control" aria-label="Mail" aria-describedby="inputGroup-sizing-default" required>
-  </div>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" >Mail</span>
+      </div>
+      <input [(ngModel)]="etablissement.mail"  #mail=ngModel
+             pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-z]{2,3}$" type="text" class="form-control" aria-label="Mail" aria-describedby="inputGroup-sizing-default" required>
+    </div>
+    <div *ngIf="mail.invalid && (mail.touched)"
+         class="alert alert-danger">
+      <div *ngIf = "mail.errors?.required">
+        Veuillez entrer un mail.
+      </div>
+      <div *ngIf = "mail.errors?.pattern && mail.touched">
+        Format incorrect.
+      </div>
+    </div>
   </div>
   <div class="col-6">
   <div class="divider-new">
@@ -52,32 +89,62 @@
     <div class="input-group-prepend">
       <span class="input-group-text" >Numero</span>
     </div>
-    <input [(ngModel)]="etablissement.adresse.numero" type="text" class="form-control" aria-label="Numero" aria-describedby="inputGroup-sizing-default" required>
+    <input [(ngModel)]="etablissement.adresse.numero" #num=ngModel type="text" class="form-control" aria-label="Numero" aria-describedby="inputGroup-sizing-default" required>
   </div>
+    <div *ngIf="num.invalid && (num.touched)"
+         class="alert alert-danger">
+      <div *ngIf = "num.errors?.required">
+        Veuillez entrer un numéro de rue.
+      </div>
+    </div>
   <div class="input-group mb-3">
     <div class="input-group-prepend">
       <span class="input-group-text" >Voie</span>
     </div>
-    <input [(ngModel)]="etablissement.adresse.voie" type="text" class="form-control" aria-label="Voie" aria-describedby="inputGroup-sizing-default" required>
+    <input [(ngModel)]="etablissement.adresse.voie"  #voie=ngModel type="text" class="form-control" aria-label="Voie" aria-describedby="inputGroup-sizing-default" required>
   </div>
+    <div *ngIf="voie.invalid && (voie.touched)"
+         class="alert alert-danger">
+      <div *ngIf = "voie.errors?.required">
+        Veuillez entrer une voie.
+      </div>
+    </div>
   <div class="input-group mb-3">
     <div class="input-group-prepend">
       <span class="input-group-text" >CP</span>
     </div>
-    <input [(ngModel)]="etablissement.adresse.codePostal" type="text" class="form-control" aria-label="CP" aria-describedby="inputGroup-sizing-default" required>
+    <input [(ngModel)]="etablissement.adresse.codePostal" #cp=ngModel pattern="[0-9]{5}"
+           type="text" class="form-control" aria-label="CP" aria-describedby="inputGroup-sizing-default" required>
   </div>
+    <div *ngIf="cp.invalid && (cp.touched)"
+         class="alert alert-danger">
+      <div *ngIf = "cp.errors?.required">
+        Veuillez entrer un code postal.
+      </div>
+      <div *ngIf = "cp.errors?.pattern && cp.touched">
+        Format incorrect.
+      </div>
+    </div>
   <div class="input-group mb-3">
     <div class="input-group-prepend">
       <span class="input-group-text" >Ville</span>
     </div>
-    <input [(ngModel)]="etablissement.adresse.ville" type="text" class="form-control" aria-label="Ville" aria-describedby="inputGroup-sizing-default" required>
+    <input [(ngModel)]="etablissement.adresse.ville" type="text"  #ville=ngModel class="form-control" aria-label="Ville" aria-describedby="inputGroup-sizing-default" required>
   </div>
+    <div *ngIf="ville.invalid && (ville.touched)"
+         class="alert alert-danger">
+      <div *ngIf = "ville.errors?.required">
+        Veuillez entrer une ville.
+      </div>
+    </div>
   </div>
   </div>
 </div>
 
 <div class="modal-footer justify-content-around">
-  <button type="button" mdbBtn  rounded="true" mdbWavesEffect class="btn btn-success"  aria-label="Save" (click)="save()">Enregistrer</button>
+  <button type="button" mdbBtn  rounded="true" mdbWavesEffect class="btn btn-success"  aria-label="Save"
+          [disabled]="nom.invalid || rne.invalid || pial.invalid || tel.invalid || mail.invalid || num.invalid || voie.invalid || cp.invalid || ville.invalid"
+          (click)="save()">Enregistrer</button>
   <button type="button" mdbBtn  rounded="true" mdbWavesEffect class="btn btn-info"  aria-label="Close" (click)="modalRef.hide()">Retour</button>
 </div>
 

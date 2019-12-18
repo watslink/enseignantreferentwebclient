@@ -23,7 +23,7 @@ export class EtablissementAddModalComponent implements OnInit {
   ngOnInit() {
     this.etablissement = new Etablissement();
     this.etablissement.adresse = new Adresse();
-    this.etablissement.pial = new PIAL();
+    this.etablissement.pial = null;
     this.pialServ.getListPIAL(parseInt(localStorage.getItem('idEnsRef'), 10)).subscribe( res => {
       this.pials = res;
     });
