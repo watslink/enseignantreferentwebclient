@@ -13,13 +13,27 @@
           <div class="input-group-prepend">
             <span class="input-group-text">Nom</span>
           </div>
-          <input [(ngModel)]="eleve.nom" type="text" class="form-control" aria-label="Nom" aria-describedby="inputGroup-sizing-default" required>
+          <input [(ngModel)]="eleve.nom" #nom=ngModel type="text" class="form-control" aria-label="Nom" aria-describedby="inputGroup-sizing-default" required>
         </div>
         <div class="col input-group mb-3">
           <div class="input-group-prepend">
             <span class="input-group-text" >Prénom</span>
           </div>
-          <input [(ngModel)]="eleve.prenom" type="text" class="form-control" aria-label="Prenom" aria-describedby="inputGroup-sizing-default" required>
+          <input [(ngModel)]="eleve.prenom" #prenom=ngModel type="text" class="form-control" aria-label="Prenom" aria-describedby="inputGroup-sizing-default" required>
+        </div>
+      </div>
+      <div class="row justify-content-around">
+        <div *ngIf="nom.invalid && (nom.touched)"
+             class="alert alert-danger">
+          <div *ngIf = "nom.errors?.required">
+            Veuillez entrer un nom.
+          </div>
+        </div>
+        <div *ngIf="prenom.invalid && (prenom.touched)"
+             class="alert alert-danger">
+          <div *ngIf = "prenom.errors?.required">
+            Veuillez entrer un prenom.
+          </div>
         </div>
       </div>
       <div class="row justify-content-around">
@@ -27,7 +41,15 @@
           <div class="input-group-prepend">
             <span class="input-group-text" >Date de naissance</span>
           </div>
-          <input type="date" [(ngModel)]="eleve.dateNaissance" class="form-control" aria-label="DateNaissance" aria-describedby="inputGroup-sizing-default" required />
+          <input type="date" [(ngModel)]="eleve.dateNaissance" #birth=ngModel class="form-control" aria-label="DateNaissance" aria-describedby="inputGroup-sizing-default" required />
+        </div>
+      </div>
+      <div class="row justify-content-around">
+        <div *ngIf="birth.invalid && (birth.touched)"
+             class="alert alert-danger">
+          <div *ngIf = "birth.errors?.required">
+            Veuillez entrer une date de naissance
+          </div>
         </div>
       </div>
       <div class="row justify-content-around">
@@ -203,6 +225,7 @@
   </div>
 </div>
 <div class="row justify-content-around  col-sm-12">
-  <button type="button" mdbBtn  rounded="true" mdbWavesEffect class="btn btn-success"  aria-label="Save" (click)="save()">Enregistrer</button>
+  <button type="button" mdbBtn  rounded="true" mdbWavesEffect class="btn btn-success"  aria-label="Save"
+          [disabled]="nom.invalid || prenom.invalid || birth.invalid" (click)="save()">Enregistrer</button>
   <button type="button" mdbBtn  rounded="true" mdbWavesEffect class="btn btn-info"  aria-label="back" (click)="back()">Retour</button>
 </div>

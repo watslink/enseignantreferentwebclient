@@ -67,11 +67,11 @@ export class EleveAddComponent implements OnInit {
 
   ngOnInit() {
     this.eleve = new Eleve();
-    this.eleve.niveau = new Niveau();
-    this.eleve.etablissement = new Etablissement();
-    this.eleve.aesh = new AESH();
-    this.eleve.dateNotificationAesh = new Date();
-    this.eleve.dateNaissance = new Date();
+    this.eleve.niveau = null;
+    this.eleve.etablissement = null;
+    this.eleve.aesh = null;
+    this.eleve.dateNotificationAesh = null;
+    this.eleve.dateNaissance = null;
     this.eleve.listRepresentantsLegaux = new Array<RepresentantLegal>();
     this.eleve.listMaterielsPedagoAdaptes = new Array<MaterielPedagoAdapte>();
     this.eleve.listEleveStructurePros = new Array<EleveStructure>();
