@@ -17,6 +17,8 @@ export class NiveauAddModalComponent implements OnInit {
 
   ngOnInit() {
     this.niveau = new Niveau();
+    this.niveau.degre = null;
+    this.niveau.specialise = false;
   }
 
   save() {

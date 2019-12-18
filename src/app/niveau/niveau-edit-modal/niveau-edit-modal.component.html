@@ -9,7 +9,13 @@
     <div class="input-group-prepend">
       <span class="input-group-text" >Libellé</span>
     </div>
-    <input [(ngModel)]="niveau.libelle" type="text" class="form-control" aria-label="Libelle" aria-describedby="inputGroup-sizing-default" required>
+    <input [(ngModel)]="niveau.libelle" #lib=ngModel type="text" class="form-control" aria-label="Libelle" aria-describedby="inputGroup-sizing-default" required>
+  </div>
+  <div *ngIf="lib.invalid && (lib.touched)"
+       class="alert alert-danger">
+    <div *ngIf = "lib.errors?.required">
+      Veuillez entrer un libellé
+    </div>
   </div>
   <div class="input-group mb-3">
     <div class="input-group-prepend">
@@ -32,7 +38,8 @@
 </div>
 
 <div class="modal-footer justify-content-around">
-  <button type="button" mdbBtn  rounded="true" mdbWavesEffect class="btn btn-success"  aria-label="Save" (click)="save()">Enregistrer</button>
+  <button type="button" mdbBtn  rounded="true" mdbWavesEffect class="btn btn-success"  aria-label="Save"
+          [disabled]="lib.invalid" (click)="save()">Enregistrer</button>
   <button type="button" mdbBtn  rounded="true" mdbWavesEffect class="btn btn-info"  aria-label="Close" (click)="modalRef.hide()">Retour</button>
 </div>
 
