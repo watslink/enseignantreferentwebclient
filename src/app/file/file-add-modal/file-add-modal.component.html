@@ -7,28 +7,53 @@
   <h4 *ngIf="type=='addDoc'" class="modal-title w-100" id="myModalLabel3">Nouveau document</h4>
 </div>
 <div class="modal-body -align-center">
-  <div *ngIf="type=='addDoc'" class="input-group mb-3">
+  <div *ngIf="type=='addDoc'">
+    <div class="input-group mb-3">
     <div class="input-group-prepend">
       <span class="input-group-text" >Nom</span>
     </div>
-    <input [(ngModel)]="newDoc.nom" type="text" class="form-control" aria-label="Nom" aria-describedby="inputGroup-sizing-default" required>
-  </div>
-  <div *ngIf="type=='addDoc'" class="input-group mb-3">
+    <input [(ngModel)]="newDoc.nom" #nom=ngModel type="text" class="form-control" aria-label="Nom" aria-describedby="inputGroup-sizing-default" required>
+    </div>
+    <div *ngIf="nom.invalid && (nom.touched)"
+         class="alert alert-danger">
+      <div *ngIf = "nom.errors?.required">
+        Veuillez entrer un nom.
+      </div>
+    </div>
+    <div class="input-group mb-3">
     <div class="input-group-prepend">
       <span class="input-group-text" >Categorie</span>
     </div>
-    <select [compareWith]="compareFnCategorie" [(ngModel)]="newDoc.categorie"  name="cat" class="browser-default custom-select form-control">
+    <select [compareWith]="compareFnCategorie" [(ngModel)]="newDoc.categorie"  #cat=ngModel name="cat" class="browser-default custom-select form-control" required>
+      <option [ngValue]="null">Aucune</option>
       <option  *ngFor="let el of categories" [ngValue]="el" >{{el.nom}}</option>
     </select>
-  </div>
+    </div>
+    <div *ngIf="cat.invalid && (cat.touched)"
+         class="alert alert-danger">
+      <div *ngIf = "cat.errors?.required">
+        Veuillez séléctionner une catégorie.
+      </div>
+    </div>
   <div class="form-group">
     <input type="file"
            id="file"
-            (change)="handleFileInput($event)">
+            (change)="handleFileInput($event)" required>
   </div>
-</div>
 <div class="modal-footer justify-content-around">
-  <button type="button" mdbBtn  rounded="true" mdbWavesEffect class="btn btn-success"  aria-label="Save" (click)="save()">Enregistrer</button>
+  <button type="button" mdbBtn  rounded="true" mdbWavesEffect class="btn btn-success"  aria-label="Save" [disabled]="nom.invalid || cat.invalid || fileToUpload === null" (click)="save()">Enregistrer</button>
   <button type="button" mdbBtn  rounded="true" mdbWavesEffect class="btn btn-info"  aria-label="Close" (click)="modalRef.hide()">Retour</button>
 </div>
-
+</div>
+<div *ngIf="type!='addDoc'" class="input-group mb-3">
+  <div class="form-group">
+    <input type="file"
+           id="file2"
+           (change)="handleFileInput($event)">
+  </div>
+<div class="modal-footer justify-content-around">
+  <button type="button" mdbBtn  rounded="true" mdbWavesEffect class="btn btn-success"  aria-label="Save" [disabled]="fileToUpload === null" (click)="save()">Enregistrer</button>
+  <button type="button" mdbBtn  rounded="true" mdbWavesEffect class="btn btn-info"  aria-label="Close" (click)="modalRef.hide()">Retour</button>
+</div>
+</div>
+</div>

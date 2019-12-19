@@ -16,7 +16,7 @@ import {PIAL} from '../../../model/PIAL.model';
   styleUrls: ['./file-add-modal.component.css']
 })
 export class FileAddModalComponent implements OnInit {
-  fileToUpload: File;
+  fileToUpload: File = null;
   eleve: Eleve;
   eleveDocRequis: EleveDocumentInscriptionRequis;
   doc: Document;
@@ -32,6 +32,7 @@ export class FileAddModalComponent implements OnInit {
   ngOnInit() {
     if (this.type === 'addDoc') {
       this.newDoc = new Document();
+      this.newDoc.categorie = null;
     }
     this.categoieService.getListCategorie(parseInt(localStorage.getItem('idEnsRef'), 10)).subscribe( res => {
       this.categories = res;
