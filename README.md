@@ -2,6 +2,17 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.4.
 
+Client pour EnseignantReferentService
+Son but est de faciliter le suivi des élèves.
+Il sert d'interface pour entre autres:
+ - la gestion des établissements, PIALs, AESHs, Structures Professionnelles, Représentants legaux, Materiels
+   pédagogiques adaptés, niveaux.
+ - la gestion de documents selon différentes catégories paramétrables.
+ - la gestion des nouvelles inscriptions avec liste de documents requis obligatoire paramétrable.
+ - la gestion des rendez-vous.
+ - l'affichage de liste d'élèves vu/non vus avec barre de recherche.
+
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
