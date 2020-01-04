@@ -50,7 +50,9 @@ export class EleveDetailsComponent implements OnInit {
   openFileModalAdd() {
     this.modalRef = this.modalService.show(FileAddModalComponent, {data: {eleve: this.eleve, type: 'addDoc'}});
     this.modalService.close.subscribe( res => {
-      this.ngOnInit();
+      this.eleveServ.getEleve(this.eleve.eleveId).subscribe( res2 => {
+        this.eleve = res2;
+      });
     });
   }
   viewFile(element: Document) {

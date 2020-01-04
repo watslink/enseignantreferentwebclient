@@ -25,7 +25,7 @@ export class FileDeleteModalComponent implements OnInit {
       '-' + this.eleve.prenom).subscribe( res => {
           for (const doc of this.eleve.listDocuments) {
             if (doc.documentId === this.doc.documentId) {
-              this.eleve.listDocuments.splice(this.eleve.listDocuments.indexOf(doc, 1));
+              this.eleve.listDocuments.splice(this.eleve.listDocuments.indexOf(doc), 1);
               this.eleveServ.updateEleve(this.eleve).subscribe();
           }
         }
