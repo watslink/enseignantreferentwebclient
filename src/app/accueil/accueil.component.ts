@@ -29,7 +29,7 @@ export class AccueilComponent implements OnInit {
       }
       if (res) {
         setTimeout(() => this.eleveService.getListEleveNext10RDV(parseInt(localStorage.getItem('idEnsRef'), 10)).subscribe( res2 => {
-          this.eleves = res2; }), 100);
+          this.eleves = res2; }), 500);
       }
     });
   }
