@@ -97,6 +97,7 @@ export class DossiersEnCoursComponent implements OnInit, AfterViewInit {
   }
   refresh() {
     this.eleves = null;
+    this.elevesData = null;
     this.eleveServ.getListEleveNonInscrits(parseInt(localStorage.getItem('idEnsRef'), 10)).subscribe(
       element => {
         this.elevesData = element;
