@@ -1,6 +1,6 @@
-import {AfterViewInit, ChangeDetectorRef, Component, HostListener, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, ChangeDetectorRef, Component, HostListener, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {AuthenticationService} from '../../service/authentication.service';
-import {Router} from '@angular/router';
+import {NavigationEnd, Router} from '@angular/router';
 import {MDBModalRef, MDBModalService, MdbTableDirective, MdbTablePaginationComponent} from 'angular-bootstrap-md';
 import {faClipboardList, faPencilAlt, faTimes} from '@fortawesome/free-solid-svg-icons';
 import {DossiersEnCoursDeleteModalComponent} from './dossiers-en-cours-delete-modal/dossiers-en-cours-delete-modal.component';
@@ -8,7 +8,7 @@ import {Eleve} from '../../model/Eleve.model';
 import {EleveService} from '../../service/eleve.service';
 import {DossiersEnCoursValidateModalComponent} from './dossiers-en-cours-validate-modal/dossiers-en-cours-validate-modal.component';
 import {faCheck} from '@fortawesome/free-solid-svg-icons/faCheck';
-import {EleveAddComponent} from '../eleve/eleve-add/eleve-add.component';
+
 
 
 
@@ -33,11 +33,18 @@ export class DossiersEnCoursComponent implements OnInit, AfterViewInit {
   maxVisibleItems = 8;
   modalRef: MDBModalRef;
 
+  navigationSubscription;
+
   constructor(private authServ: AuthenticationService,
               private eleveServ: EleveService,
               private router: Router,
               private cdRef: ChangeDetectorRef,
               private modalService: MDBModalService) {
+    this.navigationSubscription = this.router.events.subscribe((e: any) => {
+      if (e instanceof NavigationEnd) {
+        this.ngOnInit();
+      }
+    });
   }
 
   @HostListener('input') oninput() {
@@ -96,8 +103,6 @@ export class DossiersEnCoursComponent implements OnInit, AfterViewInit {
     return true;
   }
   refresh() {
-    this.eleves = null;
-    this.elevesData = null;
     this.eleveServ.getListEleveNonInscrits(parseInt(localStorage.getItem('idEnsRef'), 10)).subscribe(
       element => {
         this.elevesData = element;
